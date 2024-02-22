@@ -1,3 +1,4 @@
+\usepackage[utf8]{inputenc}
 
 %!TEX ROOT = thesis.tex
 
@@ -129,7 +130,7 @@
 	%		}}}
 	%		\everypar{\noindent}
 	%	}
-	\DeclareDocumentCommand\chapter{ s o m }{\relax
+	\DeclareDocumentCommand\chapter{ s~o~m }{\relax
 	  % Compute the vertical adjustment
 	  \skip_gset:Nn \g_ctuthesis_tempa_skip { - \box_ht:N \strutbox }
 	  { \LARGE \skip_gsub:Nn \g_ctuthesis_tempa_skip { \box_ht:N \strutbox + \box_dp:N \strutbox } }
@@ -385,7 +386,7 @@
 % an \if that is true only after \appendix
 \newif\ifctu@app \ctu@appfalse
 % The new \appendix
-\DeclareDocumentCommand \appendix { s s } {
+\DeclareDocumentCommand \appendix { s~s~} {
 	\ctu@apptrue
 	% Call the old \appendix
 	\ctuthesis_title_orig_appendix:
@@ -407,9 +408,9 @@
 		}
 	}
 	% \chapter ignores one star, so that things like {thebibliography} are numbered
-	\DeclareDocumentCommand \chapter { s } { \ctuthesis_title_orig_chapter: }
+	\DeclareDocumentCommand \chapter { s~} { \ctuthesis_title_orig_chapter: }
 	% another \appendix will generate a warning and be silently ignored
-	\DeclareDocumentCommand \appendix { s s } {
+	\DeclareDocumentCommand \appendix { s~s~} {
 		\msg_warning:nn { ctuthesis } { appendix-twice }
 	}
 }
@@ -603,7 +604,7 @@
 
 % Better \cleardoublepage that takes proper treatment of the empty pages.
 % The starred variant leaves the empty page inbetween really completely empty
-\DeclareDocumentCommand \cleardoublepage { s } {
+\DeclareDocumentCommand \cleardoublepage { s~} {
 	\clearpage
 	\if@twoside\ifodd\c@page\else
 			%		\IfBooleanTF { #1 } {
@@ -848,7 +849,7 @@
 	\cs_new_eq:NN \ctuthesis_lst_orig_lstinline:w \lstinline
 	\newsavebox \ctuthesis_lst_box
 	\newcommand* \ctulstsep {0.2em}
-	\DeclareDocumentCommand \ctuthesis_lst_do_ctulstinline:nnw { m m m v } {
+	\DeclareDocumentCommand \ctuthesis_lst_do_ctulstinline:nnw { m m m v~} {
 		\leavevmode
 		\microtypesetup{activate=false}
 		\begin{lrbox}{\ctuthesis_lst_box}
@@ -887,8 +888,9 @@
 	\tl_new:N \g_ctuthesis_hyperref_pdfinfo_tl
 	\tl_set:Nx \g_ctuthesis_hyperref_pdfinfo_tl {
 		pdfinfo = {
-				Title = \ctuthesis_field_use:nn { title } { title },
-				Author = \ctuthesis_field_use:n { author },
+				Title = Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z~trámů a vložek
+s~využitím pokročilých numerických metod,
+				Author = Daniel Beránek,
 			}
 	}
 	\exp_args:NV \hypersetup \g_ctuthesis_hyperref_pdfinfo_tl

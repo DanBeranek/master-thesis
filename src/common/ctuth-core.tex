@@ -244,7 +244,7 @@
 }
 
 % `\ctufield` supports the context language specifier as an optional argument
-\NewDocumentCommand \ctufield { s >{\TrimSpaces}o >{\TrimSpaces}m } {
+\NewDocumentCommand \ctufield { s~>{\TrimSpaces}o >{\TrimSpaces}m } {
 	\IfBooleanTF { #1 } {
 		\IfValueTF { #2 } {
 			\ctuthesis_field_use_default:nnn { #2 } { #3 } { }
@@ -299,7 +299,7 @@
 }
 
 % Theme, template and field hadling - publicly available conditionals with "true" and "false" branches
-\DeclareDocumentCommand \ctuiftheme { s >{\TrimSpaces}m +m +m } {
+\DeclareDocumentCommand \ctuiftheme { s~>{\TrimSpaces}m +m +m } {
 	\ctuthesis_theme_exists:nTF { #2 } {
 		\IfBooleanTF { #1 } {
 			\tl_if_empty:cTF { g_ctuthesis_theme_#1_tl } { #4 } { #3 }
@@ -311,7 +311,7 @@
 	}
 }
 
-\DeclareDocumentCommand \ctuiftemplate { s >{\TrimSpaces}m +m +m } {
+\DeclareDocumentCommand \ctuiftemplate { s~>{\TrimSpaces}m +m +m } {
 	\ctuthesis_template_exists:nTF { #2 } {
 		\IfBooleanTF { #1 } {
 			\tl_if_empty:cTF { g_ctuthesis_template_#1_tl } { #4 } { #3 }
@@ -324,7 +324,7 @@
 }
 
 % The starred variant checks for emptiness rather than for existance
-\DeclareDocumentCommand \ctuiffield { s >{\TrimSpaces}o >{\TrimSpaces}m +m +m } {
+\DeclareDocumentCommand \ctuiffield { s~>{\TrimSpaces}o >{\TrimSpaces}m +m +m } {
 	\IfValueTF { #2 } {
 		\ctuthesis_field_exists:nF { #2 language } { \msg_error:nnx { ctuthesis } { unknown-field } { #1 } }
 		\IfBooleanTF { #1 } {

@@ -84,7 +84,7 @@
 
 \seq_gset_eq:NN \g_ctuthesis_Months_english_seq \g_ctuthesis_months_english_seq
 
-\DeclareExpandableDocumentCommand \monthinlanguage { s m } {
+\DeclareExpandableDocumentCommand \monthinlanguage { s~m } {
 	\IfBooleanTF { #1 } {
 		\seq_item:cn { g_ctuthesis_Months_\tl_use:c { g_ctuthesis_field_#2language_tl }_seq }
 		{ \ctuthesis_field_use:n { month } }
