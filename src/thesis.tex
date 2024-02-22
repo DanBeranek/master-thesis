@@ -1,0 +1,72 @@
+\documentclass{ctuthesis}
+
+\ctusetup{
+    xdoctype = M,
+    xfaculty = F1,
+    mainlanguage = czech,
+    secondlanguage = english,
+    titlelanguage = czech,
+    title-english = {Computational tools for analysis of clay beam-and-block floor and roof systems using advanced
+    numerical methods},
+    title-czech = {Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z trámů a vložek s
+    využitím pokročilých numerických metod},
+    department-czech = {Katedra betonových a zděných konstrukcí},
+    department-english = {Katedra betonových a zděných konstrukcí},
+    fieldofstudy-czech = {Stavební inženýrství},
+    subfieldofstudy-czech = {Konstrukce pozemních staveb},
+    keywords-czech={TODO Klíčová slova},
+    keywords-english={TODO Keywords},
+    author = {Bc. Daniel Beránek},
+    supervisor = {Ing. Radek Štefan, Ph.D.},
+    month = 5,
+    year = 2024,
+    specification-file={./documents/zadani.pdf},
+    front-specification={true}
+}
+
+\usepackage{csquotes}
+\usepackage[style=numeric,backend=biber]{biblatex}
+
+\addbibresource{thesis.bib}
+
+\ctuprocess{}
+
+\begin{thanks}
+    \\
+    TODO\@: Mamko a Taťko, jste nejlepší
+\end{thanks}
+
+\begin{declaration}
+    \\
+    Prohlašuji, že jsem předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem o dodržování etických principů při přípravě vysokoškolských závěrečných prací.
+    \\ \\
+    V Praze dne 20.5.2024
+
+    \vspace{15mm}
+    \begin{tabular}{@{}p{2.5in}@{}}
+    \hrulefill{} \\
+    \centerline{Bc. Daniel Beránek}
+    \end{tabular}
+\end{declaration}
+
+\begin{abstract-english}
+We develop \ldots
+\end{abstract-english}
+
+\begin{abstract-czech}
+Rozvíjíme test \ldots
+\end{abstract-czech}
+
+\begin{document}
+
+\maketitle
+
+\input{chapters/chapter-1/introduction.tex}
+
+\part{Rešerše}
+
+\part{Praktická část}
+
+\printbibliography{}
+
+\end{document}
