@@ -21,7 +21,8 @@ s~využitím pokročilých numerických metod},
     month = 5,
     year = 2024,
     specification-file={./documents/zadani.pdf},
-    front-specification={true}
+    front-specification={true},
+    pkg-hyperref=true
 }
 
 \usepackage{csquotes}
@@ -30,6 +31,10 @@ s~využitím pokročilých numerických metod},
 \addbibresource{thesis.bib}
 
 \ctuprocess{}
+
+\usepackage[acronym, automake, nopostdot, nonumberlist, style=super]{glossaries} % after hyper-ref
+\input{glossary.tex}
+
 
 \hypersetup{
     pdftitle={Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z trámů a vložek s využitím pokročilých numerických metod},
@@ -62,16 +67,49 @@ We develop \ldots
 Rozvíjíme test \ldots
 \end{abstract-czech}
 
+
 \begin{document}
+
 
 \maketitle
 
-\input{chapters/chapter-1/introduction.tex}
+
+\printglossary[title=Seznam použitých symbolů]
+
+\input{parts/introduction/introduction.tex}
 
 \part{Rešerše}
 
+\input{parts/research/history.tex}
+
+\input{parts/research/previous-work.tex}
+
+\part{Teoretická část}
+
+\input{parts/theoretical-part/material-models.tex}
+
+\input{parts/theoretical-part/moment-curvature.tex}
+
+\input{parts/theoretical-part/fem.tex}
+
+
 \part{Praktická část}
 
-\printbibliography{}
+\input{parts/practical-part/moment-curvature-algorithm.tex}
+
+\input{parts/practical-part/deflection-algorithm.tex}
+
+\input{parts/end/overview-discussion.tex}
+
+\input{parts/end/conclusion.tex}
+
+%\begin{thebibliography}
+%\bibitem[label]{document}
+%\end{thebibliography}
+
+\appendix
+
+\input{parts/appendix/about-application.tex}
+
 
 \end{document}

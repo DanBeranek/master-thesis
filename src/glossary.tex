@@ -1,0 +1,28 @@
+\setlength{\glsdescwidth}{0.9\textwidth} % Šířka pole pro popis
+	\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} % Černý text glossaries (jsou to linky a defaultně jsou modrý)
+	\makeglossaries
+	% Index i; Q228996
+		\glsnoexpandfields
+		\newcommand*{\glsarg}{i} % default index
+
+\newglossaryentry{f_ck}{
+    name = \ensuremath{f_{\mathrm{ck}}} ,
+    description = charakteristická hodnota pevnosti betonu v~tlaku
+    }
+
+
+% Index i; Q228996
+\defglsentryfmt{%			% modify the entry's format
+  \let\orgglsarg\glsarg
+  \ifdefempty\glsinsert
+  {}%
+  {%
+    \let\glsarg\glsinsert
+    \let\glsinsert\relax
+  }%
+  \glsgenentryfmt
+  \let\glsarg\orgglsarg
+}
+
+
+\glsaddall
