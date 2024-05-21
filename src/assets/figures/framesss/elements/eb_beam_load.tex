@@ -1,0 +1,34 @@
+\newcommand*{\xStart}{0}
+\newcommand*{\xEnd}{8}
+\newcommand*{\height}{2}
+\newcommand*{\offset}{0.35}
+\newcommand*{\fStart}{1}
+\newcommand*{\fEnd}{2.5}
+\newcommand*{\xDivisions}{10} % Number of divisions along the x-axis
+
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]},]
+    % Draw axes
+    \draw[->] (0, 0) -- (9.5, 0) node[above] {\gls{x}};
+    \draw[->] (0, 0) -- (0, -1.5) node[below] {\gls{z}};
+    
+    \draw[|-|, ultra thick] (\xStart, 0) -- (\xEnd, 0);
+    \draw[fill=white] (\xStart-\offset, -\offset) circle (.25cm) node[text=black] {$a$};
+    \draw[fill=white] (\xEnd+\offset, -\offset) circle (.25cm) node[text=black] {$b$};
+
+    % Calculate spacing
+    \pgfmathsetmacro{\xSpacing}{(\xEnd-\xStart)/\xDivisions}
+    \pgfmathsetmacro{\Len}{(\xEnd-\xStart)}
+    \pgfmathsetmacro{\slope}{(\fEnd - \fStart) / \Len}
+    %Draw bar grid
+    \foreach \i in {0,...,\xDivisions} {
+        \pgfmathsetmacro{\x}{\xStart + \i*\xSpacing}
+
+        %\draw[<-, draw=ctublue, thick] (\x, 0) -- (\x, \x * (\fEnd - \fStart) / \Len + \fStart); % Arrows along the bar
+        \draw[<-, draw=ctublue, thick] (\x, 0) -- (\x, \x * \slope + \fStart);
+    }   
+    \draw[draw=ctublue, thick] (\xStart, 0) -- (\xStart, \fStart) -- node[above, text=ctublue] {$\overline{f_{z}}(x)$} (\xEnd, \fEnd) -- (\xEnd, 0);
+
+    \draw[|->|, draw=ctublue] (-0.5, 0) -- node[rotate=90, text=ctublue, above] {$\overline{f}_a$} (-0.5, \fStart);
+    \draw[|->|, draw=ctublue] (\xEnd+0.7, 0) -- node[rotate=90, text=ctublue, above] {$\overline{f}_b$} (\xEnd+0.7, \fEnd);
+    \draw[|<->|, draw=black] (\xStart, -0.7) -- node[above] {\gls{L}} (\xEnd, -0.7);
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=6pt,angle'=28,round]}]
+
+    \draw[draw=white, domain=0:5, variable=\x, thick, fill=ctublue!10] plot ({\x}, {-0.1 * (\x - 6.325)^2 + 4}) -- (5, 0) -- cycle;
+    \draw[draw=ctublue, domain=0:5, variable=\x, thick] plot ({\x}, {-0.1 * (\x - 6.325)^2 + 4});
+
+    \draw[draw=black, fill=ctulightblue, thick] (5,0) -- (5.5, 0) -- (5.5,3.932) -- (5,3.824) -- cycle;
+
+    \draw[->, thick] (0, 0) -- (6.5, 0) node[above] {$\gls{eps_i}[ ]$};
+    \draw[->, thick] (0, 0) -- (0, 4.5) node[left] {$\gls{sigma_i}[ ]$};
+
+    \draw[|<->|, draw=black] (5.0, -0.7) -- node[above] {$\dd{\gls{eps_i}[ ]}$} ++(0.5, 0);
+
+    \node[] at (3.5, 1.5) {\gls{Phi}};
+    \coordinate (A) at (5.17, 1.939);
+    \node[right=0.7 cm of A] (B) {$\dd{\gls{Phi}}$};
+    \draw[*-] (A) -- (B);
+\end{tikzpicture}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=12pt,angle'=28,round]}, scale=0.8]
+    \draw[->, thick] (0, 0) -- ++(12, 0) node[above] {\gls{X}};
+    \draw[->, thick] (0, 0) -- ++(0, 6) node[above] {\gls{Z}};
+
+    \draw[->, ctulightblue] (3, 2) -- ++(8, 4) node[above] {\gls{x}};
+    \draw[->, ctulightblue] (3, 2) -- ++(-2, 4) node[above] {\gls{z}};
+    \draw[very thick, draw=ctublue] (3, 2) node[below left] {$a$} -- ++(6, 3) node[below right] {$b$};
+
+    \draw[dotted] (3, 0) node[below] {$\gls{X}_{a}$} -- ++(0, 2) -- ++(-3, 0) node[left] {$\gls{Z}_{a}$};
+    \draw[dotted] (3, 5) -- ++(0, -3) -- ++(6, 0);
+    \draw[dotted] (9, 0) node[below] {$\gls{X}_{b}$} -- ++(0, 5) -- ++(-9, 0) node[left] {$\gls{Z}_{b}$};
+
+    \draw[<->,domain=0:26.565, draw=ctulightblue] plot ({3+4*cos(\x)}, {2+4*sin(\x)}) node[below left=0.5 and -0.2] {$\theta_x$};
+    \draw[<->,domain=26.565:90, draw=ctulightblue] plot ({3+2.5*cos(\x)}, {2+2.5*sin(\x)}) node[below right=0.35 and 0.5] {$\theta_z$};
+
+    \filldraw[black] (5.5, 3.25) circle (2pt) node[above] {P};
+    \draw[dotted] (5.5, 0) node[below] {$\gls{X}_{\mathrm{P}}$} -- ++(0, 3.25) -- ++(-5.5, 0) node[left] {$\gls{Z}_{\mathrm{P}}$};
+\end{tikzpicture}

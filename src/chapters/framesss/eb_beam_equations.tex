@@ -1,0 +1,457 @@
+\subsection{Ohýbaný prvek bez vlivu smyku} \label{sec:EB_beam}
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/eb_beam.tex}
+    \caption{Deformovaná konfigurace Euler-Bernoulliho nosníku}
+    \label{fig:deformed_beam}
+\end{figure}
+
+Dle Euler-Bernoulliho hypotézy o zachování kolmosti příčných řezů k deformované střednici prutu lze posunutí \gls{u_i}[ ] ve směru osy \gls{x}, vyjádřit jako funkci vzdálenosti od osy \gls{z} a úhlu pootočení příčného řezu \gls{phi_i}[ ](\gls{x}) \cite[58]{ymkp}. Vektor posunutí \gls{u} tedy lze zapsat jako
+\begin{equation}
+    \gls{u} = 
+    \begin{Bmatrix}
+        \gls{u_i}[ ](\gls{x}, \gls{z}) \\
+        \gls{w_i}[ ](\gls{x})
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        -\gls{z} \pdv{\gls{w_i}[ ](\gls{x})}{\gls{x}} \\
+        \gls{w_i}[ ](\gls{x})
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \gls{z} \gls{phi_i}[ ](\gls{x}) \\
+        \gls{w_i}[ ](\gls{x})
+    \end{Bmatrix}
+\end{equation}
+
+Vektor poměrných deformací \gls{eps} se díky přijatým předpokladům výrazně zjednodušší,
+\begin{equation}
+    \gls{eps}
+    =
+    \begin{Bmatrix}
+        \gls{eps_i}[\gls{x}] \\
+        \gls{gamma_i}[\gls{z}\gls{x}] \\
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \pdv{\gls{u_i}[ ]}{\gls{x}} \\
+        \pdv{\gls{u_i}[ ]}{\gls{z}} + \pdv{\gls{w_i}[ ]}{\gls{x}} \\
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \pderivative{\gls{x}}\left( -\gls{z} \pdv{\gls{w_i}[ ]}{\gls{x}} \right) \\
+        \pderivative{\gls{z}} \left( -\gls{z} \pdv{\gls{w_i}[ ]}{\gls{x}} \right) + \pdv{\gls{w_i}[ ]}{\gls{x}} \\
+    \end{Bmatrix}.
+\end{equation}
+
+Nejprve upravíme člen \gls{gamma_i}[\gls{z}\gls{x}],
+\begin{equation}
+    \gls{gamma_i}[\gls{z}\gls{x}] 
+    =
+    \pderivative{\gls{z}} \left( -\gls{z} \pdv{\gls{w_i}[ ]}{\gls{x}} \right) + \pdv{\gls{w_i}[ ]}{\gls{x}}
+    =
+    -\pdv{\gls{w_i}[ ]}{\gls{x}} + \pdv{\gls{w_i}[ ]}{\gls{x}} 
+    = 0,
+\end{equation}
+který je důsledkem Euler-Bernoulliho teorie nulový. Jedinou nenulovou složkou je díky přijatým předpokladům člen \gls{eps_i}[\gls{x}],
+\begin{equation}
+    \gls{eps_i}[\gls{x}](\gls{x}, \gls{z}) 
+    = 
+    \dv{\gls{x}} \left( -\gls{z} \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} \right) 
+    =
+    - \gls{z} \dv[2]{\gls{w_i}[ ](\gls{x})}{\gls{x}} 
+    =
+    \gls{z}\gls{kappa}(\gls{x}),
+\end{equation}
+kde záporně vzatou druhou derivaci průhybu \gls{w_i}[ ] podle \gls{x} označíme jako křivost \gls{kappa},
+\begin{equation}
+    \gls{kappa} = \dv{\gls{phi_i}[ ](\gls{x})}{\gls{x}} = - \dv[2]{\gls{w_i}[ ](\gls{x})}{\gls{x}}.
+\end{equation}
+
+Vektor napětí má také pouze jednu nenulovou složku,
+\begin{equation}
+    \gls{sigma_i}[\gls{x}](\gls{x}, \gls{z}) = \gls{E} \gls{eps_i}[\gls{x}] = \gls{E} \gls{kappa}(\gls{x}) \gls{z}.
+\end{equation}
+
+Funkci ohybového momentu lze získat integrací po průřezu podle vztahu,
+\begin{equation}
+    \gls{bending_moment}(\gls{x})
+    = 
+    \int_{\gls{A}} \gls{z} \gls{sigma_i}[\gls{x}](\gls{x}, \gls{z}) \dd{\gls{A}}
+    =
+    \gls{E}  \int_{\gls{A}} \gls{z}^2 \dd{\gls{A}} \gls{kappa}(\gls{x})
+    =
+    \gls{E} \gls{I_y} \gls{kappa}(\gls{x}).
+\end{equation}
+
+\subsubsection{Bázové funkce} \label{sec:eb_shape_functions}
+
+Ohýbaný prut je v rovině dán pomocí dvou uzlů, $a$ a $b$. V každém koncovém uzlu zavedeme koncové posunutí ve směru lokální osy \gls{z} a pootočení okolo lokální osy \gls{y}, viz obr. \ref{fig:deformed_beam}. Vektor zobecněných posunutí má tvar,
+\begin{equation}
+    \gls{d} = \begin{Bmatrix}
+        \gls{w_i}[a] \\ \gls{phi_i}[a] \\ \gls{w_i}[b] \\ \gls{phi_i}[b]
+    \end{Bmatrix}
+\end{equation}
+
+Posunutí $\gls{w_i}[ ](\gls{x})$ budeme opět aproximovat pomocí vektoru koncových posunutí \gls{d} a matice bázových funckí \gls{N},
+\begin{equation}
+    \label{eq:deformation_approximation}
+    \gls{w_i}[ ](\gls{x}) \approx \gls{N}(\gls{x}) \gls{d} = 
+    \begin{bmatrix}
+        \gls{N_i}[1](\gls{x}) &
+        \gls{N_i}[2](\gls{x}) & 
+        \gls{N_i}[3](\gls{x}) & 
+        \gls{N_i}[4](\gls{x}) 
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix}.
+\end{equation}
+
+Pootočení průřezu \gls{phi_i}[ ](\gls{x}) lze určit ze vztahu,
+\begin{equation}
+    \label{eq:rotation_approximation}
+    \gls{phi_i}[ ](\gls{x}) = - \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} \approx - \dv{\gls{N}(\gls{x})}{\gls{x}} \gls{d}.
+\end{equation}
+
+Bázové funkce \gls{N_i}[i] budeme hledat ve tvaru polynomu třetího stupně,
+\begin{equation}
+    \label{eq:eb_beam_shape_fnc}
+    \gls{N_i}[i](\gls{x}) = a_{i} \gls{x}^{3} + b_{i} \gls{x}^{2} + c_{i} \gls{x} + d_{i},
+\end{equation}
+kde $a_i, b_i, c_i$ a $d_i$ jsou zatím neznámé koeficienty.
+
+Derivace bázové funkce podle \gls{x} je rovna,
+\begin{equation}
+    \label{eq:eb_beam_shape_fnc_dx}
+    \dv{\gls{N_i}[i](\gls{x})}{\gls{x}} = 3 a_{i} \gls{x}^{2} + 2 b_{i} \gls{x} + c_{i}.
+\end{equation}
+
+
+Funkce \ref{eq:eb_beam_shape_fnc} a \ref{eq:eb_beam_shape_fnc_dx} lze přepsat do maticové podoby,
+\begin{equation}
+    \label{eq:shape_function_coefficients_vector}
+    \gls{N_i}[i](\gls{x}) = 
+    \begin{bmatrix}
+        \gls{x}^3 &
+        \gls{x}^2 &
+        \gls{x} &
+        1
+    \end{bmatrix}
+    \begin{Bmatrix}
+        a_i \\
+        b_i \\
+        c_i \\
+        d_i \\
+    \end{Bmatrix},
+\end{equation}
+
+\begin{equation}
+    \label{eq:derivation_shape_function_coefficients_vector}
+    \dv{\gls{N_i}[i](\gls{x})}{\gls{x}} = 
+    \begin{bmatrix}
+        3\gls{x}^2 &
+        2\gls{x} &
+        1 &
+        0
+    \end{bmatrix}
+    \begin{Bmatrix}
+        a_i \\
+        b_i \\
+        c_i \\
+        d_i \\
+    \end{Bmatrix},
+\end{equation}
+
+Dosazením vztahu \ref{eq:shape_function_coefficients_vector} do \ref{eq:deformation_approximation} získáme,
+\begin{equation}
+    \label{eq:w_midstep}
+    \gls{w_i}[ ] (\gls{x}) = 
+    \begin{bmatrix}
+        \gls{x}^3 &
+        \gls{x}^2 &
+        \gls{x} &
+        1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 & a_2 & a_3 & a_4 \\
+        b_1 & b_2 & b_3 & b_4 \\
+        c_1 & c_2 & c_3 & c_4 \\
+        d_1 & d_2 & d_3 & d_4 \\
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix},
+\end{equation}
+a dosazením \ref{eq:derivation_shape_function_coefficients_vector} do \ref{eq:rotation_approximation},
+\begin{equation}
+    \label{eq:phi_midstep}
+    \gls{phi_i}[ ] (\gls{x}) = 
+    \begin{bmatrix}
+        - 3\gls{x}^2 &
+        - 2\gls{x} &
+        - 1 &
+        0
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 & a_2 & a_3 & a_4 \\
+        b_1 & b_2 & b_3 & b_4 \\
+        c_1 & c_2 & c_3 & c_4 \\
+        d_1 & d_2 & d_3 & d_4 \\
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix}.
+\end{equation}
+Okrajové podmínky, patrné z \autoref{fig:deformed_beam} na prvku jsou,
+\begin{subequations}
+    \begin{equation}
+        \gls{w_i}[ ](0) = \gls{w_i}[a],
+    \end{equation}
+    \begin{equation}
+        \gls{phi_i}[ ](0) = \gls{phi_i}[a],
+    \end{equation}
+    \begin{equation}
+        \gls{w_i}[ ](\gls{L}) = \gls{w_i}[b],
+    \end{equation}
+    \begin{equation}
+        \gls{phi_i}[ ](\gls{L}) = \gls{phi_i}[b].
+    \end{equation}
+\end{subequations}
+
+Dosazením okrajových podmínek do rovnic \ref{eq:w_midstep} a \ref{eq:phi_midstep} dostaneme soustavu rovnic,
+\begin{equation} \label{eq:eb_beam_A}
+    \underbrace{
+    \begin{bmatrix}
+        0 & 0 & 0 & 1 \\
+        0 & 0 & -1 & 0 \\
+        \gls{L}^{3} & \gls{L}^{2} & \gls{L} & 1 \\
+        -3 \gls{L}^{2} & -2 \gls{L} & -1 & 0 \\
+    \end{bmatrix}}_{\matr{A}}
+    \begin{bmatrix}
+        a_1 & a_2 & a_3 & a_4 \\
+        b_1 & b_2 & b_3 & b_4 \\
+        c_1 & c_2 & c_3 & c_4 \\
+        d_1 & d_2 & d_3 & d_4 \\
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix},
+\end{equation}
+přenásobením zleva maticí $\matr{A}^{-1}$ dostaneme,
+\begin{equation}
+    \label{eq:shape_func_bnd_cond}
+    \begin{bmatrix}
+        a_1 & a_2 & a_3 & a_4 \\
+        b_1 & b_2 & b_3 & b_4 \\
+        c_1 & c_2 & c_3 & c_4 \\
+        d_1 & d_2 & d_3 & d_4 \\
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix}
+    =
+    \begin{bmatrix}
+        0 & 0 & 0 & 1 \\
+        0 & 0 & -1 & 0 \\
+        \gls{L}^{3} & \gls{L}^{2} & \gls{L} & 1 \\
+        -3 \gls{L}^{2} & -2 \gls{L} & -1 & 0 \\
+    \end{bmatrix}^{-1}
+    \begin{Bmatrix}
+        \gls{w_i}[a] \\
+        \gls{phi_i}[a] \\
+        \gls{w_i}[b] \\
+        \gls{phi_i}[b] \\
+    \end{Bmatrix}.
+\end{equation}
+
+Pro další výpočty použijeme knihovnu SymPy\footnote{
+    SymPy je open source knihovna pro symbolické výpočty v jazyce Python. Umožňuje manipulaci a řešení matematických výrazů v symbolické podobě, což zahrnuje algebraické operace, diferenciální a integrální počty, řešení rovnic, práci s maticemi a další matematické úlohy \cite{sympy}.
+} v prostředí JupyterLab\footnote{
+JupyterLab je interaktivní vývojové prostředí, které umožňuje vytváření a sdílení dokumentů obsahujících živý kód, rovnice, vizualizace a text. Je navrženo jako nástupce klasických Jupyter Notebooků a nabízí rozšířené možnosti pro práci s daty a vývoj aplikací. JupyterLab podporuje různé programovací jazyky, přičemž nejpoužívanější je Python. Uživatelé mohou využívat JupyterLab k analýze dat, strojovému učení, vizualizaci dat a vědeckému výzkumu, díky jeho flexibilitě a širokému spektru dostupných rozšíření a integrací.
+}.
+
+Nejprve importujeme knihovnu SymPy do prostředí JupyterLab.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{1}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{k+kn}{import} \PY{n+nn}{sympy} \PY{k}{as} \PY{n+nn}{smp}
+    \end{Verbatim}
+\end{tcolorbox}
+
+V dalším kroku definujeme symbolické proměnné, které budeme potřebovat pro další výpočet.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{2}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{L} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{L}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{phi\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{phi\PYZus{}b} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w\PYZus{}a varphi\PYZus{}a w\PYZus{}b varphi\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}
+    \PY{p}{)}
+    \PY{n}{x} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{EI} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{EI\PYZus{}y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+        
+Do proměnné \texttt{A} uložíme matici $\matr{A}$ z rovnice \ref{eq:eb_beam_A} a vypíšeme ji do výstupní buňky.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{3}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{A} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}
+        \PY{p}{[}
+            \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+            \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+            \PY{p}{[}\PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{L}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+            \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{o}{*}\PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{L}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}
+        \PY{p}{]}
+    \PY{p}{)}
+    
+    \PY{n}{A}
+    \end{Verbatim}
+\end{tcolorbox}
+   
+\newpage
+                
+\prompt{Out}{outcolor}{3}{}
+    
+    $\displaystyle \left[\begin{matrix}0 & 0 & 0 & 1\\0 & 0 & -1 & 0\\\gls{L}^{3} & \gls{L}^{2} & \gls{L} & 1\\- 3 \gls{L}^{2} & - 2 \gls{L} & -1 & 0\end{matrix}\right]$
+
+\vspace{0.3cm}
+
+Matici bázových funkcí \gls{N} určíme podle vztahu \ref{eq:shape_function_coefficients_vector}.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{4}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{N} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)} \PY{o}{@} \PY{n}{A}\PY{o}{.}\PY{n}{inv}\PY{p}{(}\PY{p}{)}
+    \PY{n}{N}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{4}{}
+    
+    $\displaystyle \left[\begin{matrix}1 - \frac{3 \gls{x}^{2}}{\gls{L}^{2}} + \frac{2 \gls{x}^{3}}{\gls{L}^{3}} & - \gls{x} + \frac{2 \gls{x}^{2}}{\gls{L}} - \frac{\gls{x}^{3}}{\gls{L}^{2}} & \frac{3 \gls{x}^{2}}{\gls{L}^{2}} - \frac{2 \gls{x}^{3}}{\gls{L}^{3}} & \frac{\gls{x}^{2}}{\gls{L}} - \frac{\gls{x}^{3}}{\gls{L}^{2}}\end{matrix}\right]$
+
+\vspace{0.3cm}
+
+Po zjednodušení vyjde,
+
+\begin{align}
+    \gls{N_i}[1] (\gls{x}) &= 2 \left( \frac{\gls{x}}{\gls{L}} \right)^3 - 3 \left( \frac{\gls{x}}{\gls{L}} \right)^2 + 1, \\
+    \gls{N_i}[2] (\gls{x}) & = - \gls{x} \left( \frac{\gls{x}}{\gls{L}} - 1\right)^2, \\
+    \gls{N_i}[3] (\gls{x}) &= - 2 \left( \frac{\gls{x}}{\gls{L}} \right)^3 + 3 \left( \frac{\gls{x}}{\gls{L}} \right)^2, \\
+    \gls{N_i}[4] (\gls{x}) &= \frac{\gls{x}}{\gls{L}} \left( 1 - \frac{\gls{x}}{\gls{L}} \right).
+\end{align}
+                
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/eb_shape_functions.tex}
+    \caption{Bázové funkce ohýbaného nosníku}
+    \label{fig:N_1}
+\end{figure}
+
+
+Dále určíme matici \gls{B}. Vyjdeme ze vztahu mezi křivostí a průhybem,
+\begin{equation}
+    \gls{kappa} = - \dv[2]{\gls{w_i}[ ](\gls{x})}{\gls{x}} \approx  - \dv[2]{\gls{N}(\gls{x})}{\gls{x}} \gls{d} = \gls{B} \gls{d}.
+\end{equation}
+
+Matici \gls{B}, popisující vztah mezi průhybem a přetvořením, vypočítáme následovně,
+\begin{equation}
+    \gls{B} = - \dv[2]{\gls{N}(\gls{x})}{\gls{x}}.
+\end{equation}
+
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{5}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{B} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{N}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{x}\PY{p}{)}
+    \PY{n}{B}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{simplify}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+                
+\prompt{Out}{outcolor}{5}{}
+        
+    $\displaystyle \left[\begin{matrix}\frac{6 \left(L - 2 x\right)}{L^{3}} & \frac{2 \left(- 2 L + 3 x\right)}{L^{2}} & \frac{6 \left(- L + 2 x\right)}{L^{3}} & \frac{2 \left(- L + 3 x\right)}{L^{2}}\end{matrix}\right]$
+    
+\vspace{0.5cm}
+
+\subsubsection{Matice tuhosti} \label{sec:K_eb_beam}
+
+Matici tuhosti vypočítáme opět podle vztahu \ref{eq:K}, uvažujeme konstantní ohybovou tuhost průřezu \gls{E}\gls{I_y} na celém intervalu.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{6}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{K} \PY{o}{=} \PY{n}{EI} \PY{o}{*} \PY{n}{smp}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}
+        \PY{n}{B}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)} \PY{o}{@} \PY{n}{B}\PY{p}{,} 
+        \PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{L}\PY{p}{)}
+    \PY{p}{)}
+    \PY{n}{K}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+\prompt{Out}{outcolor}{6}{}
+    
+    $\displaystyle \left[\begin{matrix}\frac{12 \gls{E}\gls{I_y}}{\gls{L}^{3}} & - \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & - \frac{12 \gls{E}\gls{I_y}}{\gls{L}^{3}} & - \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}}\\- \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & \frac{4 \gls{E}\gls{I_y}}{\gls{L}} & \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & \frac{2 \gls{E}\gls{I_y}}{\gls{L}}\\- \frac{12 \gls{E}\gls{I_y}}{\gls{L}^{3}} & \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & \frac{12 \gls{E}\gls{I_y}}{\gls{L}^{3}} & \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}}\\- \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & \frac{2 \gls{E}\gls{I_y}}{\gls{L}} & \frac{6 \gls{E}\gls{I_y}}{\gls{L}^{2}} & \frac{4 \gls{E}\gls{I_y}}{\gls{L}}\end{matrix}\right]$
+    
+\subsubsection{Vektor zatížení}
+
+Stejně, jako v případě taženého-tlačeného prutu, uvažujeme lineární spojité zatížení působící po celé délce prvku,
+
+\begin{equation}
+    \overline{f_{\gls{z}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a}.
+\end{equation}
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/eb_beam_load.tex}
+    \caption{Zatížení Euler-Bernoulliho ohýbaného nosníku}
+    \label{fig:beam_load}
+\end{figure}        
+
+Integrací výrazu $\gls{N}^\mathrm{T} \overline{f}_z$ po délce prutu obdržíme výraz pro vektor zatížení.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{7}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{f\PYZus{}a}\PY{p}{,} \PY{n}{f\PYZus{}b} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f\PYZus{}a f\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    
+    \PY{n}{f\PYZus{}z} \PY{o}{=} \PY{n}{x} \PY{o}{*} \PY{p}{(}\PY{n}{f\PYZus{}b} \PY{o}{\PYZhy{}} \PY{n}{f\PYZus{}a}\PY{p}{)} \PY{o}{/} \PY{n}{L} \PY{o}{+} \PY{n}{f\PYZus{}a}
+    
+    \PY{n}{f} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}
+        \PY{n}{N}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)} \PY{o}{*} \PY{n}{f\PYZus{}z}\PY{p}{,}
+        \PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{L}\PY{p}{)}
+    \PY{p}{)}
+    \PY{n}{f}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{7}{}
+        
+    $\displaystyle \left[\begin{matrix}\frac{\gls{L} \left(7 f_{a} + 3 f_{b}\right)}{20}\\\gls{L}^{2} \left(- \frac{f_{a}}{20} - \frac{f_{b}}{30}\right)\\\frac{\gls{L} \left(3 f_{a} + 7 f_{b}\right)}{20}\\\gls{L}^{2} \left(\frac{f_{a}}{30} + \frac{f_{b}}{20}\right)\end{matrix}\right]$
+

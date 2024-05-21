@@ -80,7 +80,7 @@
       <file>thesis.bcf</file>
     </requires>
     <requires type="editable">
-      <file>thesis.bib</file>
+      <file>reference.bib</file>
     </requires>
   </external>
 </requests>

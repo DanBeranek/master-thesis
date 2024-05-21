@@ -1,0 +1,30 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]},]
+    % N1
+    \draw[draw=black] (0.0, 0.0) node[below] {0} -- (5.0, 0.0) node[below] {\gls{L}};
+    \draw[color=ctublue, domain=0:5, variable=\x, line width=0.4mm] plot ({\x}, {(2/5^3)*\x^3 - (3/5^2)*\x^2 + 1});
+    \draw[->] (0, 0) -- (0, 1);
+    \node[rotate=90, text=ctublue, above] at (0, 0.5) {$1$};
+    \node[text=ctublue, above] at (2.5, 0.5) {$N_1(x)$};
+
+    %N2
+    \draw[draw=black] (6.0, 0.0) node[above] {0} -- (11.0, 0.0) node[above] {\gls{L}};
+    \draw[color=ctublue, domain=0:5, variable=\x, line width=0.4mm] plot ({\x+6}, {-\x * ((\x/5 - 1))^2});
+    \draw[] (6, 0) -- (7, -1);
+    \draw[->,domain=0:-45] plot ({6+cos(\x)}, {sin(\x)}) node[below left, text=ctublue] {$1$};
+    \node[text=ctublue, below right] at (8.5, -0.5) {$N_2(x)$};
+
+    %N3
+    \draw[draw=black] (0.0, -3.0) node[below] {0} -- (5.0, -3.0) node[below] {\gls{L}};
+    \draw[color=ctublue, domain=0:5, variable=\x, line width=0.4mm] plot ({\x}, {-3 + (-2*(\x/5)^3 + 3*(\x/5)^2)});
+    \draw[->] (5, -3) -- (5, -2);
+    \node[rotate=90, text=ctublue, above] at (5, -2.5) {$1$};
+    \node[text=ctublue, above] at (2.5, -2.5) {$N_3(x)$};
+
+    %N4
+    \draw[draw=black] (6.0, -3.0) node[below] {0} -- (11.0, -3.0) node[below] {\gls{L}};
+    \draw[color=ctublue, domain=0:5, variable=\x, line width=0.4mm] plot ({\x+6}, {-3+(\x^2/5 * (1-\x/5))});
+    \draw[] (11, -3) -- (10, -2);
+    \draw[->,domain=180:135] plot ({11+cos(\x)}, {-3+sin(\x)}) node[above right, text=ctublue] {$1$};
+    \node[text=ctublue, above left] at (8.5, -2.5) {$N_4(x)$};
+
+\end{tikzpicture}

@@ -1,0 +1,44 @@
+\subsection{Algoritmizace}
+
+V této sekci je představen algoritmus, který je jádrem metody konečných prvků implementované v knihovně \texttt{framesss}. Tento algoritmus systematicky zpracovává model od jeho diskretizace až po výpočet odezvy konstrukce na zatížení jednotlivými zatěžovacími stavy a jejich kombinacemi.
+
+\begin{algorithm}[H]
+    \caption{Proces výpočtu modelu}
+    \DontPrintSemicolon  % Don't print semicolons
+    
+    \SetKwFunction{FMain}{solve()}
+    \SetKwProg{Fn}{Metoda}{:}{}
+    \Fn{\FMain}{
+        Diskretizace prutů na jednotlivé elementy\;
+        Očíslování stupňů volnosti\;
+        Lokalizace globální matice tuhosti\;
+        \For{každý zatěžovací stav}{
+            Inicializace vektoru koncových posunů\;
+            Lokalizace předepsaných deformací\;
+            Inicializace vektoru zatížení\;
+            Lokalizace sil v uzlech\;
+            Lokalizace koncových sil na prvcích\; 
+            Výpočet vektoru neznámých koncových posunů\;
+            Výpočet reakcí\;
+            Výpočet koeficientů vnitřních sil\;
+            Výpočet extrémů vnitřních sil\;
+            Uložení vypočítaných hodnot\;
+        }
+        \For{každá kombinace zatížení}{
+            Inicializace výsledků\;
+            \For{každý zatěžovací stav v kombinaci}{
+                Přičtení hodnot k výsledkům\;
+            }
+            Uložení výsledků\;
+        }
+        \For{každá obálka}{
+            Inicializace\;
+            Určení extrémních hodnot v každé kombinaci\;
+            Uložení hodnot\;
+        }
+        \Return{}
+    }
+    
+\end{algorithm}
+
+\input{chapters/framesss/implementation/sparse.tex}

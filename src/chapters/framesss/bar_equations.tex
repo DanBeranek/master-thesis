@@ -1,0 +1,346 @@
+\section{Prutové prvky}
+
+V této části se zaměříme na řešení prutových konstrukcí. Prut je těleso s výrazně převládající délkou nad rozměry průřezu. Dimenzi z pohledu napjatosti budeme redukovat na jednorozměrný problém. 
+
+Přijmeme následující předpoklady,
+\begin{itemize}
+    \item zatížení působí pouze v rovině \gls{X}\gls{Z}, která je i rovinou symetrie, řešení není funkcí souřadnice \gls{y},
+    \item průhyb ve směru osy \gls{z} je po výšce prvku konstantní,
+    \item výrazně převládajícím rozměrem je délka prvku \gls{L},
+    \item uvažujeme prizmatický prut (s neměnným průřezem po délce prvku),
+    \item uvažujeme teorii malých přetvoření,
+    \item materiál prutu se chová pružně a je homogenní.
+\end{itemize}
+
+\subsubsection*{Vektor posunutí}
+Vzhledem k přijatým předpokladům je posun ve směru osy \gls{Y} nulový, zároveň uvažujeme po výšce nestlačitelný prut, to znamená, že posun ve směru osy \gls{z} je závislý pouze na souřadnici \gls{x}. V dalších kapitolách si vystačíme s vektorem posunutí ve tvaru
+
+\begin{equation}
+    \gls{u}(\gls{x_}) = \begin{Bmatrix}
+        \gls{u_i}[ ](\gls{x}, \gls{z}) &
+        \gls{w_i}[ ](\gls{x})
+    \end{Bmatrix}{^\mathrm{T}}.
+\end{equation}
+
+\subsubsection*{Vektor deformací}
+Vektor deformací odpovídající předpokladům má dvě nenulové složky, 
+
+\begin{equation}
+    \gls{eps}(\gls{x}, \gls{z})
+    = 
+    \begin{Bmatrix}
+        \gls{eps_i}[\gls{x}](\gls{x}, \gls{z}) &
+        \gls{gamma_i}[\gls{z}\gls{x}](\gls{x}, \gls{z})
+    \end{Bmatrix}^{\mathrm{T}}
+    =
+    \begin{Bmatrix}
+        \pdv{\gls{u_i}[ ](\gls{x}, \gls{z})}{\gls{x}} &
+        \pdv{\gls{u_i}[ ](\gls{x}, \gls{z})}{\gls{z}} + \pdv{\gls{w_i}[ ](\gls{x})}{\gls{x}}
+    \end{Bmatrix}^{\mathrm{T}}.
+\end{equation}
+
+
+\subsubsection*{Vektor napětí}
+
+Při analýze prutových konstrukcí je běžné pracovat s vnitřními silami místo s napětím. Vnitřní síly jsou s napětím svázany podmínkami ekvivalence
+\begin{align}
+    \gls{axial_force}(\gls{x}) &= \int_{\gls{A}} \gls{sigma_i}[\gls{x}] \dd{\gls{A}}, \label{eq:N}\\
+    \gls{shear_force}(\gls{x}) &= \int_{\gls{A}} \gls{tau_i}[\gls{x}\gls{z}] \dd{\gls{A}}, \label{eq:V}\\
+    \gls{bending_moment}(\gls{x}) &= \int_{\gls{A}} \gls{sigma_i}[\gls{x}] \gls{z} \dd{\gls{A}}, \label{eq:M}
+\end{align}
+kde $\dd{\gls{A}} = \dd{\gls{y}}\dd{\gls{z}}$.
+
+\subsubsection*{Podmínky rovnováhy}
+Podmínky rovnováhy na prvku lze zapsat jako
+\begin{align}
+    \dv{\gls{axial_force}(\gls{x})}{\gls{x}} + \bar{f}_{\gls{x}}(\gls{x}) &= 0, \\
+    \dv{\gls{shear_force}(\gls{x})}{\gls{x}} + \bar{f}_{\gls{z}}(\gls{x}) &= 0, \label{eq:V_equilibrium}\\
+    \dv{\gls{bending_moment}(\gls{x})}{\gls{x}} - \gls{shear_force}(\gls{x}) &= 0, \label{eq:M_equilibrium}
+\end{align}
+kde $\bar{f}_{\gls{x}}(\gls{x})$ a $\bar{f}_{\gls{z}}(\gls{x})$ je zatížení působící po délce prutu.
+
+\subsubsection*{Kinematické podmínky}
+Kinematické podmínky jsou dány typem podpory, např. pro vetknutí platí
+\begin{equation}
+    \gls{u_i}[ ] = 0, \quad \gls{w_i}[ ] = 0, \quad \gls{phi_i}[ ] = 0.
+\end{equation}
+
+\subsection{Tažený-tlačený prut}
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/bar.tex}
+    \caption{Deformovaná konfigurace taženého-tlačeného prutu}
+    \label{fig:deformed_bar}
+\end{figure}
+
+Tažený-tlačený prut je v rovině dán pomocí dvou uzlů, $a$ a $b$. V každém bodě zavedeme koncové posunutí ve směru lokální osy \gls{x}. Vektor zobecněných posunutí má tvar
+\begin{equation}
+    \gls{d} = \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix}.
+\end{equation}
+
+Pomocí vektoru koncových posunutí \gls{d} a matice bázových funkcí \gls{N} budeme aproximovat posunutí $\gls{u_i}[ ](\gls{x})$ libovolného průřezu prvku,
+\begin{equation} \label{eq:bar_ux}
+    \gls{u_i}[ ](\gls{x}) \approx \gls{N}(\gls{x}) \gls{d}
+    = \begin{bmatrix}
+        \gls{N_i}[1](\gls{x}) & \gls{N_i}[2](\gls{x})
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix}.
+\end{equation}
+
+\subsubsection*{Bázové funkce}
+
+Bázové funkce $\gls{N_i}[i](\gls{x})$ budeme hledat ve tvaru polynomu prvního stupně,
+\begin{equation}
+    \gls{N_i}[i](\gls{x}) = a_i \gls{x} + b_i,
+\end{equation}
+kde $a_i$ a $b_i$ jsou zatím neznámé koeficienty. Rozepsáním vztahu \ref{eq:bar_ux} do maticové podoby dostaneme výraz
+\begin{equation} \label{eq:bar_ux_matrix}
+    \gls{u_i}[ ](\gls{x})
+    =
+    \begin{bmatrix}
+        \gls{x} & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_1 & a_2 \\
+        b_1 & b_2
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix}.
+\end{equation}
+
+
+Okrajové podmínky, patrné z obrázku \ref{fig:deformed_bar} jsou
+\begin{subequations}
+    \begin{equation} \label{eq:bar_ua}
+        \gls{u_i}[ ](0) = \gls{u_i}[a], \\        
+    \end{equation}
+    \begin{equation} \label{eq:bar_ub}
+        \gls{u_i}[ ](\gls{L}) = \gls{u_i}[b].
+    \end{equation}
+\end{subequations}
+
+Dosazením okrajových podmínek \ref{eq:bar_ua} a \ref{eq:bar_ub} do vztahu \ref{eq:bar_ux_matrix} dostaneme soustavu rovnic
+\begin{equation}
+    \underbrace{
+    \begin{bmatrix}
+        0 & 1 \\
+        \gls{L} & 1
+    \end{bmatrix}}_\matr{A}
+    \begin{bmatrix}
+        a_1 & a_2 \\
+        b_1 & b_2
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix} = 
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix}.
+\end{equation}
+
+Přenásobením rovnice zleva maticí $\matr{A}^{-1}$ dostaneme
+\begin{equation}
+    \begin{bmatrix}
+        a_1 & a_2 \\
+        b_1 & b_2
+    \end{bmatrix}
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix} 
+    = 
+    \begin{bmatrix}
+        0 & 1 \\
+        \gls{L} & 1
+    \end{bmatrix}^{-1}
+    \begin{Bmatrix}
+        \gls{u_i}[a] \\
+        \gls{u_i}[b]
+    \end{Bmatrix},
+\end{equation}
+ze které je patrné, že matice koeficientů bázových funkcí se rovná inverzní matici k matici $\matr{A}$,
+\begin{equation}
+    \begin{bmatrix}
+        a_1 & a_2 \\
+        b_1 & b_2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -\frac{1}{\gls{L}} & \frac{1}{\gls{L}} \\
+        1 & 0
+    \end{bmatrix}.
+\end{equation}
+
+Bázové funkce, aproximující posunutí \gls{u_i}[ ](\gls{x}) po délce prvku, tedy jsou
+\begin{subequations}
+    \begin{equation}
+        \gls{N_i}[1](\gls{x}) = 1 -\frac{\gls{x}}{\gls{L}},
+    \end{equation}
+    \begin{equation}
+        \gls{N_i}[2](\gls{x}) = \frac{\gls{x}}{\gls{L}}.
+    \end{equation}
+\end{subequations}
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/bar_shape_functions.tex}
+    \caption{Bázové funkce taženého-tlačeného prutu}
+    \label{fig:bar_shape_functions}
+\end{figure}
+
+Dále vypočítáme matici \gls{B}, která popisuje vztah mezi posuny a poměrným přetvořením. Pro přetvoření taženého-tlačeného prvku platí vztah
+\begin{equation}
+    \gls{eps_i}[\gls{x}](\gls{x}) = \dv{\gls{u_i}[ ](\gls{x})}{\gls{x}} \approx \dv{\gls{N}(\gls{x}) \gls{d}}{\gls{x}} = \gls{B}(\gls{x})\gls{d}.
+\end{equation}
+V matici \gls{B} se tedy vyskytují první derivace bázových funkcí \gls{N_i}[i] podle \gls{x},
+\begin{equation} \label{eq:bar_B}
+    \gls{B}(\gls{x}) = \dv{\gls{N}(\gls{x})}{\gls{x}}
+    =
+    \dv{\gls{x}} 
+    \Bigg[
+        \begin{array}{cc}
+            1 - \dfrac{\gls{x}}{\gls{L}} & \dfrac{\gls{x}}{\gls{L}}
+        \end{array}
+    \Bigg]
+    =
+    \Bigg[
+        \begin{array}{cc}
+            -\dfrac{1}{\gls{L}} & \dfrac{1}{\gls{L}}
+        \end{array}
+    \Bigg]
+    =
+    \frac{1}{\gls{L}}
+    \begin{bmatrix}
+        -1 & 1
+    \end{bmatrix}.
+\end{equation}
+
+\subsubsection*{Matice tuhosti}
+Pro výpočet matice tuhosti využijeme vztah \ref{eq:K}
+\begin{align*}
+    \gls{K} &= \int_{\gls{omega}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \dd{\gls{omega}},
+\end{align*}
+integrál přes oblast \gls{omega} rozdělíme na integrál přes průřez a integrál po délce prutu,
+\begin{align*}
+    \gls{K}  &= \int_{0}^{\gls{L}} \int_{\gls{A}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \dd{\gls{A}} \dd{\gls{x}},
+\end{align*}
+výraz $\gls{B}^{\mathrm{T}}\gls{D}\gls{B}$ nezávisí na průřezové ploše, můžeme jej tedy vytknout před vnitřní integrál,
+\begin{align*}
+    \gls{K}  &= \int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \int_{\gls{A}} \dd{\gls{A}} \dd{\gls{x}},
+\end{align*}
+uvažujeme prizmatický prut (s konstantním průřezem), což znamená, že integrál $\int_{\gls{A}}\dd{\gls{A}} = \gls{A}$,
+\begin{align*}
+    \gls{K} &=\int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \gls{A} \dd{\gls{x}},
+\end{align*}
+matice materiálové tuhosti \gls{D} při jednoosém namáhání odpovídá modulu pružnosti \gls{E},
+\begin{align*}
+    \gls{K} &=\int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{E}\gls{B} \gls{A} \dd{\gls{x}},
+\end{align*}
+modul pružnosti \gls{E} a průřezová plocha \gls{A} nejsou funkcí proměnné \gls{x}, můžeme je tedy vytknout před integrál,
+\begin{align*}
+    \gls{K} &= \gls{E} \gls{A} \int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{B} \dd{\gls{x}},
+\end{align*}
+dosazením za \gls{B} z rovnice \ref{eq:bar_B} dostaneme
+\begin{align*}
+    \gls{K} &= \gls{E} \gls{A} \int_{0}^{\gls{L}} \frac{1}{\gls{L}^2} 
+    \begin{bmatrix} -1 \\ 1 \end{bmatrix}
+    \begin{bmatrix} -1 & 1 \end{bmatrix} \dd{\gls{x}},
+\end{align*}
+délka prvku \gls{L} také není funkcí proměnné \gls{x}, opět ji můžeme vytknout před integrál. Zároveň roznásobíme matice,
+\begin{align*}
+    \gls{K} &= \frac{\gls{E}\gls{A}}{\gls{L}^2}\int_{0}^{\gls{L}}
+    \begin{bmatrix}
+    1 & -1 \\
+    -1 & 1    
+    \end{bmatrix}
+    \dd{\gls{x}},
+\end{align*}
+integrací dostaneme,
+\begin{align*}
+    \gls{K} &= \frac{\gls{E}\gls{A}}{\gls{L}^2}
+    \Bigg[
+    \begin{bmatrix}
+    \gls{x} & -\gls{x} \\
+    -\gls{x} & \gls{x}    
+    \end{bmatrix}
+    \Bigg]_{0}^{\gls{L}},
+\end{align*}
+a nakonec dosazením horní a spodní meze obdržíme známý výraz pro matici tuhosti taženého-tlačeného prvku,
+\begin{equation}
+    \gls{K} = \frac{\gls{E}\gls{A}}{\gls{L}}
+    \begin{bmatrix}
+        1 & -1 \\
+        -1 & 1
+    \end{bmatrix}.
+\end{equation}
+
+\subsubsection*{Vektor zatížení}
+
+Předpokládejme, že tažený-tlačený prvek je zatížený lineárně se měnícím spojitým zatížením působícím v těžišťové ose,
+\begin{equation}
+    \overline{f_{\gls{x}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a},
+\end{equation}
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/bar_load.tex}
+    \caption{Zatížení taženého-tlačeného prutu}
+    \label{fig:bar_load}
+\end{figure}
+
+Pro vyjádření vektoru zatížení použijeme dříve odvozený vztah \ref{eq:f},
+\begin{equation*}
+    \gls{f} = \int_{\gls{omega}} \gls{N}^{\mathrm{T}} \gls{X_bar} \dd{\gls{omega}} + \int_{\gls{gamma_p}} \gls{N}^{\mathrm{T}} \gls{p_bar} \dd{\gls{gamma_p}},
+\end{equation*}
+kde $\gls{X_bar} = \matr{0}$ a $\gls{p_bar} = \begin{Bmatrix}\bar{f_{\gls{x}}} & 0 & 0\end{Bmatrix}^{\mathrm{T}}$.
+Vztah \ref{eq:f} se zjednodušší na
+\begin{equation}
+    \gls{f} = \int_{0}^{\gls{L}} \gls{N}^{\mathrm{T}} \bar{f_{\gls{x}}} \dd{\gls{x}}.
+\end{equation}
+
+Dosazením za \gls{N} a $\overline{f_{\gls{x}}}$ dostaneme,
+
+\begin{equation}
+    \gls{f} 
+    = \int_{0}^{\gls{L}} 
+    \begin{bmatrix}
+        1 - \dfrac{\gls{x}}{\gls{L}} \\ \dfrac{\gls{x}}{\gls{L}} 
+    \end{bmatrix}
+    \left( \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a} \right)
+    \dd{\gls{x}},
+\end{equation}
+
+integrací dostaneme,
+
+\begin{equation}
+    \gls{f} 
+    =
+    \left[
+    \begin{bmatrix}
+        \overline{f}_a \gls{x} 
+        + \dfrac{\gls{x}^2 (-2\overline{f}_a + \overline{f}_b)}{2\gls{L}}
+        + \dfrac{\gls{x}^3 (\overline{f}_a - \overline{f}_b)}{3\gls{L}^2}
+        \\
+        \dfrac{\overline{f}_a \gls{x}^2}{2 \gls{L}}
+        + \dfrac{\gls{x}^3(-\overline{f}_a+\overline{f}_b)}{3\gls{L}^2}
+    \end{bmatrix}
+    \right]_{0}^{\gls{L}}.
+\end{equation}
+
+Po dosazení mezí a úpravě se výraz zjednoduší a obdržíme vztah pro vektor zatížení \gls{f},
+
+\begin{equation}
+    \gls{f}
+    =
+    \begin{bmatrix}
+        \dfrac{\gls{L}(2\overline{f}_a+\overline{f}_b)}{6} \\
+        \dfrac{\gls{L}(\overline{f}_a+2\overline{f}_b)}{6}
+    \end{bmatrix}
+\end{equation}

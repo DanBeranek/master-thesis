@@ -1,4 +1,5 @@
-\documentclass{ctuthesis}
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[oneside]{ctuthesis}
 
 \ctusetup{
     xdoctype = M,
@@ -22,28 +23,88 @@ s~využitím pokročilých numerických metod},
     year = 2024,
     specification-file={./documents/zadani.pdf},
     front-specification={true},
-    pkg-hyperref=true
+    pkg-hyperref={false},
 }
 
+\usepackage{physics}
 \usepackage{csquotes}
 \usepackage[style=numeric,backend=biber]{biblatex}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{multirow}
 
-\addbibresource{thesis.bib}
+\usepackage[ruled,vlined]{algorithm2e}
+
+\SetKwInput{KwInput}{Vstup}
+\SetKwInput{KwOutput}{Výstup}
+\renewcommand{\algorithmcfname}{Pseudokód} % Change the name of the algorithm
+
+\usepackage{stanli}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc, shapes.geometric}
+\usepackage{pgf}
+
+
+\addbibresource{reference.bib}
 
 \ctuprocess{}
 
-\usepackage[acronym, automake, nopostdot, nonumberlist, style=super]{glossaries} % after hyper-ref
-\input{glossary.tex}
+\theoremstyle{plain} % not necessary, it is the default
+\newtheorem{theorem}{Theorem}[chapter] % per-chapter numbering
+\newtheorem{lemma}[theorem]{Lemma} % use the same counter for
+% all of them
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definice}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{note}
+\newtheorem{remark}[theorem]{Remark} % numbered remark
+\newtheorem*{remark*}{Remark} % unnumbered remark*
 
+\usepackage{xcolor}
+	\definecolor{MIAKO}{RGB}{236,138,62}
+	\definecolor{BETON_MIAKO}{RGB}{128,128,128}
+	\definecolor{BETON}{RGB}{201,201,201}
+	\definecolor{vinova}{RGB}{102,25,0}
+	\definecolor{morska}{RGB}{0,0,128}
+	\definecolor{bod1}{RGB}{255,153,51}
+	\definecolor{bod2}{RGB}{102,204,0}
+	\definecolor{bod3}{RGB}{153,76,0}
+	\definecolor{bod4}{RGB}{102,0,204}
+	\definecolor{bod5}{RGB}{102,0,204}
+	\definecolor{cervena}{RGB}{255,0,0}
+	\definecolor{hneda}{RGB}{128,64,128}
+	\definecolor{fialova}{RGB}{255,0,255}
+	\definecolor{zelena}{RGB}{0,128,0}
+	\definecolor{oranzova}{RGB}{255,158,60}
+    %\definecolor{white}{RGB}{255,255,255}
+
+\usepackage[unicode, colorlinks=true, allcolors=ctublue, citecolor=ctublue, linkcolor=ctublue]{hyperref} % Cross-reference a jejich barvení
+
+\NewDocumentEnvironment{citeQuote}{ m o} % Q 162782, 45725, 11349, 173606
+ {%
+	\list{}{\rightmargin\leftmargin}%
+	\item\relax\itshape\quotedblbase\ignorespaces
+ }
+ {%
+   \unskip\unskip \textquotedblleft \newline \hspace*{\fill} \textnormal{\cite[#2]{#1}} \endlist
+ }
+
+\def\equationautorefname~#1\null{(#1)\null} % \autoref{nazevRovnice} dá číslo rovnice do závorek, které jsou taky hyperref
 
 \hypersetup{
     pdftitle={Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z trámů a vložek s využitím pokročilých numerických metod},
     pdfauthor={Daniel Beránek},
 }
 
+\usepackage[acronym, automake, nopostdot, nonumberlist, style=super]{glossaries} % after hyper-ref
+
+\input{glossary.tex}
+
 \begin{thanks}
     \\
-    TODO\@: Mamko a Taťko, jste nejlepší fakt dobry jjj
+    Práce vznikla za podpory poskytnuté Ministrstvem průmyslu a obchodu ČR v rámci programu OP PIK, Aplikace (Výzva IX), č. projektu 
+    CZ.01.1.02/0.0/0.0/21\_374/0026789, Vývoj komplexního softwaru pro optimalizaci návrhu a posouzení střešních a stropních konstrukcí.
 \end{thanks}
 
 \begin{declaration}
@@ -67,49 +128,35 @@ We develop \ldots
 Rozvíjíme test \ldots
 \end{abstract-czech}
 
+\input{assets/jupyter_settings.tex}
 
 \begin{document}
 
-
 \maketitle
-
 
 \printglossary[title=Seznam použitých symbolů]
 
-\input{parts/introduction/introduction.tex}
+\renewcommand{\figurename}{Obr.}
+\renewcommand{\tablename}{Tab.}
+\renewcommand{\figureautorefname}{obr.} % Upravuje to, aby se při použití \autoref{názevObrázeku} vypsalo "obr. X" místo "Figure X"
+\renewcommand{\tableautorefname}{tab.} % Upravuje to, aby se při použití \autoref{názevTabulky} vypsalo "tab. X" místo "Table X"
+\renewcommand{\sectionautorefname}{kapitola} % Upravuje to, aby se při použití \autoref{názevKapitoly} vypsalo "kapitola X" místo "section X"
+\renewcommand{\subsectionautorefname}{kapitola} % Upravuje to, aby se při použití \autoref{názevKapitoly} vypsalo "kapitola X" místo "subsection X"
+\renewcommand{\subsubsectionautorefname}{kapitola} % Upravuje to, aby se při použití \autoref{názevKapitoly} vypsalo "kapitola X" místo "subsubsection X"
+\renewcommand{\appendixautorefname}{příloha}
+\renewcommand{\theoremautorefname}{Teze}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} % Symbol místo čísla u poznámek; Q 826; 1* 2† 3‡ 4§ 5¶ 6\\ 7**  8†† 9‡‡
+%\renewcommand*{\thefootnote}{\arabic{footnote})} % Závorka u čísla poznámky; Q23601 a Q26853
 
-\part{Rešerše}
+\renewcommand*{\arraystretch}{1.2}
 
-\input{parts/research/history.tex}
+\input{chapters/introduction.tex}
+\input{chapters/framesss/framesss.tex}
+\input{chapters/desssign/desssign.tex}
+\input{chapters/wbapp/wbapp.tex}
+\input{chapters/overview-discussion.tex}
+\input{chapters/conclusion.tex}
 
-\input{parts/research/previous-work.tex}
-
-\part{Teoretická část}
-
-\input{parts/theoretical-part/material-models.tex}
-
-\input{parts/theoretical-part/moment-curvature.tex}
-
-\input{parts/theoretical-part/fem.tex}
-
-
-\part{Praktická část}
-
-\input{parts/practical-part/moment-curvature-algorithm.tex}
-
-\input{parts/practical-part/deflection-algorithm.tex}
-
-\input{parts/end/overview-discussion.tex}
-
-\input{parts/end/conclusion.tex}
-
-%\begin{thebibliography}
-%\bibitem[label]{document}
-%\end{thebibliography}
-
-\appendix
-
-\input{parts/appendix/about-application.tex}
-
+\printbibliography
 
 \end{document}

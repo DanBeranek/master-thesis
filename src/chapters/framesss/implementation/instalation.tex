@@ -1,0 +1,39 @@
+\subsection{Instalace} \label{sec:framesss_instalation}
+
+Knihovna \texttt{framesss} je navržena tak, aby byla snadno dostupná a uživatelsky přívětivá nejen z hlediska jejího používání, ale i instalace. Pro instalaci této knihovny můžete využít \texttt{pip}, což je standardní správce balíčků pro Python, který zjednodušuje správu softwarových závislostí a zaručuje rychlé a snadné nasazení knihovny \texttt{framesss}.
+
+Pro instalaci knihovny \texttt{framesss} stačí spustit následující příkaz v terminálu:
+
+\begin{verbatim}
+pip install framesss
+\end{verbatim}
+
+Tento příkaz stáhne nejnovější verzi knihovny \texttt{framesss} z Python Package Index (PyPI) a nainstaluje ji spolu s nezbytnými závislostmi. Před instalací se ujistěte, že máte na svém systému již nainstalovaný Python a \texttt{pip}. Pokud narazíte během instalace na jakékoli problémy, zkuste nejprve aktualizovat \texttt{pip} pomocí příkazu \texttt{pip install --upgrade pip} a poté pokračujte v reinstalaci balíčku.
+
+Pro uživatele, kteří potřebují integrovat knihovnu \texttt{framesss} do větších projektů nebo virtuálních prostředí, doporučujeme instalaci v rámci Python virtuálního prostředí. Tento postup pomáhá lépe spravovat závislosti a udržuje vaše Python projekty organizované a bez konfliktů.
+
+Pro instalaci knihovny \texttt{framesss} v Python virtuálním prostředí, postupujte podle následujících kroků pro váš operační systém.
+
+
+\begin{itemize}
+    \item \textbf{Pro Unixové systémy (Linux/Mac):}
+        \begin{verbatim}
+        python -m venv framesss-env
+        source framesss-env/bin/activate
+        pip install framesss
+        \end{verbatim}
+    
+    \item \textbf{Pro Windows:}
+        \begin{verbatim}
+        python -m venv framesss-env
+        framesss-env\Scripts\activate
+        pip install framesss
+        \end{verbatim}
+\end{itemize}
+
+Po instalaci můžete knihovnu \texttt{framesss} importovat do svých Python skriptů následovně:
+
+\begin{verbatim}
+import framesss
+\end{verbatim}
+

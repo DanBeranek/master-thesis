@@ -1,0 +1,9 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}]
+    \draw[->] (0, 0) -- ++(2,0) node[above right=0 and -1] {$+\gls{X}$, $+\gls{u_i}$, $+R_{\gls{x},i}$};
+    \draw[->] (0, 0) -- ++(0,-2) node[right] {$+\gls{Z}$, $+\gls{w_i}$, $+R_{\gls{z},i}$};
+    \draw[->,domain=180:450] plot ({cos(\x)}, {sin(\x)}) node[above] {$+\gls{phi_i}$, $+R_{M,\gls{y},i}$};
+
+    \draw[->] (6, 0) -- ++(2,0) node[above right=0 and -1] {$+\gls{X}$, $+\gls{u_i}$, $+R_{\gls{x},i}$};
+    \draw[->] (6, 0) -- ++(0,2) node[right] {$+\gls{Z}$, $+\gls{w_i}$, $+R_{\gls{z},i}$};
+    \draw[->,domain=180:-90] plot ({6+cos(\x)}, {sin(\x)}) node[below] {$+\gls{phi_i}$, $+R_{M,\gls{y},i}$};
+\end{tikzpicture}

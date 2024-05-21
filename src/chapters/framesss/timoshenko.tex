@@ -1,0 +1,525 @@
+\subsection{Ohýbaný prvek s vlivem smyku} \label{sec:TIM_beam}
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/tim_beam.tex}
+    \caption{Deformovaná konfigurace Timoshenkova nosníku}
+    \label{fig:tim_deformed_beam}
+\end{figure}
+
+Základním přepdokladem je, že průřez zůstává rovinný, ale ne nutně kolmý na deformovanou střednici prutu. Pole posunutí lze zapsat jako
+
+\begin{equation}
+    \gls{u} 
+    = 
+    \begin{Bmatrix}
+        \gls{u_i}[ ](\gls{x}, \gls{z}) \\
+        \gls{w_i}[ ](\gls{x}, \gls{z})
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \gls{phi_i}[ ](\gls{x}) \gls{z}\\
+        \gls{w_i}[ ](\gls{x})
+    \end{Bmatrix},
+\end{equation}
+kde $\gls{phi_i}[ ]$ je celkové zkosení, které se rovná součtu úhlu $\theta = -\dv{\gls{w_i}[ ]}{\gls{x}}$ (dle Euler-Bernoulliho hypotézy, viz kap. \ref{sec:EB_beam}) a úhlu $\gls{gamma_i}[ ]$ způsobeného posouvající silou $\gls{shear_force}(\gls{x})$,
+\begin{equation}
+    \label{eq:tim_phi}
+    \gls{phi_i}[ ](\gls{x}) = \theta(\gls{x}) + \gls{gamma_i}[ ](\gls{x}) = -\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{gamma_i}[ ](\gls{x}).
+\end{equation}
+
+Pole poměrných deformací odpovídá
+\begin{equation}
+    \gls{eps}
+    =
+    \begin{Bmatrix}
+        \gls{eps_i}[\gls{x}] \\
+        \gls{gamma_i}[\gls{x}\gls{z}]
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \pdv{\gls{u_i}[ ]}{\gls{x}} \\
+        \pdv{\gls{w_i}[ ]} + \pdv{\gls{u_i}[ ]}{\gls{z}}
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \dv{\gls{phi_i}[ ](\gls{x})}{\gls{x}} \gls{z} \\
+        \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+        \gls{kappa}(\gls{x}) \gls{z}\\
+        \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})
+    \end{Bmatrix}
+    ,
+\end{equation}
+kde \gls{kappa} je označována jako pseudokřivost.
+
+Pro nenulové složky napětí platí,
+\begin{align}
+    \gls{sigma_i}[\gls{x}](\gls{x}, \gls{z}) = \gls{E} \gls{eps_i}[\gls{x}](\gls{x}, \gls{z}) = \gls{E}\gls{kappa}(\gls{x}) \gls{z},\\
+    \gls{tau_i}[\gls{x}\gls{z}](\gls{x}) = k \gls{G} \gls{gamma_i}[\gls{x}\gls{z}] = k \gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})\right),
+\end{align}
+kde $k$ je korekční součinitel rozložení smykového napětí.
+
+Místo v napětích, budeme pracovat s integrálními veličinami $\gls{bending_moment}, \gls{shear_force}$,
+\begin{equation}
+    \begin{split} \label{eq:tim_shear_force}
+        \gls{shear_force}(\gls{x}) 
+        & = 
+        \int_{\gls{A}} \gls{tau_i}[\gls{x}\gls{z}] \dd{\gls{A}}
+        = k \gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \int_{\gls{A}} \dd{\gls{A}} = \\
+        & =
+        k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right),
+    \end{split}
+\end{equation}
+
+\begin{equation}    
+    \gls{bending_moment}(\gls{x})
+    =
+    \int_{\gls{A}} \gls{sigma_i}[\gls{x}] \gls{z} \dd{\gls{A}}
+    =
+    \gls{E} \int_{\gls{A}} \gls{kappa} \gls{z}^2 \dd{\gls{A}}
+    =
+    \gls{E} \gls{I_y} \gls{kappa}.
+\end{equation}
+
+Dosazením do podmínek rovnováhy \ref{eq:V} a \ref{eq:M} obdržíme dvě diferenciální rovnice,
+\begin{align}
+    \dv{\gls{x}} \left( k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \right) + \overline{f_{\gls{z}}} = 0, \\
+    \dv{\gls{x}} \left( \gls{E} \gls{I_y} \dv{\gls{phi_i}[ ]}{\gls{x}} \right) - k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) = 0,
+\end{align}
+ze kterých lze odvodit slabé řešení podle kap. \ref{sec:approximate_solution}. 
+
+\subsubsection*{Bázové funkce}
+Výběru bázových funkcí musí být věnována velká pozornost. Při použití polynomu stejného stupně pro aproximaci průhybu $\gls{w_i}[ ](\gls{x})$ i pootočení $\gls{phi_i}[ ](\gls{x})$ a plné integraci dochází v prvku k tzv. smykovému zamknutí (prvek se chová příliš tuze).
+
+Například při použití polynomu prvního stupně pro aproximaci průhybu i pootočení je posouvající síla lineární funkcí,
+\begin{equation*}
+    \gls{shear_force}(\gls{x}) = k \gls{G} \gls{A}  \Biggl(
+        \underbrace{\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}}}_{\text{konstantní}} 
+        + \underbrace{\gls{phi_i}[ ](\gls{x})}_{\text{lineární}} \Biggr),
+\end{equation*}
+a ohybový moment konstantní,
+\begin{equation*}
+    \gls{bending_moment}(\gls{x}) = \gls{E} \gls{I_y} \underbrace{\dv{\gls{phi_i}[ ](\gls{x})}{\gls{x}}}_{\text{konstantní}},
+\end{equation*}
+což je v přímém rozporu se Schwedlerovou větou,
+\begin{equation*}
+    \dv{\gls{bending_moment}(\gls{x})}{\gls{x}} = \gls{shear_force}(\gls{x}).
+\end{equation*}
+
+Řešením může být použítí redukované integrace nebo zvolení polynomu vyššího stupně pro aproximaci průhybu.
+
+Pro určení bázových funkcí použijeme postup, který byl použit v \cite[kap. 5.6]{przemieniecki1985theory}, v české odborné literatuře například v \cite[kap. 2.2.2]{nmm1}.
+
+Vyjdeme z přetvoření nezatíženého nosníku, způsobeného pouze přemístěním a pootočením koncových průřezu, což odpovídá bázovým funkcím, které byli odvozeny v kap. \ref{sec:eb_shape_functions}.
+
+Stejně jako v případě Hermitovského prvku, založeného na Euler-Bernoulliho teorii, použijeme knihovnu SymPy v prostředí JupyterLab.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{1}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{k+kn}{import} \PY{n+nn}{sympy} \PY{k}{as} \PY{n+nn}{smp}
+    \end{Verbatim}
+\end{tcolorbox}
+
+Definujeme proměnné, které jsou potřeba pro výpočet, jedná se proměnnou \gls{x}, délku nosníku \gls{L}, posunutí koncových průřezů \gls{w_i}[a, b], 
+pootočení tečny k ose prutu $\theta_{a,b}$ a pootočení průřezu $\gls{phi_i}[a,b]$, znázorněných na obr. \ref{fig:tim_deformed_beam}, dále budeme potřebovat modul pružnosti \gls{E}, moment setrvačnosti k těžišťové ose \gls{I_y}, korekční součinitel rozložení smykového napětí $k$, modul pružnosti ve smyku \gls{G}, plochu průřezu \gls{A} a smykovou štíhlost \gls{Phi}.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{2}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{xi}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{L} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{xi x L}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    
+    \PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{phi\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{phi\PYZus{}b}\PY{p}{,} \PY{n}{theta\PYZus{}a}\PY{p}{,} \PY{n}{theta\PYZus{}b} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}
+        \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w\PYZus{}a varphi\PYZus{}a w\PYZus{}b varphi\PYZus{}b theta\PYZus{}a theta\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}
+    \PY{p}{)}
+    
+    \PY{n}{E}\PY{p}{,} \PY{n}{I}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{G}\PY{p}{,} \PY{n}{A} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{E I k G A}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    
+    \PY{n}{omega} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Omega}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{omega\PYZus{}val} \PY{o}{=} \PY{l+m+mi}{12} \PY{o}{*} \PY{n}{E} \PY{o}{*} \PY{n}{I} \PY{o}{/} \PY{p}{(}\PY{n}{k} \PY{o}{*} \PY{n}{G} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+ 
+
+Definujeme matici bázových funkcí aproximující průhyb nosníku bez vlivu smyku.
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{3}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{N\PYZus{}eb} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}
+        \PY{p}{[}
+            \PY{l+m+mi}{2} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{L}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3} \PY{o}{\PYZhy{}} \PY{l+m+mi}{3} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{L}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,}
+            \PY{o}{\PYZhy{}}\PY{n}{x} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{L} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}
+            \PY{o}{\PYZhy{}}\PY{l+m+mi}{2} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{L}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3} \PY{o}{+} \PY{l+m+mi}{3}\PY{o}{*}\PY{p}{(}\PY{n}{x}\PY{o}{/}\PY{n}{L}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{,}
+            \PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{n}{L} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{x}\PY{o}{/}\PY{n}{L}\PY{p}{)}
+        \PY{p}{]}
+    \PY{p}{]}\PY{p}{)}
+    \PY{n}{N\PYZus{}eb}
+    \end{Verbatim}
+\end{tcolorbox}
+            
+\prompt{Out}{outcolor}{3}{}
+    
+    $\displaystyle \left[\begin{matrix}1 - \frac{3 x^{2}}{L^{2}} + \frac{2 x^{3}}{L^{3}} & - x \left(-1 + \frac{x}{L}\right)^{2} & \frac{3 x^{2}}{L^{2}} - \frac{2 x^{3}}{L^{3}} & \frac{x^{2} \cdot \left(1 - \frac{x}{L}\right)}{L}\end{matrix}\right]$
+
+\vspace{0.3cm}
+Průhyb nezatíženého nosníku lze aproximat následující funkcí, kde $\gls{w_i}[a, b]$ jsou posunutí průřezu ve směru osy \gls{z} a $\theta_{a,b}$ je záporně vzatá derivace průhybu podle \gls{x}, viz \ref{eq:tim_phi}.
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{4}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{w} \PY{o}{=} \PY{p}{(}\PY{n}{N\PYZus{}eb} \PY{o}{@} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{theta\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{theta\PYZus{}b}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{w}
+    \end{Verbatim}
+\end{tcolorbox}
+        
+\prompt{Out}{outcolor}{4}{}
+    
+    $\displaystyle - \theta_{a} x \left(-1 + \frac{x}{L}\right)^{2} + w_{a} \left(1 - \frac{3 x^{2}}{L^{2}} + \frac{2 x^{3}}{L^{3}}\right) + w_{b} \left(\frac{3 x^{2}}{L^{2}} - \frac{2 x^{3}}{L^{3}}\right) + \frac{\theta_{b} x^{2} \cdot \left(1 - \frac{x}{L}\right)}{L}$
+    
+\vspace{0.3cm} 
+Cílem je najít aproximaci funkce $\gls{phi_i}[ ](\gls{x})$. Při zatížení $\overline{f_{\gls{z}}} = 0$ podle vztahu \ref{eq:V_equilibrium} platí,
+\begin{equation*}
+    \dv{\gls{shear_force}}{\gls{x}} = 0,
+\end{equation*}
+což znamená, že funkce posouvající síly musí být konstantní.
+Ze vztahu \ref{eq:tim_shear_force} vyplývá, že pro prizmatický pružný prut je zkosení \gls{gamma_i}[ ] také konstantní,
+\begin{equation}
+    \label{eq:tim_dwdx_phi}
+    -\theta(\gls{x}) + \gls{phi_i}[ ](\gls{x}) = \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) = \gls{gamma_i}[ ]=\text{konstantní},
+\end{equation}
+Parametr \gls{gamma_i}[ ] vyloučíme z požadavku, aby aproximace \gls{w_i}[ ] a \gls{phi_i}[ ] splnily momentovou podmínku rovnováhy \ref{eq:M_equilibrium},
+\begin{equation}
+    \begin{split}
+    \dv{\gls{bending_moment}(\gls{x})}{\gls{x}}  &= \gls{shear_force},\\
+    \gls{E}\gls{I_y}\dv[2]{\gls{phi_i}[ ](\gls{x})}{\gls{x}} &= k \gls{G} \gls{A} \gls{gamma_i}[ ],\\
+    \gls{gamma_i}[ ] &= - \frac{\gls{E}\gls{I_y}}{k \gls{G} \gls{A}} \dv[3]{\gls{w_i}[ ](\gls{x})}{\gls{x}}.
+    \end{split}
+\end{equation}
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{5}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{gamma} \PY{o}{=} \PY{o}{\PYZhy{}} \PY{n}{E} \PY{o}{*} \PY{n}{I} \PY{o}{*} \PY{n}{w}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{x}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{k} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{n}{G}\PY{p}{)}
+    \PY{n}{gamma}
+    \end{Verbatim}
+    \end{tcolorbox}
+            
+\prompt{Out}{outcolor}{5}{}
+        
+    $\displaystyle - \frac{6 E I \left(- \theta_{a} - \theta_{b} + \frac{2 w_{a}}{L} - \frac{2 w_{b}}{L}\right)}{A G L^{2} k}$
+
+\vspace{0.3cm}
+Vztah upravíme tak, aby obsahoval smykovou štíhlost \gls{Phi},
+\begin{equation} \label{eq:tim_omega}
+    \gls{Phi} = \frac{12\gls{E}\gls{I_y}}{k\gls{G}\gls{A}\gls{L}^2}.
+\end{equation}
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{6}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{gamma} \PY{o}{=} \PY{p}{(}\PY{n}{gamma} \PY{o}{/} \PY{p}{(}\PY{n}{omega\PYZus{}val}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)} \PY{o}{*} \PY{n}{omega}
+    \PY{n}{gamma}
+    \end{Verbatim}
+    \end{tcolorbox}
+            
+\prompt{Out}{outcolor}{6}{}
+        
+    $\displaystyle \Omega \left(\frac{\theta_{a}}{2} + \frac{\theta_{b}}{2} - \frac{w_{a}}{L} + \frac{w_{b}}{L}\right)$
+
+\vspace{0.3cm}
+Nyní můžeme pomocí vztahu \ref{eq:tim_dwdx_phi} vyjádřit úhly $\theta_a$ a $\theta_b$ a vyřešit soustavu dvou rovnic,
+\begin{align}
+    \theta_a - \gls{phi_i}[a] + \gls{gamma_i}[ ] = 0, \\
+    \theta_b - \gls{phi_i}[b] + \gls{gamma_i}[ ] = 0.
+\end{align}
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{7}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{solution} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{solve}\PY{p}{(}
+        \PY{p}{[}\PY{n}{theta\PYZus{}a} \PY{o}{\PYZhy{}} \PY{n}{phi\PYZus{}a} \PY{o}{+} \PY{n}{gamma}\PY{p}{,} \PY{n}{theta\PYZus{}b} \PY{o}{\PYZhy{}} \PY{n}{phi\PYZus{}b} \PY{o}{+} \PY{n}{gamma}\PY{p}{]}\PY{p}{,} 
+        \PY{p}{(}\PY{n}{theta\PYZus{}a}\PY{p}{,} \PY{n}{theta\PYZus{}b}\PY{p}{)}
+    \PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{8}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{theta\PYZus{}a\PYZus{}solved} \PY{o}{=} \PY{n}{solution}\PY{p}{[}\PY{n}{theta\PYZus{}a}\PY{p}{]}
+    \PY{n}{theta\PYZus{}a\PYZus{}solved}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{phi\PYZus{}a}\PY{p}{,} \PY{n}{phi\PYZus{}b}\PY{p}{]}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+             
+\prompt{Out}{outcolor}{8}{}
+    
+    $\displaystyle \frac{- L \Omega \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b} + \varphi_{a} \left(L \Omega + 2 L\right)}{2 L \Omega + 2 L}$
+     
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{9}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{theta\PYZus{}b\PYZus{}solved} \PY{o}{=} \PY{n}{solution}\PY{p}{[}\PY{n}{theta\PYZus{}b}\PY{p}{]}
+    \PY{n}{theta\PYZus{}b\PYZus{}solved}\PY{o}{.}\PY{n}{collect}\PY{p}{(}\PY{p}{[}\PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{phi\PYZus{}a}\PY{p}{,} \PY{n}{phi\PYZus{}b}\PY{p}{]}\PY{p}{)}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{9}{}
+    
+    $\displaystyle \frac{- L \Omega \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b} + \varphi_{b} \left(L \Omega + 2 L\right)}{2 L \Omega + 2 L}$
+    
+        
+\vspace{0.3cm}
+Podle vztahu \ref{eq:tim_dwdx_phi} vypočítáme pootočení obecného průřezu, $\gls{phi_i}[ ](\gls{x})$,
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{10}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{phi\PYZus{}y} \PY{o}{=} \PY{n}{gamma} \PY{o}{\PYZhy{}} \PY{n}{w}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+    \PY{n}{phi\PYZus{}y}
+    \end{Verbatim}
+    \end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{10}{}
+    
+    $\displaystyle \Omega \left(\frac{\theta_{a}}{2} + \frac{\theta_{b}}{2} - \frac{w_{a}}{L} + \frac{w_{b}}{L}\right) + \theta_{a} \left(-1 + \frac{x}{L}\right)^{2} - w_{a} \left(- \frac{6 x}{L^{2}} + \frac{6 x^{2}}{L^{3}}\right) - w_{b} \left(\frac{6 x}{L^{2}} - \frac{6 x^{2}}{L^{3}}\right) + \frac{2 \theta_{a} x \left(-1 + \frac{x}{L}\right)}{L} - \frac{2 \theta_{b} x \left(1 - \frac{x}{L}\right)}{L} + \frac{\theta_{b} x^{2}}{L^{2}}$
+    
+\vspace{0.3cm}
+Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do funkce pro průhyb, $\gls{w_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{11}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{w} \PY{o}{=} \PY{n}{w}\PY{o}{.}\PY{n}{subs}\PY{p}{(}
+        \PY{p}{[}
+            \PY{p}{(}\PY{n}{theta\PYZus{}a}\PY{p}{,} \PY{n}{theta\PYZus{}a\PYZus{}solved}\PY{p}{)}\PY{p}{,}
+            \PY{p}{(}\PY{n}{theta\PYZus{}b}\PY{p}{,} \PY{n}{theta\PYZus{}b\PYZus{}solved}\PY{p}{)}
+        \PY{p}{]}\PY{p}{,}
+    \PY{p}{)}
+    \PY{n}{w}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{11}{}
+    
+    $\displaystyle w_{a} \left(1 - \frac{3 x^{2}}{L^{2}} + \frac{2 x^{3}}{L^{3}}\right) + w_{b} \left(\frac{3 x^{2}}{L^{2}} - \frac{2 x^{3}}{L^{3}}\right) - \frac{x \left(-1 + \frac{x}{L}\right)^{2} \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{2 L \Omega + 2 L} + \frac{x^{2} \cdot \left(1 - \frac{x}{L}\right) \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)}$
+    
+\vspace{0.3cm}
+Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do odvozené funkce pro pootočení, $\gls{phi_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.       
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{12}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{phi\PYZus{}y} \PY{o}{=} \PY{n}{phi\PYZus{}y}\PY{o}{.}\PY{n}{subs}\PY{p}{(}
+        \PY{p}{[}
+            \PY{p}{(}\PY{n}{theta\PYZus{}a}\PY{p}{,} \PY{n}{theta\PYZus{}a\PYZus{}solved}\PY{p}{)}\PY{p}{,}
+            \PY{p}{(}\PY{n}{theta\PYZus{}b}\PY{p}{,} \PY{n}{theta\PYZus{}b\PYZus{}solved}\PY{p}{)}
+        \PY{p}{]}
+    \PY{p}{)}
+    \PY{n}{phi\PYZus{}y}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{12}{}
+    
+    $\displaystyle \Omega \left(\frac{- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}}{2 \cdot \left(2 L \Omega + 2 L\right)} + \frac{L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}}{2 \cdot \left(2 L \Omega + 2 L\right)} - \frac{w_{a}}{L} + \frac{w_{b}}{L}\right) - w_{a} \left(- \frac{6 x}{L^{2}} + \frac{6 x^{2}}{L^{3}}\right) - w_{b} \left(\frac{6 x}{L^{2}} - \frac{6 x^{2}}{L^{3}}\right) + \frac{\left(-1 + \frac{x}{L}\right)^{2} \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{2 L \Omega + 2 L} + \frac{2 x \left(-1 + \frac{x}{L}\right) \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)} - \frac{2 x \left(1 - \frac{x}{L}\right) \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)} + \frac{x^{2} \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L^{2} \cdot \left(2 L \Omega + 2 L\right)}$
+    
+\vspace{0.3cm}
+Bázové funkce, aproximující průběh pootočení průřezu, získáme jako koeficienty jednotlivých zobecnělých posunů z rovnice pro pootočení průřezu.
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{13}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{N\PYZus{}phi} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}
+        \PY{p}{[}
+            \PY{n}{phi\PYZus{}y}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{w\PYZus{}a}\PY{p}{)}\PY{p}{,}
+            \PY{n}{phi\PYZus{}y}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{phi\PYZus{}a}\PY{p}{)}\PY{p}{,}
+            \PY{n}{phi\PYZus{}y}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{w\PYZus{}b}\PY{p}{)}\PY{p}{,}
+            \PY{n}{phi\PYZus{}y}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{phi\PYZus{}b}\PY{p}{)}
+        \PY{p}{]}
+    \PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{simplify}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    
+    \PY{n}{N\PYZus{}phi}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{13}{}
+    
+    $\displaystyle \left[\begin{matrix}- \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)}\\\frac{\left(- L + x\right) \left(- L \Omega - L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\\\frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)}\\\frac{x \left(L \Omega - 2 L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\end{matrix}\right]$
+
+\vspace{0.3cm}
+Bázové funkce, aproximující průběh posunutí, získáme jako koeficienty jednotlivých zobecnělých posunů z rovnice pro průhyb.
+        
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{14}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{N\PYZus{}w} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}
+        \PY{p}{[}
+            \PY{n}{w}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{w\PYZus{}a}\PY{p}{)}\PY{p}{,}
+            \PY{n}{w}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{phi\PYZus{}a}\PY{p}{)}\PY{p}{,}
+            \PY{n}{w}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{w\PYZus{}b}\PY{p}{)}\PY{p}{,}
+            \PY{n}{w}\PY{o}{.}\PY{n}{expand}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{coeff}\PY{p}{(}\PY{n}{phi\PYZus{}b}\PY{p}{)}
+        \PY{p}{]}
+    \PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{simplify}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    
+    \PY{n}{N\PYZus{}w}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{14}{}
+    
+    $\displaystyle \left[\begin{matrix}\frac{\left(- L + x\right) \left(- L^{2} \Omega - L^{2} - L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)}\\- \frac{x \left(- L + x\right) \left(- L \Omega - 2 L + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)}\\- \frac{x \left(- L^{2} \Omega - 3 L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)}\\- \frac{x \left(- L + x\right) \left(L \Omega + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)}\end{matrix}\right]$
+    
+\vspace{0.3cm}
+Dále bázové funkce uložíme do matice bázových funkcí \gls{N}.   
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{15}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{N} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}
+        \PY{n}{N\PYZus{}phi}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}\PY{p}{,}
+        \PY{n}{N\PYZus{}w}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}
+    \PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{simplify}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    
+    \PY{n}{N}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{15}{}
+    
+    $\displaystyle \left[\begin{matrix}- \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{\left(- L + x\right) \left(- L \Omega - L + 3 x\right)}{L^{2} \left(\Omega + 1\right)} & \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{x \left(L \Omega - 2 L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\\\frac{\left(- L + x\right) \left(- L^{2} \Omega - L^{2} - L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)} & - \frac{x \left(- L + x\right) \left(- L \Omega - 2 L + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)} & - \frac{x \left(- L^{2} \Omega - 3 L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)} & - \frac{x \left(- L + x\right) \left(L \Omega + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)}\end{matrix}\right]$
+    
+\vspace{0.3cm}
+Po určení bázových funkcí můžeme přistoupit k výpočtu matice \gls{B}, která popisuje vztah mezi zobecnělými posuny a deformací. Ze vztahu pro pole deformace,
+\begin{equation}
+    \gls{eps}
+    =
+    \begin{Bmatrix}
+        \dv{\gls{phi_i}[ ](\gls{x})}{\gls{x}} \gls{z} \\
+        \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})
+    \end{Bmatrix}
+    \approx
+    \gls{B}\gls{d}.
+\end{equation}
+je zřejmé, že matice \gls{B} bude mít tvar
+\begin{equation}
+    \gls{B}
+    =
+    \begin{Bmatrix}
+        \dv{\gls{N}_{\gls{phi_i}[ ]}}{\gls{x}} \\
+        \dv{\gls{N}_{\gls{w_i}[ ]}}{\gls{x}} + \gls{N}_{\gls{phi_i}[ ]}
+    \end{Bmatrix}.
+\end{equation}
+
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{16}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{B} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}
+        \PY{n}{N\PYZus{}phi}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{,}
+        \PY{n}{N\PYZus{}phi}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{N\PYZus{}w}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}
+    \PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{simplify}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    
+    \PY{n}{B}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{16}{}
+    
+    $\displaystyle \left[\begin{matrix}- \frac{6 \left(- L + 2 x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{- L \Omega - 4 L + 6 x}{L^{2} \left(\Omega + 1\right)} & \frac{6 \left(- L + 2 x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{L \Omega - 2 L + 6 x}{L^{2} \left(\Omega + 1\right)}\\- \frac{\Omega}{L \left(\Omega + 1\right)} & \frac{\Omega}{2 \left(\Omega + 1\right)} & \frac{\Omega}{L \left(\Omega + 1\right)} & \frac{\Omega}{2 \left(\Omega + 1\right)}\end{matrix}\right]$
+    
+\subsubsection*{Matice tuhosti}
+Matice materiálové tuhosti je
+\begin{equation}
+    \gls{D} = \begin{bmatrix}
+        \gls{E}\gls{I_y} && 0 \\
+        0 && k\gls{G}\gls{A}
+    \end{bmatrix},
+\end{equation}
+kde výraz $k\gls{G}\gls{A}$ nahradíme podle vztahu \ref{eq:tim_omega} ekvivalentním výrazem $\dfrac{12\gls{E}\gls{I_y}}{\gls{Phi}\gls{L}^2}$. Tato úprava je nezbytná pro zajištění správného zjednodušení při výpočtu matice tuhosti.
+    
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{17}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{D} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}
+        \PY{p}{[}\PY{n}{E} \PY{o}{*} \PY{n}{I}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+        \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{12}\PY{o}{*}\PY{n}{E}\PY{o}{*}\PY{n}{I}\PY{o}{/} \PY{p}{(}\PY{n}{omega} \PY{o}{*} \PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+    \PY{p}{]}\PY{p}{)}
+    
+    \PY{n}{D}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{17}{}
+    
+    $\displaystyle \left[\begin{matrix}E I & 0\\0 & \frac{12 E I}{L^{2} \Omega}\end{matrix}\right]$
+
+\vspace{0.3cm}
+Konečně můžeme přejít k výpočtu matice tuhosti podle známého vztahu,
+\begin{equation*}
+    \gls{K} = \int_{\gls{omega}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \dd{\gls{omega}}.
+\end{equation*}
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{18}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{K} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}
+        \PY{n}{B}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)} \PY{o}{@} \PY{n}{D} \PY{o}{@} \PY{n}{B}\PY{p}{,}
+        \PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{L}\PY{p}{)}
+    \PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{expand}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    \PY{n}{K}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{18}{}
+    
+    $\displaystyle \left[\begin{matrix}\frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I \left(\Omega + 4\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I \left(\Omega - 2\right)}{L \left(\Omega + 1\right)}\\- \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I \left(\Omega - 2\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I \left(\Omega + 4\right)}{L \left(\Omega + 1\right)}\end{matrix}\right]$
+
+\vspace{0.3cm}
+Lze si všimnout, že pro $\gls{Phi} = 0$ obdržíme matici tuhosti Hermitovského nosníku s kubickou aproximací pro Euler-Bernoulliho model, odvozeného v kap. \ref{sec:K_eb_beam}.
+        
+
+\subsubsection*{Vektor zatížení}
+
+Pro na prvku platí stejné předpoklady jako u taženého-tlačeného prvku i Euler-Bernoulliho nosníku,
+uvažujeme lineární spojité zatížení působící na celé délce prvku,
+\begin{equation}
+    \overline{f_{\gls{z}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a}.
+\end{equation}
+\begin{figure}[H]
+    \input{assets/figures/framesss/elements/eb_beam_load.tex}
+    \caption{Zatížení Timoshenkova ohýbaného nosníku}
+    \label{fig:tim_beam_load}
+\end{figure}        
+
+Integrací výrazu $\gls{N}^\mathrm{T} \overline{f}_z$ po délce prutu obdržíme výraz pro vektor zatížení.
+
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+    \prompt{In}{incolor}{19}{\boxspacing}
+    \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{f\PYZus{}a}\PY{p}{,} \PY{n}{f\PYZus{}b} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f\PYZus{}a f\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    
+    \PY{n}{f\PYZus{}z} \PY{o}{=} \PY{n}{x} \PY{o}{*} \PY{p}{(}\PY{n}{f\PYZus{}b} \PY{o}{\PYZhy{}} \PY{n}{f\PYZus{}a}\PY{p}{)} \PY{o}{/} \PY{n}{L} \PY{o}{+} \PY{n}{f\PYZus{}a}
+    
+    \PY{n}{f} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{integrate}\PY{p}{(}
+        \PY{n}{N}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)} \PY{o}{*} \PY{n}{f\PYZus{}z}\PY{p}{,}
+        \PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{L}\PY{p}{)}
+    \PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{expand}\PY{p}{)}\PY{o}{.}\PY{n}{applyfunc}\PY{p}{(}\PY{n}{smp}\PY{o}{.}\PY{n}{factor}\PY{p}{)}
+    \PY{n}{f}
+    \end{Verbatim}
+\end{tcolorbox}
+     
+                
+\prompt{Out}{outcolor}{19}{}
+    
+    $\displaystyle \left[\begin{matrix}\frac{f_{a} + f_{b}}{2 \left(\Omega + 1\right)} & \frac{L \left(20 \Omega f_{a} + 10 \Omega f_{b} + 21 f_{a} + 9 f_{b}\right)}{60 \left(\Omega + 1\right)}\\\frac{L \left(4 \Omega f_{a} + 2 \Omega f_{b} + f_{a} - f_{b}\right)}{12 \left(\Omega + 1\right)} & - \frac{L^{2} \cdot \left(5 \Omega f_{a} + 5 \Omega f_{b} + 6 f_{a} + 4 f_{b}\right)}{120 \left(\Omega + 1\right)}\\- \frac{f_{a} + f_{b}}{2 \left(\Omega + 1\right)} & \frac{L \left(10 \Omega f_{a} + 20 \Omega f_{b} + 9 f_{a} + 21 f_{b}\right)}{60 \left(\Omega + 1\right)}\\\frac{L \left(2 \Omega f_{a} + 4 \Omega f_{b} - f_{a} + f_{b}\right)}{12 \left(\Omega + 1\right)} & \frac{L^{2} \cdot \left(5 \Omega f_{a} + 5 \Omega f_{b} + 4 f_{a} + 6 f_{b}\right)}{120 \left(\Omega + 1\right)}\end{matrix}\right]$
+    

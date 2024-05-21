@@ -5,11 +5,280 @@
 		\glsnoexpandfields
 		\newcommand*{\glsarg}{i} % default index
 
-\newglossaryentry{f_ck}{
-    name = \ensuremath{f_{\mathrm{ck}}} ,
-    description = charakteristická hodnota pevnosti betonu v~tlaku
-    }
+% tučně označení matic, vektorů
+\newcommand{\matr}[1]{\mathbf{#1}}
 
+
+\newglossaryentry{axial_force}{
+    name = \ensuremath{N} ,
+    description = normálová síla
+}
+
+\newglossaryentry{shear_force}{
+    name = \ensuremath{V_\mathrm{z}} ,
+    description = posouvající síla
+}
+
+\newglossaryentry{bending_moment}{
+    name = \ensuremath{M_\mathrm{y}} ,
+    description = ohybový moment
+}
+
+\newglossaryentry{I_y}{
+    name = \ensuremath{I_y} ,
+    description = moment setrvačnosti k ose y
+}
+
+\newglossaryentry{X}{
+    name = \ensuremath{\mathrm{X}} ,
+    description = globální osa X
+}
+
+\newglossaryentry{Y}{
+    name = \ensuremath{\mathrm{Y}} ,
+    description = globální osa y
+}
+
+\newglossaryentry{Z}{
+    name = \ensuremath{\mathrm{Z}} ,
+    description = globální osa Z
+}
+
+\newglossaryentry{x}{
+    name = \ensuremath{x} ,
+    description = lokální osa x
+}
+
+\newglossaryentry{y}{
+    name = \ensuremath{y} ,
+    description = lokální osa y
+}
+
+\newglossaryentry{z}{
+    name = \ensuremath{z} ,
+    description = lokální osa z
+}
+
+
+\newglossaryentry{K}{
+    name = \ensuremath{\matr{K}},
+    description = {Matice tuhosti}
+}
+
+\newglossaryentry{f}{
+    name = \ensuremath{\matr{f}},
+    description = {vektor zatížení}
+}
+
+\newglossaryentry{u}{
+    name = \ensuremath{\matr{u}},
+    description = {vektor posunutí}
+}
+
+\newglossaryentry{x_}{
+    name = \ensuremath{\matr{x}},
+    description = {vektor polohy}
+}
+
+\newglossaryentry{X_bar}{
+    name = \ensuremath{\matr{\overline{X}}},
+    description = {předepsaný vektor objemových sil}
+}
+
+\newglossaryentry{omega}{
+    name = \ensuremath{\Omega},
+    description = {objem tělesa}
+}
+
+\newglossaryentry{gamma}{
+    name = \ensuremath{\Gamma},
+    description = {hranice tělesa}
+}
+
+\newglossaryentry{gamma_p}{
+    name = \ensuremath{\Gamma_p},
+    description = {hranice tělesa s předepsaným zatížením}
+}
+
+\newglossaryentry{gamma_u}{
+    name = \ensuremath{\Gamma_u},
+    description = {hranice tělesa s předepsanými posuny}
+}
+
+\newglossaryentry{p_bar}{
+    name = \ensuremath{\matr{\overline{p}}},
+    description = {předepsané zatížení na hranici tělesa}
+}
+
+\newglossaryentry{u_bar}{
+    name = \ensuremath{\matr{\overline{u}}},
+    description = {předepsaný posun na hranici tělesa}
+}
+
+\newglossaryentry{normal_matrix}{
+    name = \ensuremath{\matr{n}},
+    description = {matice složek jednotkové normály}
+}
+
+\newglossaryentry{D}{
+    name = \ensuremath{\matr{D}},
+    description = {matice materiálové tuhosti}
+}
+
+\newglossaryentry{eps}{
+    name = \ensuremath{\boldsymbol{\varepsilon}},
+    description = {vektor poměrné deformace}
+}
+
+\newglossaryentry{sigma}{
+    name = \ensuremath{\boldsymbol{\sigma}},
+    description = {vektor napětí}
+}
+
+\newglossaryentry{d}{
+    name = \ensuremath{\matr{d}},
+    description = {vektor zobecněných posunů}
+}
+
+\newglossaryentry{u_e}{
+    name = \ensuremath{\matr{u}},
+    description = {vektor koncových posunutí a pootočení prvku}
+}
+
+
+\newglossaryentry{K_e_local}{
+    name = \ensuremath{\matr{K}_{\mathrm{e,l}}},
+    description = {matice tuhosti elementu}
+}
+
+\newglossaryentry{K_e_global}{
+    name = \ensuremath{\matr{K}_{\mathrm{e,g}}},
+    description = {matice tuhosti elementu}
+}
+
+\newglossaryentry{T}{
+    name = \ensuremath{\matr{T}},
+    description = {transformační matice}
+}
+
+\newglossaryentry{n_dof}{
+    name = \ensuremath{n},
+    description = {počet stupňů volnosti}
+}
+
+\newglossaryentry{N}{
+    name = \ensuremath{\matr{N}},
+    description = {matice bázových funkcí}
+}
+
+\newglossaryentry{B}{
+    name = \ensuremath{\matr{B}},
+    description = {deformačně-posuvová matice}
+}
+
+\newglossaryentry{N_i}{
+  name = \ensuremath{N_{i}},
+  text = \ensuremath{N_{\glsarg}},
+  description = {bázová funkce}
+}
+
+\newglossaryentry{w_i}{
+  name = \ensuremath{w},
+  text = \ensuremath{w_{\glsarg}},
+  description = {posun ve směru osy z}
+}
+
+\newglossaryentry{v_i}{
+  name = \ensuremath{v},
+  text = \ensuremath{v_{\glsarg}},
+  description = {posun ve směru osy y}
+}
+
+\newglossaryentry{u_i}{
+  name = \ensuremath{u},
+  text = \ensuremath{u_{\glsarg}},
+  description = {posun ve směru osy x}
+}
+
+\newglossaryentry{sigma_i}{
+    name = \ensuremath{\sigma},
+    text = \ensuremath{\sigma_{\glsarg}},
+    description = {normálové napětí}
+}
+
+\newglossaryentry{tau_i}{
+    name = \ensuremath{\tau},
+    text = \ensuremath{\tau_{\glsarg}},
+    description = {smykové napětí}
+}
+
+\newglossaryentry{eps_i}{
+    name = \ensuremath{\varepsilon},
+    text = \ensuremath{\varepsilon_{\glsarg}},
+    description = {poměrná deformace (prodloužení nebo zkrácení)}
+}
+
+\newglossaryentry{gamma_i}{
+    name = \ensuremath{\gamma},
+    text = \ensuremath{\gamma_{\glsarg}},
+    description = {poměrná deformace (zkosení)}
+}
+
+\newglossaryentry{phi_i}{
+  name = \ensuremath{\varphi_{i}},
+  text = \ensuremath{\varphi_{\glsarg}},
+  description = {pootočení okolo osy y}
+}
+
+\newglossaryentry{L}{
+    name = \ensuremath{L},
+    description = {délka prvku}
+}
+
+\newglossaryentry{nu}{
+    name = \ensuremath{\nu},
+    description = {Poissonův součinitel}
+}
+
+\newglossaryentry{E}{
+    name = \ensuremath{E},
+    description = {modul pružnosti}
+}
+
+\newglossaryentry{G}{
+    name = \ensuremath{G},
+    description = {modul pružnosti ve smyku}
+}
+
+\newglossaryentry{delta}{
+    name = \ensuremath{\delta},
+    description = {virtuální veličina}
+}
+
+\newglossaryentry{b}{
+    name = \ensuremath{b},
+    description = {šířka průřezu},
+}
+
+\newglossaryentry{h}{
+    name = \ensuremath{h},
+    description = {výška průřezu}
+}
+
+\newglossaryentry{A}{
+    name = \ensuremath{A},
+    description = {plocha průřezu}
+}
+
+\newglossaryentry{kappa}{
+    name = \ensuremath{\kappa},
+    description = {křivost}
+}
+
+\newglossaryentry{Phi}{
+    name = \ensuremath{\Omega},
+    description = {smyková štíhlost}
+}
 
 % Index i; Q228996
 \defglsentryfmt{%			% modify the entry's format

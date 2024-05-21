@@ -1,0 +1,54 @@
+\newcommand*{\xStart}{0}
+\newcommand*{\xEnd}{8}
+\newcommand*{\uStart}{1}
+\newcommand*{\uEnd}{2}
+\newcommand*{\height}{2}
+\newcommand*{\xDivisions}{10} % Number of divisions along the x-axis
+\newcommand*{\yDivisions}{4}  % Number of divisions along the y-axis
+
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}, scale=0.8]
+    % Draw axes
+    \draw[->] (0, 0) -- (11, 0) node[above] {\gls{x}};
+    \draw[->] (0, 0) -- (0, 2.5) node[above] {\gls{z}};
+    
+    % Draw the initial bar
+    \draw[black] (\xStart, -\height/2) rectangle (\xEnd, \height/2);
+
+    % Calculate spacing
+    \pgfmathsetmacro{\xSpacing}{(\xEnd-\xStart)/\xDivisions}
+    \pgfmathsetmacro{\ySpacing}{\height/\yDivisions}
+    \pgfmathsetmacro{\xDefDivs}{\xDivisions-1}
+    \pgfmathsetmacro{\yDefDivs}{\yDivisions-1}
+
+    %Draw bar grid
+    \foreach \i in {1,...,\xDefDivs} {
+        \draw[draw=black, dotted] (\xStart + \i*\xSpacing, -\height/2) -- (\xStart + \i*\xSpacing, \height/2); % Vertical grid lines
+    }
+    \foreach \i in {1,...,\yDefDivs} {
+        \draw[draw=black, dotted] (\xStart, -\height/2 + \i*\ySpacing) -- (\xEnd, -\height/2 + \i*\ySpacing); % Horizontal grid lines
+    }
+
+    % Draw deformed bar
+    \draw[ctublue, thick] (\xStart + \uStart, -\height/2) rectangle (\xEnd + \uEnd, \height/2);
+    
+    % Draw deformed grid
+    \pgfmathsetmacro{\uDelta}{(\uEnd - \uStart)/(\xDivisions)}
+
+    \foreach \i in {1,...,\xDefDivs} {
+        \draw[ctulightblue] (\xStart + \i*\xSpacing + \uStart + \i*\uDelta, -\height/2) -- (\xStart + \i*\xSpacing + \uStart + \i*\uDelta, \height/2); % Vertical deformed grid lines
+    }
+    \foreach \i in {1,...,\yDefDivs} {
+        \draw[ctulightblue] (\xStart + \uStart, -\height/2 + \i*\ySpacing) -- (\xEnd + \uEnd, -\height/2 + \i*\ySpacing); % Horizontal deformed grid lines
+    }
+    % nodes
+    \draw[ultra thick] (\xStart, 0) -- (\xEnd, 0);
+    \draw[fill=white] (\xStart, 0) circle (.25cm) node[text=black] {$a$};
+    \draw[fill=white] (\xEnd, 0) circle (.25cm) node[text=black] {$b$};
+
+    \draw[|->|, draw=ctublue, text=ctublue] (\xStart, +\height/2+0.3) -- node[above] {$u_a$} ++(\uStart, 0);
+    \draw[|->|, draw=ctublue, text=ctublue] (\xEnd, +\height/2+0.3) -- node[above] {$u_b$} ++(\uEnd, 0);
+
+    \draw[|<->|, draw=black] (\xStart, -\height/2-0.7) -- node[above] {\gls{L}} (\xEnd, -\height/2-0.7);
+    
+
+\end{tikzpicture}

@@ -1,0 +1,121 @@
+\section{Transformační matice}
+
+Matice tuhosti a vektory zatížení jsme v předešlých kapitolách odvodili za předpokladu, že lokální souřadnicový systém je shodně orientovaný s globálním souřadnicovým systémem. Aby bylo možné sestavit podmínky rovnováhy na celé konstrukci, je nutné pracovat v globálním systému souřadnic.
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/coordinate_transformation.tex}
+    \caption{Transformace souřadnic}
+    \label{fig:coordinate_transformation}
+\end{figure}
+
+Polohu bodu $\mathrm{P}$ na obr. \ref{fig:coordinate_transformation} v lokálním souřadném systému lze vyjádřit pomocí vztahu
+\begin{equation} \label{eq:P_transformation}
+    \gls{x_}_{\mathrm{P},\ell} = \gls{T}  \gls{x_}_{\mathrm{P},g},
+\end{equation}
+kde \gls{T} je transformační matice, $\gls{x_}_{\mathrm{P},\ell}$ je polohový vektor v lokálním souřadném systému \gls{x}\gls{y}\gls{z} a $\gls{x_}_{\mathrm{P},g}$ je polohový vektor v globálním souřadném systému \gls{X}\gls{Y}\gls{Z}.
+
+Rovnici \ref{eq:P_transformation} lze pro lepší představu rozepsat po složkách,
+\begin{equation}
+    \begin{Bmatrix}
+        \gls{x}_{\mathrm{P}} \\
+        \gls{y}_{\mathrm{P}} \\
+        \gls{z}_{\mathrm{P}}
+    \end{Bmatrix}
+    =
+    \begin{bmatrix}
+        \matr{e}_{\gls{x}} &
+        \matr{e}_{\gls{y}} &
+        \matr{e}_{\gls{z}}
+    \end{bmatrix}^{\mathrm{T}}
+    \begin{Bmatrix}
+        \gls{X}_{\mathrm{P}} \\
+        \gls{Y}_{\mathrm{P}} \\
+        \gls{Z}_{\mathrm{P}}
+    \end{Bmatrix},
+\end{equation}
+kde $\matr{e}_i$ označuje jednotkové vektory ve směru lokálních souřadnicových os v globálním systému souřadnic.
+
+Vektor $\matr{e}_{\gls{x}}$ je ve 3D kartézské soustavě souřadnic jednoznačně dán polohou bodů $a$ a $b$,
+\begin{equation}
+    \matr{e}_{\gls{x}} = 
+    \begin{Bmatrix}
+        \cos({\theta_{\gls{x}}}) &
+        \cos({\theta_{\gls{y}}}) &
+        \cos({\theta_{\gls{z}}})
+    \end{Bmatrix}^{\mathrm{T}},
+\end{equation}
+kde
+\begin{equation}
+    \begin{gathered}
+        \cos({\theta_{\gls{x}}}) = \frac{\gls{X}_b - \gls{X}_a}{\gls{L}} = \frac{\Delta \gls{X}}{\gls{L}} \\
+        \cos({\theta_{\gls{y}}}) = \frac{\gls{Y}_b - \gls{Y}_a}{\gls{L}} = \frac{\Delta \gls{Y}}{\gls{L}} \\
+        \cos({\theta_{\gls{z}}}) = \frac{\gls{Z}_b - \gls{Z}_a}{\gls{L}} = \frac{\Delta \gls{Z}}{\gls{L}} \\
+        \gls{L} = \sqrt{\left(\Delta \gls{X}\right)^2 + \left(\Delta \gls{Y}\right)^2 + \left(\Delta \gls{Z}\right)^2}
+    \end{gathered}
+\end{equation}
+
+Směrové vektory $matr{e}_{\gls{y}}$ a $\matr{e}_{\gls{z}}$ se určí pomocí dalšího bodu, případně vektoru, ležíciho v lokální rovině $\gls{x}\gls{y}$ nebo $\gls{x}\gls{z}$.
+Při výpočtu prutového prvku v rovině $\gls{x}\gls{z}$ je pomocný vektor $\matr{v}$ rovnoběžný s globální osou \gls{Y}, v tom případě platí
+\begin{equation}
+    \begin{gathered}
+        \matr{e}_{\gls{x}}
+        = 
+        \begin{Bmatrix}
+            \frac{\Delta \gls{X}}{\gls{L}} &
+            0 &
+            \frac{\Delta \gls{Z}}{\gls{L}}
+        \end{Bmatrix}^{\mathrm{T}}, 
+        \\
+        \matr{e}_{\gls{y}} 
+        = 
+        \begin{Bmatrix}
+            0 & 1 & 0\\
+        \end{Bmatrix}^{\mathrm{T}},
+        \\
+        \matr{e}_{\gls{z}}
+        =
+        \begin{Bmatrix}
+            - \frac{\Delta \gls{Z}}{\gls{L}} &
+            0 &
+            \frac{\Delta \gls{X}}{\gls{L}}^{\mathrm{T}},
+        \end{Bmatrix}
+    \end{gathered}
+\end{equation}
+a transformační matice má tvar
+\begin{equation}
+    \gls{T}
+    =
+    \begin{bmatrix}
+        \frac{\Delta \gls{X}}{\gls{L}} & 0 & \frac{\Delta \gls{Z}}{\gls{L}} \\
+        0 & 1 & 0 \\
+        - \frac{\Delta \gls{Z}}{\gls{L}} &
+        0 &
+        \frac{\Delta \gls{X}}{\gls{L}}
+    \end{bmatrix}.
+\end{equation}
+
+Při ortogonální transformaci souřadnic je transformační matice \gls{T} ortogonální, to znamená, že
+\begin{equation}
+    \gls{T}^{-1} = \gls{T}^{\mathrm{T}}
+\end{equation}
+
+Pro vektor koncových posunutí a vektor zatížení lze podle vztahu \ref{eq:P_transformation} psát
+\begin{equation} \label{eq:ltg}
+    \begin{aligned}
+        \gls{d}_{\ell} = \gls{T} \gls{d}_{g}, \\
+        \gls{f}_{\ell} = \gls{T} \gls{f}_{g}.
+    \end{aligned}
+\end{equation}
+
+Dosazením vztahu \ref{eq:ltg} do podmínek rovnováhy odvodíme vztah pro transformaci matice tuhosti z lokálního do souřadného systému,
+\begin{equation}
+    \begin{gathered}
+        \gls{K}_{\ell} \gls{d}_{\ell} - \gls{f}_{\ell} = \matr{0} \\
+        \gls{K}_{\ell} \gls{T} \gls{d}_{g} - \gls{T} \gls{f}_{g} = \matr{0} \\
+        \underbrace{\gls{T}^\mathrm{T} \gls{K}_{\ell} \gls{T}}_{\gls{K}_g} \gls{d}_{g} - \gls{f}_{g} = \matr{0},
+    \end{gathered}
+\end{equation}
+globální matici tuhosti vypočítáme podle vztahu
+\begin{equation}
+    \gls{K}_g = \gls{T}^\mathrm{T} \gls{K}_{\ell} \gls{T}.
+\end{equation}

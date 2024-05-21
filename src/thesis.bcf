@@ -2341,9 +2341,113 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">thesis.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex" glob="false">reference.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">mythesis</bcf:citekey>
+    <bcf:citekey order="2">wbapp</bcf:citekey>
+    <bcf:citekey order="3">matplotlib</bcf:citekey>
+    <bcf:citekey order="4">sympy</bcf:citekey>
+    <bcf:citekey order="5">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="6">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="7">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="8">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="9">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="10">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="11">prpe10</bcf:citekey>
+    <bcf:citekey order="12">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="13">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="14">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="15">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="16">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="17">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="18">prpe10</bcf:citekey>
+    <bcf:citekey order="19">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="20">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="21">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="22">prpe10</bcf:citekey>
+    <bcf:citekey order="23">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="24">prpe20</bcf:citekey>
+    <bcf:citekey order="25">prpe20</bcf:citekey>
+    <bcf:citekey order="26">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="27">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="28">ymkp</bcf:citekey>
+    <bcf:citekey order="29">sympy</bcf:citekey>
+    <bcf:citekey order="30">przemieniecki1985theory</bcf:citekey>
+    <bcf:citekey order="31">nmm1</bcf:citekey>
+    <bcf:citekey order="32">numpy</bcf:citekey>
+    <bcf:citekey order="33">scipy</bcf:citekey>
+    <bcf:citekey order="34">lesm</bcf:citekey>
+    <bcf:citekey order="35">numpy</bcf:citekey>
+    <bcf:citekey order="36">scipy</bcf:citekey>
+    <bcf:citekey order="37">sympy</bcf:citekey>
+    <bcf:citekey order="38">git</bcf:citekey>
+    <bcf:citekey order="39">github</bcf:citekey>
+    <bcf:citekey order="40">precommit</bcf:citekey>
+    <bcf:citekey order="41">nox</bcf:citekey>
+    <bcf:citekey order="42">ruff</bcf:citekey>
+    <bcf:citekey order="43">poetry</bcf:citekey>
+    <bcf:citekey order="44">black</bcf:citekey>
+    <bcf:citekey order="45">mypy</bcf:citekey>
+    <bcf:citekey order="46">pytest</bcf:citekey>
+    <bcf:citekey order="47">sphinx</bcf:citekey>
+    <bcf:citekey order="48">sonarcloud</bcf:citekey>
+    <bcf:citekey order="49">scipy</bcf:citekey>
+    <bcf:citekey order="50">nox</bcf:citekey>
+    <bcf:citekey order="51">precommit</bcf:citekey>
+    <bcf:citekey order="52">mypy</bcf:citekey>
+    <bcf:citekey order="53">design_aid</bcf:citekey>
+    <bcf:citekey order="54">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="55">mypy</bcf:citekey>
+    <bcf:citekey order="56">pytest</bcf:citekey>
+    <bcf:citekey order="57">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="58">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="59">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="60">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="61">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="62">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="63">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="64">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="65">EN1991_1_3</bcf:citekey>
+    <bcf:citekey order="66">EN1991_1_4</bcf:citekey>
+    <bcf:citekey order="67">EN1991_1_1</bcf:citekey>
+    <bcf:citekey order="68">EN1995_1_1</bcf:citekey>
+    <bcf:citekey order="69">EN1990</bcf:citekey>
+    <bcf:citekey order="70">EN1990</bcf:citekey>
+    <bcf:citekey order="71">EN1990</bcf:citekey>
+    <bcf:citekey order="72">EN1990</bcf:citekey>
+    <bcf:citekey order="73">mythesis</bcf:citekey>
+    <bcf:citekey order="74">wbapp</bcf:citekey>
+    <bcf:citekey order="75">matplotlib</bcf:citekey>
+    <bcf:citekey order="76">sympy</bcf:citekey>
+    <bcf:citekey order="77">teorie_pruznosti</bcf:citekey>
+    <bcf:citekey order="78">prpe10</bcf:citekey>
+    <bcf:citekey order="79">fem_lourenco</bcf:citekey>
+    <bcf:citekey order="80">prpe20</bcf:citekey>
+    <bcf:citekey order="81">ymkp</bcf:citekey>
+    <bcf:citekey order="82">przemieniecki1985theory</bcf:citekey>
+    <bcf:citekey order="83">nmm1</bcf:citekey>
+    <bcf:citekey order="84">numpy</bcf:citekey>
+    <bcf:citekey order="85">scipy</bcf:citekey>
+    <bcf:citekey order="86">lesm</bcf:citekey>
+    <bcf:citekey order="87">git</bcf:citekey>
+    <bcf:citekey order="88">github</bcf:citekey>
+    <bcf:citekey order="89">precommit</bcf:citekey>
+    <bcf:citekey order="90">nox</bcf:citekey>
+    <bcf:citekey order="91">ruff</bcf:citekey>
+    <bcf:citekey order="92">poetry</bcf:citekey>
+    <bcf:citekey order="93">black</bcf:citekey>
+    <bcf:citekey order="94">mypy</bcf:citekey>
+    <bcf:citekey order="95">pytest</bcf:citekey>
+    <bcf:citekey order="96">sphinx</bcf:citekey>
+    <bcf:citekey order="97">sonarcloud</bcf:citekey>
+    <bcf:citekey order="98">design_aid</bcf:citekey>
+    <bcf:citekey order="99">sbirka_prikladu</bcf:citekey>
+    <bcf:citekey order="100">EN1991_1_3</bcf:citekey>
+    <bcf:citekey order="101">EN1991_1_4</bcf:citekey>
+    <bcf:citekey order="102">EN1991_1_1</bcf:citekey>
+    <bcf:citekey order="103">EN1995_1_1</bcf:citekey>
+    <bcf:citekey order="104">EN1990</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
@@ -2375,4 +2479,13 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="nty/global//global/global"
+                type="entry"
+                sortingtemplatename="nty"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
 </bcf:controlfile>

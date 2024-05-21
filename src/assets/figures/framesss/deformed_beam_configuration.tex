@@ -1,0 +1,32 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}, scale=0.8]
+    \draw[dotted, ->] (-6.0, 0.0) -- (8, 0.0) node[above] {\gls{x}};
+    \draw[dotted, ->] (-6.0, 0.0) -- (-6.0, 5) node[above] {\gls{z}};
+    \draw[dotted] (6.0, 0.0) -- (6.0, 4.5);
+
+    \draw[draw=black, line width=0.5mm] (-6.0, 0.0) -- (6,0);
+
+    \draw[fill=white] (-5.6,0.4) circle (.25cm) node[text=black] {$a$};
+    \draw[fill=white] (6.4,0.4) circle (.25cm) node[text=black] {$b$};
+
+    \draw[domain=-6:6, smooth, variable=\x] plot ({\x}, {-0.01*(\x-2)^3 -0.05*(\x-2)^2 + 0.3*(\x-2) + 3.5});
+
+    \draw[] (-6-0.82, 3.02-1) -- (-6+0.82, 3.02+1);
+
+    \draw[] (6-0.58, 3.26-1) -- (6+0.58, 3.26+1);
+
+
+    \draw[draw=ctublue, ->] (-6.0, 0.0) -- (-6.0, 3.02);
+    \node[rotate=90, text=ctublue, above] at (-6.0,1.51) {$w_a$};
+
+    \draw[->,domain=90:50.64, draw=ctublue] plot ({-6+cos(\x)}, {3.02+sin(\x)}) node[below right, text=ctublue] {$\varphi_a$};
+    \draw[domain=50.64:50.64-89] plot ({-6+0.3*cos(\x)}, {3.02+0.3*sin(\x)});
+    \filldraw[black] (-5.8308, 3.0367) circle (0.5pt);
+
+    \draw[draw=ctublue, ->] (6.0, 0.0) -- (6.0, 3.26);
+    \node[rotate=90, text=ctublue, above] at (6.0,1.63) {$w_b$};
+
+    \draw[->,domain=90:59.88, draw=ctublue] plot ({6+cos(\x)}, {3.26+sin(\x)}) node[below right, text=ctublue] {$\varphi_b$};
+    \draw[domain=149.88:239.88] plot ({6+0.3*cos(\x)}, {3.26+0.3*sin(\x)});
+    \filldraw[black] (5.8357, 3.2163) circle (0.5pt);
+
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]},]
+    % N1
+    \draw[draw=black] (0.0, 0.0) node[below] {0} -- (5.0, 0.0) node[below] {\gls{L}};
+    \draw[color=ctublue, thick] (0, 1) -- (5, 0);
+    \draw[->] (0, 0) -- (0, 1);
+    \node[rotate=90, text=ctublue, above] at (0, 0.5) {$1$};
+    \node[text=ctublue, above] at (2.5, 0.5) {$N_1(x)$};
+
+    % N2
+    \draw[draw=black] (6, 0) node[below] {0} -- (11, 0) node[below] {\gls{L}};
+    \draw[color=ctublue, thick] (6, 0) -- (11, 1);
+    \draw[->] (11, 0) -- (11, 1);
+    \node[rotate=90, text=ctublue, above] at (11, 0.5) {$1$};
+    \node[text=ctublue, above] at (8.5, 0.5) {$N_2(x)$};
+\end{tikzpicture}

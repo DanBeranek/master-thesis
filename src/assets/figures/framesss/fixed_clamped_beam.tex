@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}]
+    \point{a}{0}{0};
+    \point{b}{8}{0};
+
+    \beam{1}{a}{b};
+
+    \notation{2}{a}{$a$};
+    \notation{1}{b}{$b$};
+    
+    \draw[->] (0, 0) -- (0, 1.5) node[text=ctublue,above] {$w_a$};
+    \draw[->,domain=300:30] plot ({cos(\x)}, {sin(\x)}) node[text=ctublue, above right] {$\varphi_a$};
+    \draw[->] (8, 0) -- (8, 1.5) node[text=ctublue,above] {$w_b$};
+    \draw[->,domain=300:30] plot ({8+cos(\x)}, {sin(\x)}) node[text=ctublue, above right] {$\varphi_b, M_b=0$};
+    \draw[fill=white, very thick] (8, 0) circle (.15);
+\end{tikzpicture}

@@ -1,0 +1,122 @@
+\subsection{Přibližné řešení} \label{sec:approximate_solution}
+
+Rovnice \ref{eq:pvd_start} může být použita k přibližnému řešení úlohy teorie pružnosti. Předpokládejme, že neznámé posuny \gls{u}(\gls{x_}) lze aproximovat pomocí
+
+\begin{equation} \label{eq:approx_first}
+    \gls{u}(\gls{x_}) \approx \gls{N}(\gls{x_})\gls{d},
+\end{equation}
+kde
+\begin{alignat*}{2}
+    & \gls{N}(\gls{x_})     && \quad \text{\glsdesc{N},} \\
+    & \gls{d}               && \quad \text{\glsdesc{d}.}
+\end{alignat*}
+
+Pomocí geometrických rovnic \ref{eq:kinematic_equations} určíme pole deformace,
+
+\begin{equation}
+    \begin{split}
+        \gls{eps}(\gls{x_}) &= \boldsymbol\partial\gls{N}(\gls{x_}){\gls{d}} \\
+                            &= \gls{B}(\gls{x_}){\gls{d}}.
+    \end{split}
+\end{equation}
+
+Pole napětí vypočítáme z pole deformace pomocí fyzikálních rovnic \ref{eq:constitutive_equations},
+
+\begin{equation}
+    \begin{split}
+        \gls{sigma}(\gls{x_}) &= \gls{D} \gls{eps}(\gls{x_}) \\
+                             &= \gls{D} \gls{B}(\gls{x_}){\gls{d}}.
+    \end{split}
+\end{equation}
+
+Virtuální pole posunutí je aproximováno stejnými bázovými funkcemi,
+
+\begin{equation}
+    \gls{delta}\gls{u}(\gls{x_}) = \gls{N}(\gls{x_})\gls{delta}\gls{d},
+\end{equation}
+
+pole virtuálních deformací je s virtuálními posuny svázáno stejnou maticí \gls{B},
+
+\begin{equation} \label{eq:approx_last}
+    \gls{delta}\gls{eps} = \gls{B}(\gls{x_})\gls{delta}\gls{d}.
+\end{equation}
+
+Pro zjednodušení v dalším textu budeme matici bázových funkcí $\gls{N}(\gls{x_})$ a matici $\gls{B}(\gls{x_})$ značit pouze jako $\gls{N}$ a $\gls{B}$,  přičemž je třeba mít na paměti, že jsou závislé na $\gls{x_}$.
+
+
+Dosazením vztahů \ref{eq:approx_first} až \ref{eq:approx_last} do rovnice \ref{eq:pvd_start} obdržíme,
+
+\begin{equation}
+    \int_{\gls{omega}} (\gls{D} \gls{B} \gls{d})^{\mathrm{T}} \gls{B} \gls{delta} \gls{d} \dd{\gls{omega}}
+    =
+    \int_{\gls{omega}} \gls{X_bar}^\mathrm{T} \gls{N} \gls{delta}\gls{d} \dd{\gls{omega}}
+    +
+    \int_{\gls{gamma_p}} \gls{p_bar}^\mathrm{T} \gls{N} \gls{delta}\gls{d} \dd{\gls{gamma_p}}.
+\end{equation}
+
+Úpravou dostaneme tvar,
+
+\begin{equation}
+    \gls{d}^\mathrm{T} \underbrace{\int_{\gls{omega}}  \gls{B}^\mathrm{T} \gls{D}^\mathrm{T} \gls{B} \dd{\gls{omega}}}_{\gls{K}^\mathrm{T}} \gls{delta}\gls{d}
+    =
+    \underbrace{\left(\int_{\gls{omega}} \gls{X_bar}^\mathrm{T} \gls{N} \dd{\gls{omega}}
+    +
+    \int_{\gls{gamma_p}} \gls{p_bar}^\mathrm{T} \gls{N} \dd{\gls{gamma_p}}\right)}_{\gls{f}^\mathrm{T}} \gls{delta}\gls{d}.
+\end{equation}
+
+Rovnici dále přepíšeme pomocí matice tuhosti \gls{K} a vektoru zatížení \gls{f} a upravíme\footnote{
+    $\left(\matr{A}\matr{B}\right)^\mathrm{T} = \matr{B}^\mathrm{T} \matr{A}^\mathrm{T}$
+    },
+\begin{align*}
+    \gls{d}^\mathrm{T} \gls{K}^\mathrm{T} \gls{delta}\gls{d} &= \gls{f}^\mathrm{T} \gls{delta} \gls{d} \\
+    \gls{delta}\gls{d}^\mathrm{T} \left( \gls{d}^\mathrm{T} \gls{K}^\mathrm{T} \right)^\mathrm{T} &= \gls{delta} \gls{d}^\mathrm{T}  \gls{f} \\
+    \gls{delta}\gls{d}^\mathrm{T} \left( \gls{K}\gls{d} - \gls{f} \right) &= 0.
+\end{align*}
+
+Protože rovnice musí platit pro libovolné virtuální posunutí \gls{delta}\gls{d}, musí být výraz v závorce nulovým vektorem. Odvodili jsme tedy zobecněné podmínky rovnováhy ve tvaru
+
+\begin{equation}
+    \gls{K} \gls{d} - \gls{f} = \matr{0},
+\end{equation}
+
+kde \gls{K} je matice tuhosti,
+
+\begin{equation} \label{eq:K}
+    \gls{K} = \int_{\gls{omega}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \dd{\gls{omega}},
+\end{equation}
+
+a \gls{f} je vektor zatížení,
+
+\begin{equation} \label{eq:f}
+    \gls{f} = \int_{\gls{omega}} \gls{N}^{\mathrm{T}} \gls{X_bar} \dd{\gls{omega}} + \int_{\gls{gamma_p}} \gls{N}^{\mathrm{T}} \gls{p_bar} \dd{\gls{gamma_p}}.
+\end{equation}
+
+
+\begin{figure}[H]
+    \begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}]
+        \tikzstyle{box} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=ctulightblue!30]
+    
+        \node (displacement) [box] {$\gls{u}(\gls{x_}) \approx \gls{N}(\gls{x_})\gls{d}$};
+        \node (strain) [box, below=3 cm of displacement] {$\gls{eps}(\gls{x_}) \approx \gls{B}(\gls{x_}) \gls{d}$};
+        \node (stress) [box, right=6 cm of strain] {$\gls{sigma}(\gls{x_}) \approx \gls{D} \gls{B}(\gls{x_})\gls{d}$};
+        \node (forces) [box, above=3 cm of stress] {$\gls{X_bar}(\gls{x_})$};
+    
+        \draw[->] (displacement) -- node[fill=white] {$\gls{eps} = \partial{\gls{u}}$} (strain);
+        \draw[->] (strain) -- node[fill=white] {$\gls{sigma} = \gls{D} \gls{eps}$} (stress);
+        \draw[->] (stress) -- node[fill=white, left=-2.5cm] {$
+            \begin{aligned}
+                & \forall \left( \gls{delta}\gls{u}, \gls{delta}\gls{eps}\right) | \gls{delta}\gls{eps} = \partial\gls{delta}\gls{u}: \\
+                & \int_{\gls{omega}}\gls{sigma}^{\mathrm{T}} \gls{delta}\gls{eps} \dd{\gls{omega}}
+                =
+                \int_{\gls{omega}}
+                \gls{X_bar}^{\mathrm{T}} \gls{delta}\gls{u} \dd{\gls{omega}}
+                +
+                \int_{\gls{gamma_p}} \gls{p_bar}^{\mathrm{T}} \gls{delta}\gls{u} \dd{\gls{gamma_p}}
+            \end{aligned}$
+            } (forces);
+        \draw[->] (forces) -- node[fill=white] (A) {$\gls{K}\gls{d} - \gls{f} = \matr{0}$} (displacement);
+    
+    \end{tikzpicture}
+    \caption[Schéma vztahů základních rovnic teorie pružnosti a slabého řešení]{Schéma vztahů základních rovnic teorie pružnosti a slabého řešení, podle \cite[obr. 1.3]{fem_lourenco}}
+    \label{fig:weak_form_diagram}
+\end{figure}

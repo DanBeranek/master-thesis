@@ -1,0 +1,48 @@
+\section{Variační principy}
+
+Následující definice jsou převzaty z publikace \cite[kap. 6.2]{ymkp}.
+
+\begin{definition}[Lagrangeův variační princip]
+    Při variaci složek posunutí, splňujících geometrické podmínky uvnitř oblasti \gls{omega} i na její hranici \gls{gamma}, je variace potenciální energie systému nulová.
+\end{definition}
+
+Důsledkem Lagrangeova variačního principu je věta o minimu potenciální energie systému.
+
+\begin{definition}[Věta o minimu potenciální energie]
+    Ze všech kinematicky přípustných stavů \gls{u}(\gls{x}) (t.j. stavů které vyhovují okrajovým podmínkám) nastane ten, pro který nabývá potenciální energie \gls{PI} minimální hodnoty.
+\end{definition}
+
+\begin{equation}
+    \gls{delta}\gls{PI} = \gls{delta}\gls{U} - \gls{delta}\gls{W} = 0,
+\end{equation}
+
+
+\subsection{Vnitřní deformační energie}
+Pro hustotu deformační energie \gls{Phi}, schematicky naznačenou na obr. \ref{fig:stress_strain}, platí vztah
+
+\begin{equation}
+    \gls{sigma} = \pdv{\gls{Phi}}{\gls{eps}},
+\end{equation}
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/stress_strain.tex}
+    \caption{Deformační potenciál}
+    \label{fig:stress_strain}
+\end{figure}
+
+Vnitřní deformační energii lze vyjádřit vztahem
+
+\begin{equation}
+    \gls{U}(\gls{u}) = \int_{\gls{omega}} \gls{Phi} \dd{\gls{omega}} = \int_{\gls{omega}} \left( \int_{0}^{\gls{eps_i}[ ]} \gls{sigma}^\mathrm{T} \dd{\gls{eps}}   \right) \dd{\gls{omega}}.
+\end{equation}
+
+Pro lineárně pružný material je zřejmé, že vnitřní deformační energie bude
+
+\begin{equation}
+    \gls{U}(\gls{u}) = \frac{1}{2} \int_{\gls{omega}} {\gls{eps}}^\mathrm{T} \gls{sigma} \dd{\gls{omega}}.
+\end{equation}
+
+\subsection{Vnější deformační energie}
+
+Z Lagrangeova variačního principu minima potenciální energie, který vychází z principu virtuální práce, vyplývá deformační metoda
+

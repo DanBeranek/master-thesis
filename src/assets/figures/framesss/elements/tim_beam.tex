@@ -1,0 +1,168 @@
+\newcommand*{\xS}{0}
+\newcommand*{\xE}{10}
+\newcommand*{\wS}{3}
+\newcommand*{\wE}{4.5}
+%\newcommand*{\phiS}{0.3}
+%\newcommand*{\phiE}{0.1}
+\newcommand*{\h}{2}
+\newcommand*{\xDivs}{20} % Number of divisions along the x-axis
+\newcommand*{\yDivs}{4}  % Number of divisions along the y-axis
+
+\begin{tikzpicture}[>={Stealth[inset=0pt,length=8pt,angle'=28,round]}, scale=0.8]
+    % Draw axes
+    \draw[->] (0, 0) -- (12, 0) node[above] {\gls{x}};
+    \draw[->] (0, 0) -- (0, 6.5) node[above] {\gls{z}};
+    
+    % Draw the initial bar
+    \draw[black] (\xS, -\h/2) rectangle (\xE, \h/2);
+
+    \draw[dotted] (\xE, \h/2) -- (\xE, \wE);
+
+    % Calculate spacing
+    \pgfmathsetmacro{\dX}{(\xE-\xS)/(\xDivs)}
+    \pgfmathsetmacro{\dY}{\h/(\yDivs)}
+    \pgfmathsetmacro{\xDefDivs}{\xDivs-1}
+    \pgfmathsetmacro{\yDefDivs}{\yDivs-1}
+    \pgfmathsetmacro{\phiS}{(0.3-0.8)}
+    \pgfmathsetmacro{\phiE}{(0.1-0.5)}
+    \pgfmathsetmacro{\gammaS}{0.3}
+    \pgfmathsetmacro{\gammaE}{0.4}
+    \pgfmathsetmacro{\gammaStep}{(\gammaE-\gammaS) / \xDivs}
+    %Draw beam grid
+    \foreach \i in {1,...,\xDefDivs} {
+        \draw[draw=black, dotted] (\xS + \i*\dX, -\h/2) -- (\xS + \i*\dX, \h/2); % Vertical grid lines
+    }
+    \foreach \i in {1,...,\yDefDivs} {
+        \draw[draw=black, dotted] (\xS, -\h/2 + \i*\dY) -- (\xE, -\h/2 + \i*\dY); % Horizontal grid lines
+    }
+
+    \pgfmathsetmacro{\Len}{\xE - \xS}    % Beam centerline function
+
+    \pgfmathdeclarefunction{n_1}{1}{%
+        \pgfmathparse{2*(#1/\Len)^3 - 3*(#1/\Len)^2 + 1}%
+    }
+
+    \pgfmathdeclarefunction{n_2}{1}{%
+        \pgfmathparse{#1*(1 - #1/\Len)^2}%
+    }
+
+    \pgfmathdeclarefunction{n_3}{1}{%
+        \pgfmathparse{(3*(#1/\Len)^2 - 2*(#1/\Len)^3)}%
+    }
+
+    \pgfmathdeclarefunction{n_4}{1}{%
+        \pgfmathparse{(#1^2 / \Len)*(#1/\Len - 1)}%
+    }
+
+    \pgfmathdeclarefunction{b_1}{1}{%
+        \pgfmathparse{(6 * #1^2 / \Len^3 - 6 * #1 / \Len^2)}%
+    }
+
+    \pgfmathdeclarefunction{b_2}{1}{%
+        \pgfmathparse{(4 * #1 / \Len - 3 * #1^2 / \Len^2 - 1)}%
+    }
+
+    \pgfmathdeclarefunction{b_3}{1}{%
+        \pgfmathparse{(6*#1/\Len^2 - 6*#1^2/\Len^3)}%
+    }
+
+    \pgfmathdeclarefunction{b_4}{1}{%
+        \pgfmathparse{(2 *#1/\Len - 3*#1^2/\Len^2)}%
+    }
+
+    \pgfmathdeclarefunction{w}{1}{%
+        \pgfmathparse{
+            (n_1(#1)*\wS + n_2(#1)*\phiS + n_3(#1)*\wE + n_4(#1)*\phiE)}%
+    }
+
+    \pgfmathdeclarefunction{gamma}{1}{%
+        \pgfmathparse{
+            (\gammaS + #1 * \gammaStep)
+        }
+    }
+
+    \pgfmathdeclarefunction{phi}{1}{%
+        \pgfmathparse{
+            %(b_1(#1)*\wS + b_2(#1)*\phiS + b_3(#1)*\wE + b_4(#1)*\phiE)}%
+            (b_2(#1)*\phiS - b_1(#1)*\wS - b_3(#1)*\wE + b_4(#1)*\phiE)}%
+            %(b_2(#1)*\phiS + b_4(#1)*\phiE)}%
+            }
+
+    % vertical lines
+    \foreach \i in {0,...,\xDivs} {
+        \pgfmathsetmacro{\xM}{\xS + \i*\dX}
+        \pgfmathsetmacro{\yM}{w(\xM)}
+
+        \foreach \j in {1,...,\yDivs} {
+            \pgfmathsetmacro{\k}{\j-1}
+            \pgfmathsetmacro{\zB}{\j*\dY - \h/2}
+            \pgfmathsetmacro{\zT}{\k*\dY - \h/2}
+
+            \pgfmathsetmacro{\xA}{\xM + sin(deg(phi(\xM)))*\zB}
+            \pgfmathsetmacro{\yA}{\yM + cos(deg(phi(\xM)))*\zB}
+            \pgfmathsetmacro{\xB}{\xM + sin(deg(phi(\xM)))*\zT}
+            \pgfmathsetmacro{\yB}{\yM + cos(deg(phi(\xM)))*\zT}
+
+            \draw[dotted] (\xA, \yA) -- (\xB, \yB);
+
+            \pgfmathsetmacro{\xA}{\xM + sin(deg(phi(\xM)+gamma(\i)))*\zB}
+            \pgfmathsetmacro{\yA}{\yM + cos(deg(phi(\xM)+gamma(\i)))*\zB}
+            \pgfmathsetmacro{\xB}{\xM + sin(deg(phi(\xM)+gamma(\i)))*\zT}
+            \pgfmathsetmacro{\yB}{\yM + cos(deg(phi(\xM)+gamma(\i)))*\zT}
+
+            \draw[ctublue!60] (\xA, \yA) -- (\xB, \yB);
+        }
+    }
+
+    % horizontal lines
+    \foreach \i in {0,...,\yDivs} {
+        \pgfmathsetmacro{\z}{\i*\dY - \h/2}
+
+        \foreach \j in {1,...,\xDivs} {
+            \pgfmathsetmacro{\k}{\j-1}
+            \pgfmathsetmacro{\xL}{\xS + \k*\dX}
+            \pgfmathsetmacro{\xP}{\xS + \j*\dX}
+
+            \pgfmathsetmacro{\xA}{\xL + sin(deg(phi(\xL)))*\z}
+            \pgfmathsetmacro{\yA}{w(\xL) + cos(deg(phi(\xL)))*\z}
+            \pgfmathsetmacro{\xB}{\xP + sin(deg(phi(\xP)))*\z}
+            \pgfmathsetmacro{\yB}{w(\xP) + cos(deg(phi(\xP)))*\z}
+
+            \draw[dotted] (\xA, \yA) -- (\xB, \yB);
+
+            \pgfmathsetmacro{\xA}{\xL + sin(deg(phi(\xL)+gamma(\j)))*\z}
+            \pgfmathsetmacro{\yA}{w(\xL) + cos(deg(phi(\xL)+gamma(\j)))*\z}
+            \pgfmathsetmacro{\xB}{\xP + sin(deg(phi(\xP)+gamma(\j)))*\z}
+            \pgfmathsetmacro{\yB}{w(\xP) + cos(deg(phi(\xP)+gamma(\j)))*\z}
+
+            \draw[ctublue!60] (\xA, \yA) -- (\xB, \yB);
+
+            
+        }
+    }
+
+    \draw[color=ctublue, thick, samples=100, domain=\xS:\xE] plot (\x, {w(\x)});
+    
+    % nodes
+    \draw[ultra thick] (\xS, 0) -- (\xE, 0);
+    \draw[fill=white] (\xS, 0) circle (.25cm) node[text=black] {$a$};
+    \draw[fill=white] (\xE, 0) circle (.25cm) node[text=black] {$b$};
+
+    %\draw[|->|, draw=ctublue, text=ctublue] (\xS, +\h/2+0.3) -- node[above] {$u_a$} ++(\uStart, 0);
+    %\draw[|->|, draw=ctublue, text=ctublue] (\xE, +\h/2+0.3) -- node[above] {$u_b$} ++(\uEnd, 0);
+    %\draw[|->|, draw=ctublue, text=ctublue] (\xStart, +\height/2+0.3) -- node[above] {$u_a$} ++(\uStart, 0);
+
+    \draw[draw=ctublue, |->|] (\xS - 0.5, 0.0) -- node[rotate=90, text=ctublue, above] {$w_a$} ++(0, \wS);
+    \draw[draw=ctublue, |->|] (\xE + 0.8, 0.0) -- node[rotate=90, text=ctublue, above] {$w_b$} ++(0, \wE);
+
+    \draw[|->|,domain=90:{deg(\phiS)+90}, draw=ctublue] plot ({1.5*cos(\x)}, {3+1.5*sin(\x)}) node[above left= 0cm and 0.5cm, text=ctublue] {$\theta_a=-\dv{w(0)}{x}$};
+    \draw[|->|,domain={90+deg(\phiS)}:{deg(\phiS-\gammaS)+90}, draw=ctublue] plot ({1.5*cos(\x)}, {3+1.5*sin(\x)}) node[right, text=ctublue] {$\gamma_a$};
+    \draw[|->|,domain={90}:{deg(\phiS-\gammaS)+90}, draw=ctublue] plot ({2.2*cos(\x)}, {3+2.2*sin(\x)}) node[above left=0.3 cm and 0cm, text=ctublue] {$\varphi_a$};
+    \draw[|->|,domain=270:{deg(\phiE)+270}, draw=ctublue] plot ({10+1.5*cos(\x)}, {4.5+1.5*sin(\x)}) node[above right, text=ctublue] {$\theta_b=-\dv{w(L)}{x}$};
+    \draw[|->|,domain={270+deg(\phiE)}:{deg(\phiE-\gammaS)+270}, draw=ctublue] plot ({10+1.5*cos(\x)}, {4.5+1.5*sin(\x)}) node[left, text=ctublue] {$\gamma_b$};
+    \draw[|->|,domain={270}:{deg(\phiE-\gammaS)+270}, draw=ctublue] plot ({10+2.2*cos(\x)}, {4.5+2.2*sin(\x)}) node[below right=0.3 cm and 0cm, text=ctublue] {$\varphi_b$};
+
+    \draw[|<->|, draw=black] (\xS, -\h/2-0.8) -- node[above] {\gls{L}} ++(\Len, 0);
+    
+
+\end{tikzpicture}

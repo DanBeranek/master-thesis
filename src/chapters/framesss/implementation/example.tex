@@ -1,0 +1,89 @@
+\subsection{Příklad}
+
+Následující příklad je převzat ze \textit{Sbírky příkladů stavební mechaniky} \cite[Příklad 5.2]{sbirka_prikladu}.
+
+\begin{figure}[H]
+    \includegraphics[height=7cm]{assets/figures/framesss/example_snk.png}
+    \caption[Statické schéma konstrukce]{Statické schéma konstrukce, převzato z \cite[Příklad 5.2]{sbirka_prikladu}}
+    \label{fig:framesss_example}
+\end{figure}
+
+Všechny pruty mají Youngův modul pružnosti $\gls{E} = \SI{30}{\GPa}$, moment setrvačnosti k ose, kolem které jsou pruty namáhané ohybem $\gls{I_y} = \SI{1e-3}{\unit{\metre\tothe{4}}}$ a plochu $\gls{A}= \SI{4e-3}{{\metre\tothe{2}}}$.
+
+Na příkladu bude ilustrováno použití knihovny \texttt{framesss} v prostředí JupyterLab.
+
+\input{chapters/framesss/implementation/example_jupyter_nb.tex}
+
+\begin{table}[H]
+    \setlength{\tabcolsep}{10pt}
+    \renewcommand{\arraystretch}{1.2}
+    \rowcolors{2}{ctulightblue!20}{white}
+    \begin{tabular}{ccrrr}
+        \rowcolor{ctulightblue} \bfseries veličina & \bfseries rozměr & \bfseries LC1 & \bfseries CO1 & \bfseries Sbírka \\ 
+            $R_{1,\gls{x}}$ & $\SI{}{\kilo\newton}$ & -20.781 & -20.781 & -20.781 \\
+            $R_{1,\gls{z}}$ & $\SI{}{\kilo\newton}$ &   0.000 &   0.000 &   0.000 \\
+            \rowcolor{yellow!15}$M_{1,\gls{y}}$ & $\SI{}{\kilo\newton\metre}$ & -14.375 & -14.375 &  14.375 \\
+            $R_{2,\gls{x}}$ & $\SI{}{\kilo\newton}$ & -15.258 & -15.258 & -15.258 \\
+            \rowcolor{yellow!15}$R_{2,\gls{z}}$ & $\SI{}{\kilo\newton}$ &   3.750 &   3.750 &   -3.750 \\
+            $R_{4,\gls{x}}$ & $\SI{}{\kilo\newton}$ &  -7.961 &  -7.961 &  -7.961 \\
+            \rowcolor{yellow!15}$R_{4,\gls{z}}$ & $\SI{}{\kilo\newton}$ &  23.250 &  23.250 &  -23.249 \\
+            \rowcolor{yellow!15}$M_{4,\gls{y}}$ & $\SI{}{\kilo\newton}$ &  10.905 &  10.905 &  -10.906 \\
+            \rowcolor{yellow!15}$R_{6,\gls{z}}$ & $\SI{}{\kilo\newton}$ &   8.000 &   8.000 &  -8.000 \\
+            $\gls{phi_i}[2]$ & $\SI{}{\radian}\cdot 10^{-5}$ & -6.942 & -6.942 & 6.942 \\
+            \rowcolor{red!8}$\gls{u_i}[3]$ & $\SI{}{\metre}\cdot 10^{-5}$ & -9.902 & -9.902 & -9.903 \\
+            \rowcolor{yellow!15}$\gls{w_i}[3]$ & $\SI{}{\metre}\cdot 10^{-4}$ & -9.168 & -9.168 & 9.168 \\
+            $\gls{axial_force}_{1,2}$ & $\SI{}{\kilo\newton}$ & 0.000 & 0.000 & 0.000 \\
+            %
+            $\gls{axial_force}_{2,3}$ & $\SI{}{\kilo\newton}$ & -3.961 & -3.961 & -3.961 \\
+            %
+            $\min(\gls{axial_force}_{3,4})$ & $\SI{}{\kilo\newton}$ & -23.376 & -23.376 & -23.376 \\
+            $\max(\gls{axial_force}_{3,4})$ & $\SI{}{\kilo\newton}$ & -11.376 & -11.376 & -11.376 \\
+            %
+            $\gls{axial_force}_{3,5}$ & $\SI{}{\kilo\newton}$ & -12.000 & -12.000 & -12.000 \\
+            %
+            $\gls{axial_force}_{6,5}$ & $\SI{}{\kilo\newton}$ & -4.000 & -4.000 & -4.000 \\
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            $\min(\gls{shear_force}_{1,2})$ & $\SI{}{\kilo\newton}$ & -19.219 & -19.219 & -19.219 \\
+            $\max(\gls{shear_force}_{1,2})$ & $\SI{}{\kilo\newton}$ & 20.781 & 20.781 & 20.781 \\
+            %
+            $\gls{shear_force}_{2,3}$ & $\SI{}{\kilo\newton}$ & 3.750 & 3.750 & 3.750 \\
+            %
+            $\min(\gls{shear_force}_{3,4})$ & $\SI{}{\kilo\newton}$ & -7.581 & -7.581 & -7.581 \\
+            $\max(\gls{shear_force}_{3,4})$ & $\SI{}{\kilo\newton}$ & 1.419 & 1.419 & 1.419 \\
+            %
+            $\gls{shear_force}_{3,5}$ & $\SI{}{\kilo\newton}$ & 4.000 & 4.000 & 4.000 \\
+            %
+            $\min(\gls{shear_force}_{6,5})$ & $\SI{}{\kilo\newton}$ & -12.000 & -12.000 & -12.000 \\
+            $\max(\gls{shear_force}_{6,5})$ & $\SI{}{\kilo\newton}$ & 8.000 & 8.000 & 8.000 \\
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            $\min(\gls{bending_moment}_{1,2})$ & $\SI{}{\kilo\newton\meter}$ & -14.375 & -14.375 & -14.375 \\
+            \rowcolor{red!8}$\max(\gls{bending_moment}_{1,2})$ & $\SI{}{\kilo\newton\meter}$ & 7.218 & 7.218 & 7.217 \\
+            %
+            $\min(\gls{bending_moment}_{2,3})$ & $\SI{}{\kilo\newton\meter}$ & -11.251 & -11.251 & -11.251 \\
+            $\max(\gls{bending_moment}_{2,3})$ & $\SI{}{\kilo\newton\meter}$ & 0.000 & 0.000 & 0.000 \\
+            %
+            \rowcolor{red!8}$\min(\gls{bending_moment}_{3,4})$ & $\SI{}{\kilo\newton\meter}$ & -10.905 & -10.905 & -10.906 \\
+            $\max(\gls{bending_moment}_{3,4})$ & $\SI{}{\kilo\newton\meter}$ & 4.257 & 4.257 & 4.257 \\
+            %
+            $\min(\gls{bending_moment}_{3,5})$ & $\SI{}{\kilo\newton\meter}$ & 0.000 & 0.000 & 0.000 \\
+            $\max(\gls{bending_moment}_{3,5})$ & $\SI{}{\kilo\newton\meter}$ & 6.000 & 6.000 & 6.000 \\
+            %
+            $\min(\gls{bending_moment}_{6,5})$ & $\SI{}{\kilo\newton\meter}$ & -6.000 & -6.000 & -6.000 \\
+            $\max(\gls{bending_moment}_{6,5})$ & $\SI{}{\kilo\newton\meter}$ & 12.000 & 12.000 & 12.000 
+    \end{tabular}
+    \caption{Porovnání výsledků}
+    \label{tab:example_values}
+\end{table}
+
+V \autoref{tab:example_values} jsou uvedeny hodnoty vypočítané knihovnou \texttt{framesss} a srovnány s referenčními hodnotami ze \textit{Sbírky příkladů stavební mechaniky} \cite{sbirka_prikladu}. Testování probíhalo ve dvou různých scénářích: zatěžovací stav (LC1) a kombinace zatěžovacích stavů (CO1). LC1 představuje stav, kde je veškeré zatížení aplikováno najednou. CO1 je kombinace jednotlivých zatěžovacích stavů, kde každé zatížení bylo odděleně definováno a hodnota zatížení byla vydělena předem definovaným součinitel. Následně byly tyto zatěžovací stavy zkombinovány do kombinace zatěžovacích stavů s těmito součiniteli.
+
+Porovnání výsledků ukazuje, že hodnoty vypočítané knihovnou \texttt{framesss} jsou téměř stejné jako referenční hodnoty, přičemž rozdíly (vyznačené \colorbox{red!8}{červenou barvou}) se nacházejí v rámci zaokrouhlovací chyby.
+
+Hodnoty posunutí a reakcí ve směru osy \gls{Z} a hodnoty pootočení a momentů okolo osy \gls{Y} vykazují opačné znaménko (vyznačeno \colorbox{yellow!15}{žlutou barvou}) ve srovnání s referenčními hodnotami, což je způsobeno rozdílným natočením globálního souřadného systému, viz obr. \ref{fig:example_coordinate_systems}. Systém ze sbírky je vlevo, uvažovaný systém při zadávání konstrukce v této práci vpravo. Při stanovení kladného směru pootočení platí pravidlo pravé ruky.
+
+\begin{figure}[H]
+    \input{assets/figures/framesss/example_coordinate_systems}
+    \caption{Porovnání souřadných systémů}
+    \label{fig:example_coordinate_systems}
+\end{figure}
+
