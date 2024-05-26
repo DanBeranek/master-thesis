@@ -1,6 +1,6 @@
 \subsection{Přibližné řešení} \label{sec:approximate_solution}
 
-Rovnice \ref{eq:pvd_start} může být použita k přibližnému řešení úlohy teorie pružnosti. Předpokládejme, že neznámé posuny \gls{u}(\gls{x_}) lze aproximovat pomocí
+Rovnice \ref{eq:pvd_start} může být použita k~přibližnému řešení úlohy teorie pružnosti. Předpokládejme, že neznámé posuny \gls{u}(\gls{x_}) lze aproximovat pomocí
 
 \begin{equation} \label{eq:approx_first}
     \gls{u}(\gls{x_}) \approx \gls{N}(\gls{x_})\gls{d},
@@ -20,7 +20,7 @@ Pomocí geometrických rovnic \ref{eq:kinematic_equations} určíme pole deforma
     \end{split}
 \end{equation}
 
-Pole napětí vypočítáme z pole deformace pomocí fyzikálních rovnic \ref{eq:constitutive_equations},
+Pole napětí vypočítáme z~pole deformace pomocí fyzikálních rovnic \ref{eq:constitutive_equations},
 
 \begin{equation}
     \begin{split}
@@ -35,13 +35,13 @@ Virtuální pole posunutí je aproximováno stejnými bázovými funkcemi,
     \gls{delta}\gls{u}(\gls{x_}) = \gls{N}(\gls{x_})\gls{delta}\gls{d},
 \end{equation}
 
-pole virtuálních deformací je s virtuálními posuny svázáno stejnou maticí \gls{B},
+pole virtuálních deformací je s~virtuálními posuny svázáno stejnou maticí \gls{B},
 
 \begin{equation} \label{eq:approx_last}
     \gls{delta}\gls{eps} = \gls{B}(\gls{x_})\gls{delta}\gls{d}.
 \end{equation}
 
-Pro zjednodušení v dalším textu budeme matici bázových funkcí $\gls{N}(\gls{x_})$ a matici $\gls{B}(\gls{x_})$ značit pouze jako $\gls{N}$ a $\gls{B}$,  přičemž je třeba mít na paměti, že jsou závislé na $\gls{x_}$.
+Pro zjednodušení v~dalším textu budeme matici bázových funkcí $\gls{N}(\gls{x_})$ a matici $\gls{B}(\gls{x_})$ značit pouze jako $\gls{N}$ a $\gls{B}$,  přičemž je třeba mít na paměti, že jsou závislé na $\gls{x_}$.
 
 
 Dosazením vztahů \ref{eq:approx_first} až \ref{eq:approx_last} do rovnice \ref{eq:pvd_start} obdržíme,
@@ -73,7 +73,7 @@ Rovnici dále přepíšeme pomocí matice tuhosti \gls{K} a vektoru zatížení 
     \gls{delta}\gls{d}^\mathrm{T} \left( \gls{K}\gls{d} - \gls{f} \right) &= 0.
 \end{align*}
 
-Protože rovnice musí platit pro libovolné virtuální posunutí \gls{delta}\gls{d}, musí být výraz v závorce nulovým vektorem. Odvodili jsme tedy zobecněné podmínky rovnováhy ve tvaru
+Protože rovnice musí platit pro libovolné virtuální posunutí \gls{delta}\gls{d}, musí být výraz v~závorce nulovým vektorem. Odvodili jsme tedy zobecněné podmínky rovnováhy ve tvaru
 
 \begin{equation}
     \gls{K} \gls{d} - \gls{f} = \matr{0},

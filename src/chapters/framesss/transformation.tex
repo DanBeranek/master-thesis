@@ -1,6 +1,6 @@
 \section{Transformační matice}
 
-Matice tuhosti a vektory zatížení jsme v předešlých kapitolách odvodili za předpokladu, že lokální souřadnicový systém je shodně orientovaný s globálním souřadnicovým systémem. Aby bylo možné sestavit podmínky rovnováhy na celé konstrukci, je nutné pracovat v globálním systému souřadnic.
+Matice tuhosti a vektory zatížení jsme v~předešlých kapitolách odvodili za předpokladu, že lokální souřadnicový systém je shodně orientovaný s~globálním souřadnicovým systémem. Aby bylo možné sestavit podmínky rovnováhy na celé konstrukci, je nutné pracovat v~globálním systému souřadnic.
 
 \begin{figure}[H]
     \input{assets/figures/framesss/coordinate_transformation.tex}
@@ -8,11 +8,11 @@ Matice tuhosti a vektory zatížení jsme v předešlých kapitolách odvodili z
     \label{fig:coordinate_transformation}
 \end{figure}
 
-Polohu bodu $\mathrm{P}$ na obr. \ref{fig:coordinate_transformation} v lokálním souřadném systému lze vyjádřit pomocí vztahu
+Polohu bodu $\mathrm{P}$ na obr. \ref{fig:coordinate_transformation} v~lokálním souřadném systému lze vyjádřit pomocí vztahu
 \begin{equation} \label{eq:P_transformation}
     \gls{x_}_{\mathrm{P},\ell} = \gls{T}  \gls{x_}_{\mathrm{P},g},
 \end{equation}
-kde \gls{T} je transformační matice, $\gls{x_}_{\mathrm{P},\ell}$ je polohový vektor v lokálním souřadném systému \gls{x}\gls{y}\gls{z} a $\gls{x_}_{\mathrm{P},g}$ je polohový vektor v globálním souřadném systému \gls{X}\gls{Y}\gls{Z}.
+kde \gls{T} je transformační matice, $\gls{x_}_{\mathrm{P},\ell}$ je polohový vektor v~lokálním souřadném systému \gls{x}\gls{y}\gls{z} a $\gls{x_}_{\mathrm{P},g}$ je polohový vektor v~globálním souřadném systému \gls{X}\gls{Y}\gls{Z}.
 
 Rovnici \ref{eq:P_transformation} lze pro lepší představu rozepsat po složkách,
 \begin{equation}
@@ -33,7 +33,7 @@ Rovnici \ref{eq:P_transformation} lze pro lepší představu rozepsat po složk�
         \gls{Z}_{\mathrm{P}}
     \end{Bmatrix},
 \end{equation}
-kde $\matr{e}_i$ označuje jednotkové vektory ve směru lokálních souřadnicových os v globálním systému souřadnic.
+kde $\matr{e}_i$ označuje jednotkové vektory ve směru lokálních souřadnicových os v~globálním systému souřadnic.
 
 Vektor $\matr{e}_{\gls{x}}$ je ve 3D kartézské soustavě souřadnic jednoznačně dán polohou bodů $a$ a $b$,
 \begin{equation}
@@ -54,8 +54,8 @@ kde
     \end{gathered}
 \end{equation}
 
-Směrové vektory $matr{e}_{\gls{y}}$ a $\matr{e}_{\gls{z}}$ se určí pomocí dalšího bodu, případně vektoru, ležíciho v lokální rovině $\gls{x}\gls{y}$ nebo $\gls{x}\gls{z}$.
-Při výpočtu prutového prvku v rovině $\gls{x}\gls{z}$ je pomocný vektor $\matr{v}$ rovnoběžný s globální osou \gls{Y}, v tom případě platí
+Směrové vektory $matr{e}_{\gls{y}}$ a $\matr{e}_{\gls{z}}$ se určí pomocí dalšího bodu, případně vektoru, ležíciho v~lokální rovině $\gls{x}\gls{y}$ nebo $\gls{x}\gls{z}$.
+Při výpočtu prutového prvku v~rovině $\gls{x}\gls{z}$ je pomocný vektor $\matr{v}$ rovnoběžný s~globální osou \gls{Y}, v~tom případě platí
 \begin{equation}
     \begin{gathered}
         \matr{e}_{\gls{x}}
@@ -107,7 +107,7 @@ Pro vektor koncových posunutí a vektor zatížení lze podle vztahu \ref{eq:P_
     \end{aligned}
 \end{equation}
 
-Dosazením vztahu \ref{eq:ltg} do podmínek rovnováhy odvodíme vztah pro transformaci matice tuhosti z lokálního do souřadného systému,
+Dosazením vztahu \ref{eq:ltg} do podmínek rovnováhy odvodíme vztah pro transformaci matice tuhosti z~lokálního do souřadného systému,
 \begin{equation}
     \begin{gathered}
         \gls{K}_{\ell} \gls{d}_{\ell} - \gls{f}_{\ell} = \matr{0} \\

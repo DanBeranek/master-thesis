@@ -15,8 +15,8 @@ s~využitím pokročilých numerických metod},
     department-english = {Katedra betonových a zděných konstrukcí},
     fieldofstudy-czech = {Stavební inženýrství},
     subfieldofstudy-czech = {Konstrukce pozemních staveb},
-    keywords-czech={TODO Klíčová slova},
-    keywords-english={TODO Keywords},
+    keywords-czech={výpočetní nástroj, program, prutová konstrukce, Python, deformační metoda},
+    keywords-english={computational tool, program, frame structure, Python, direct stiffness method},
     author = {Bc. Daniel Beránek},
     supervisor = {Ing. Radek Štefan, Ph.D.},
     month = 5,
@@ -93,7 +93,7 @@ s~využitím pokročilých numerických metod},
 \def\equationautorefname~#1\null{(#1)\null} % \autoref{nazevRovnice} dá číslo rovnice do závorek, které jsou taky hyperref
 
 \hypersetup{
-    pdftitle={Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z trámů a vložek s využitím pokročilých numerických metod},
+    pdftitle={Výpočetní nástroje pro analýzu keramobetonových stropních a střešních systémů z~trámů a vložek s~využitím pokročilých numerických metod},
     pdfauthor={Daniel Beránek},
 }
 
@@ -103,7 +103,7 @@ s~využitím pokročilých numerických metod},
 
 \begin{thanks}
     \\
-    Práce vznikla za podpory poskytnuté Ministrstvem průmyslu a obchodu ČR v rámci programu OP PIK, Aplikace (Výzva IX), č. projektu 
+    Práce vznikla za podpory poskytnuté Ministrstvem průmyslu a obchodu ČR v~rámci programu OP PIK, Aplikace (Výzva IX), č. projektu 
     CZ.01.1.02/0.0/0.0/21\_374/0026789, Vývoj komplexního softwaru pro optimalizaci návrhu a posouzení střešních a stropních konstrukcí.
 \end{thanks}
 
@@ -121,11 +121,19 @@ s~využitím pokročilých numerických metod},
 \end{declaration}
 
 \begin{abstract-english}
-We develop \ldots
+This thesis is focused on the development and implementation of software tools for structural analysis of frame members in the Python programming language.The aim of this thesis is to develop and verificate software tools. First part introduces the basics of elasticity theory and the derivation of stiffness matrices and load vectors using computer algebra system for symbolic calculations.
+Furthermore, an object-oriented library for the computation of member structures is presented.
+The next chapter is devoted to the library for designing structures according to Eurocodes. 
+Finally, the integration of these tools into a web application that provides a user-friendly interface for the design and assessment of structures is described.
 \end{abstract-english}
 
 \begin{abstract-czech}
-Rozvíjíme test \ldots
+Diplomová práce se zaměřuje na vývoj a implementaci nástrojů pro statické výpočty prutových konstrukcí v~programovacím jazyce Python. 
+Cílem této práce je vytvoření výpočetních nástrojů a jejich verifikace.
+V~první části jsou představeny základy teorie pružnosti a odvození matic tuhostí a vektorů zatížení pomocí knihovny pro symbolické výpočty. 
+Dále je představena objektově orientovaná knihovna pro výpočty prutových konstrukcí.
+Další kapitola se věnuje knihovně pro navrhování konstrukcí podle Eurokódů. 
+Závěrem je popsána integrace těchto nástrojů do webové aplikace, která poskytuje uživatelsky přívětivé rozhraní pro návrh a posouzení konstrukcí.
 \end{abstract-czech}
 
 \input{assets/jupyter_settings.tex}
@@ -154,7 +162,6 @@ Rozvíjíme test \ldots
 \input{chapters/framesss/framesss.tex}
 \input{chapters/desssign/desssign.tex}
 \input{chapters/wbapp/wbapp.tex}
-\input{chapters/overview-discussion.tex}
 \input{chapters/conclusion.tex}
 
 \printbibliography

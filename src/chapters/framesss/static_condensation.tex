@@ -1,10 +1,10 @@
 \section{Statická kondenzace}
 
-Při výpočtu prutových konstrukcí se lze často setkat s kloubovým připojení prutů. V případě na obr. \ref{fig:node_phis} se vy styčníku stýkají 4 pruty, posunutí \gls{u_i}[a] a \gls{w_i}[a] jsou jednoznačně popsány, ale pootočení koncových průřezů levého a pravého prutu jsou různá od pootočení \gls{phi_i}[a]. Ve styčníku tedy vzniká celkem 5 neznámých, 2 posunutí a 3 pootočení. Podmínky rovnováhy pro pootočení kloubově připojených prutů požadují, aby ohybový moment ve styčníku byl roven nule. Podmínku nulového koncového momentu lze uplatnit přímo v matici tuhosti prutového prvku a do globálních podmínek rovnováhy přičíst síly z prutu, který je typu vetknutí-kloub.
+Při výpočtu prutových konstrukcí se lze často setkat s~kloubovým připojení prutů. V~případě na obr. \ref{fig:node_phis} se vy styčníku stýkají 4 pruty, posunutí \gls{u_i}[a] a \gls{w_i}[a] jsou jednoznačně popsány, ale pootočení koncových průřezů levého a pravého prutu jsou různá od pootočení \gls{phi_i}[a]. Ve styčníku tedy vzniká celkem 5 neznámých, 2 posunutí a 3 pootočení. Podmínky rovnováhy pro pootočení kloubově připojených prutů požadují, aby ohybový moment ve styčníku byl roven nule. Podmínku nulového koncového momentu lze uplatnit přímo v~matici tuhosti prutového prvku a do globálních podmínek rovnováhy přičíst síly z~prutu, který je typu vetknutí-kloub.
 
 \begin{figure}[H]
     \input{assets/figures/framesss/static_condensation.tex}
-    \caption{Styčník s kloubově připojenými pruty}
+    \caption{Styčník s~kloubově připojenými pruty}
     \label{fig:node_phis}
 \end{figure}
 
@@ -25,7 +25,7 @@ Matici tuhosti prvku, vektor uzlových posunutí a vektor zatížení rozdělím
     \end{Bmatrix}.
 \end{equation}
 
-Z druhé rovnice vyjádříme $\gls{d}_{b}$,
+Z~druhé rovnice vyjádříme $\gls{d}_{b}$,
 \begin{equation}
     \begin{aligned}
         \gls{K}_{ba} \gls{d}_a + \gls{K}_{bb} \gls{d}_{b} = \matr{f}_b \\
@@ -42,7 +42,7 @@ Po dosazení do první rovnice obdržíme
     \end{aligned}
 \end{equation}
  
-Uvedeme příklad kondenzace matice tuhosti pro prut typu vetknutí-kloub z matice tuhosti odvozené v kap. \ref{sec:K_eb_beam}.
+Uvedeme příklad kondenzace matice tuhosti pro prut typu vetknutí-kloub z~matice tuhosti odvozené v~kap. \ref{sec:K_eb_beam}.
 
 \begin{figure}[H]
     \input{assets/figures/framesss/fixed_clamped_beam.tex}
@@ -63,7 +63,7 @@ Definujeme proměnné.
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{2}{\boxspacing}
     \begin{Verbatim}[commandchars=\\\{\}]
-    \PY{n}{E}\PY{p}{,} \PY{n}{I}\PY{p}{,} \PY{n}{L} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{E I L}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{E}\PY{p}{,} \PY{n}{I}\PY{p}{,} \PY{n}{L} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{E I~L}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
     \PY{n}{w\PYZus{}a}\PY{p}{,} \PY{n}{phi\PYZus{}a}\PY{p}{,} \PY{n}{w\PYZus{}b}\PY{p}{,} \PY{n}{phi\PYZus{}b} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}
         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w\PYZus{}a varphi\PYZus{}a w\PYZus{}b varphi\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}
     \PY{p}{)}

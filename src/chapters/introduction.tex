@@ -2,12 +2,12 @@
 
 \section*{Motivace}
 
-Ve rámci bakalářské práce \cite{mythesis} byl vyvinut výpočetní nástroj zaměřený na analýzu průhybu stropních systémů Porotherm z trámů a vložek,
-tento nástroj byl integrován do webové aplikace vyvinuté v rámci projektu \textit{Vývoj komplexního softwaru pro optimalizaci návrhu a posouzení střešních a stropních konstrukcí} \cite{wbapp}. Aplikace se však potýká s řadou omezení, statické schéma je omezené na spojitý nosník o maximálně pěti polích a konzolami na obou stranách, lze zadat pouze omezený počet působících sil, spojité zatížení lze zadat pouze konstantní hodnotou působící na celé délce pole. Vizualizace výsledků je také omezena, neboť výstupy jsou zpracovávány pomocí knihovny matplotlib \cite{matplotlib} na straně serveru, což omezuje možnost interakce a značně zvyšuje výpočetní čas.
+V~rámci bakalářské práce \cite{mythesis} byl vyvinut výpočetní nástroj zaměřený na analýzu průhybu stropních systémů Porotherm z~trámů a vložek,
+tento nástroj byl integrován do webové aplikace vyvinuté v~rámci projektu \textit{Vývoj komplexního softwaru pro optimalizaci návrhu a posouzení střešních a stropních konstrukcí} \cite{wbapp}. Aplikace se však potýká s~řadou omezení, statické schéma je omezené na spojitý nosník o~maximálně pěti polích s~konzolami na obou stranách, lze zadat pouze omezený počet působících sil, spojité zatížení lze zadat pouze konstantní hodnotou působící na celé délce pole. Vizualizace výsledků je také omezena, neboť výstupy jsou zpracovávány pomocí knihovny matplotlib \cite{matplotlib} na straně serveru, což omezuje možnost interakce a značně zvyšuje výpočetní čas.
 
-Vzhledem k těmto omezením byl rozsah softwaru v rámci této diplomové práci výrazně rozšířen. Nová webová aplikace má za cíl nejen rozšířit funkčnost — zahrnující podporu pro více typů zatížení a libovolná statická schémata — ale také zlepšit grafické rozhraní a interakci s uživatelem. Toho bylo částečně dosaženo přechodem zpracování výsledků z strany serveru na stranu klienta s využitím dynamických a interaktivních vizualizací pomocí JavaScript knihovny THREE.js.
+Vzhledem k~těmto omezením je cílem této diplomové práce vytvořit nástroje, které výrazně rozšíří funkčnost a použitelnost webové aplikace, především se jedná o~podporu pro více typů zatížení a libovolná statická schémata, ale také o~vylepšení grafického rozhraní a interakce s~uživatelem. Toho bylo částečně dosaženo přechodem zpracování výsledků z~strany serveru na stranu klienta s~využitím dynamických a interaktivních vizualizací pomocí JavaScript knihovny THREE.js.
 
-Diplomová práce navazuje na bakalářskou práci a představuje sadu pokročilých softwarových nástrojů, jejichž cílem je nejen rozšířit možnosti analýzy stropních a střešních konstrukcí, ale také zjednodušit a zefektivnit proces navrhování podle nejnovějších technických norem. Potřeba dynamičtějších, přístupnějších a komplexnějších nástrojů ve stavebním inženýství je zřejmá z rostoucí složitosti architektonických návrhů a požadavků moderních stavebních předpisů.
+Diplomová práce navazuje na bakalářskou práci a představuje sadu pokročilých softwarových nástrojů, jejichž cílem je nejen rozšířit možnosti analýzy stropních a střešních konstrukcí, ale také zjednodušit a zefektivnit proces navrhování podle nejnovějších technických norem. Potřeba dynamičtějších, přístupnějších a komplexnějších nástrojů ve stavebním inženýství je zřejmá z~rostoucí složitosti architektonických návrhů a požadavků moderních stavebních předpisů.
 
 
 \section*{Cíle}
@@ -16,13 +16,13 @@ Hlavními cíli této práce jsou:
 
 \begin{itemize}
     \item \textbf{Vývoj knihovny pro statickou analýzu prutových konstrukcí}: Tato knihovna bude určena pro výpočet prutových konstrukcí deformační metodou. Knihovna umožní definování různých typů zatížení a jejich sloučení do zatěžovacích stavů.
-\item \textbf{Vývoj knihovny pro posuzování konstrukcí podle Eurokódů}: Vyvinutí nástroje, který umožní komplexní posouzení nosných prvků v souladu s Eurokódy.
-\item \textbf{Validace výsledků získaných vyvinutými výpočetními knihovnami}: Provedení srovnání výsledků s manuálními výpočty a existujícími softwarovými řešeními, za účelem ověření přesnosti a spolehlivosti nově vyvinutých knihoven.
+\item \textbf{Vývoj knihovny pro posuzování konstrukcí podle Eurokódů}: Vyvinutí nástroje, který umožní komplexní posouzení nosných prvků v~souladu s~Eurokódy.
+\item \textbf{Verifikace výsledků získaných vyvinutými výpočetními knihovnami}: Provedení srovnání výsledků získaných aplikacemi s~manuálními výpočty a existujícími softwarovými řešeními, za účelem ověření přesnosti a spolehlivosti nově vyvinutých knihoven.
 \item \textbf{Demonstrace praktického použití knihoven}: Prezentace aplikace knihoven na reálných konstrukcích a případových studiích, ilustrace jejich užitečnosti a efektivity.
-\item \textbf{Integrace knihoven do uživatelsky přívětivé webové aplikace}: Vývoj webové platformy s intuitivním grafickým uživatelským rozhraním, která zlepší přístupnost a interaktivitu výpočetních nástrojů.
+\item \textbf{Integrace knihoven do uživatelsky přívětivé webové aplikace}: Vývoj webové platformy s~intuitivním grafickým uživatelským rozhraním, která zlepší přístupnost a interaktivitu výpočetních nástrojů.
 \end{itemize}
 
 
 \section*{Rozsah}
-V této práci bude popsán vývoj a implementace jednotlivých softwarových nástrojů, bude diskutována integrace těchto nástrojů do jedné webové aplikace a jejich použití bude demonstrováno na případových studiích. K dosažení cílů jsou využity programovací jazyky Python a JavaScript, web framework Django a technologie HTMX, Alpine.js a THREE.js.
+V~této práci bude popsán vývoj a implementace jednotlivých softwarových nástrojů, bude diskutována integrace těchto nástrojů do jedné webové aplikace a jejich použití bude demonstrováno na jednoduchých příkladech. K~dosažení cílů jsou využity programovací jazyky Python a JavaScript.
 

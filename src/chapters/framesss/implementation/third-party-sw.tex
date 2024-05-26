@@ -1,26 +1,26 @@
 \subsection{Použití externího open-source softwaru}
 
-Při vývoji knihovny \texttt{framesss} bylo využito komponent z existujících open-source softwarů. Tento krok byl proveden s úmyslem stavět na robustních základech poskytnutých open-source komunitou.
+Při vývoji knihovny framesss bylo využito komponent z~existujících open-source softwarů. Tento krok byl proveden s~úmyslem stavět na robustních základech poskytnutých open-source komunitou.
 
-Základní koncept architektury byl převzat ze softwaru LESM \cite{lesm}, který byl původně vyvinut v prostředí MATLAB a licencován pod MIT licencí.
+Základní koncept architektury byl převzat ze softwaru LESM \cite{lesm}, který byl původně vyvinut v~prostředí MATLAB a licencován pod MIT licencí.
 
 Kromě toho byly při vývoji knihovny použity následující open-source knihovny a nástroje:
 \begin{itemize}
-    \item \textbf{NumPy} \cite{numpy}: Knihovna pro numerické výpočty v Pythonu, která poskytuje podporu pro práci s více-dimenzionálními poli a matice. NumPy je základním stavebním kamenem pro efektivní provádění numerických operací.
-    \item \textbf{SciPy} \cite{scipy}: Nadstavba nad NumPy, která rozšiřuje jeho funkčnost o pokročilé matematické, vědecké a technické nástroje, včetně řešení diferenciálních rovnic a optimalizace.
+    \item \textbf{NumPy} \cite{numpy}: Knihovna pro numerické výpočty v~Pythonu, která poskytuje podporu pro práci s~více-dimenzionálními poli a matice. NumPy je základním stavebním kamenem pro efektivní provádění numerických operací.
+    \item \textbf{SciPy} \cite{scipy}: Nadstavba nad NumPy, která rozšiřuje jeho funkčnost o~pokročilé matematické, vědecké a technické nástroje, včetně řešení diferenciálních rovnic a optimalizace.
     \item \textbf{SymPy} \cite{sympy}: Knihovna pro symbolické výpočty, která byla využita pro odvození matic tuhostí a vektorů zatížení.
 \end{itemize}
 
 Pro usnadnění vývoje a zajištění kvality kódu byly použity následující nástroje:
 \begin{itemize}
     \item \textbf{Git} \cite{git}: Distribuovaný verzovací systém, který umožňuje správu verzí kódu.
-    \item \textbf{GitHub} \cite{github}:  Platforma pro hostování a správu verzí kódu, která poskytuje nástroje pro spolupráci a integraci s dalšími nástroji.
+    \item \textbf{GitHub} \cite{github}:  Platforma pro hostování a správu verzí kódu, která poskytuje nástroje pro spolupráci a integraci s~dalšími nástroji.
     \item \textbf{pre-commit} \cite{precommit}: Nástroj pro automatizaci úloh před commitováním kódu, který zajišťuje, že všechny změny projdou definovanými kontrolami.
     \item \textbf{Nox} \cite{nox}: Automatizační nástroj pro správu testovacích prostředí a spouštění úloh.
     \item \textbf{Ruff} \cite{ruff}: Rychlý linter pro Python, který pomáhá udržovat konzistenci kódu a detekovat chyby.
-    \item \textbf{Poetry} \cite{poetry}: Nástroj pro správu závislostí a balíčkování, který zjednodušuje správu projektů v Pythonu.
+    \item \textbf{Poetry} \cite{poetry}: Nástroj pro správu závislostí a balíčkování, který zjednodušuje správu projektů v~Pythonu.
     \item \textbf{Black} \cite{black}: Formátovač kódu, který automaticky formátuje kód podle stanovených pravidel.
-    \item \textbf{mypy} \cite{mypy}:  Statický typový kontroler pro Python, který pomáhá detekovat potenciální chyby v kódu.
+    \item \textbf{mypy} \cite{mypy}:  Statický typový kontroler pro Python, který pomáhá detekovat potenciální chyby v~kódu.
     \item \textbf{pytest} \cite{pytest}: Framework pro psaní a spouštění testů.
     \item \textbf{Sphinx} \cite{sphinx}: Nástroj pro generování dokumentace, který umožňuje snadnou tvorbu a správu dokumentace kódu.
     \item \textbf{SonarCloud} \cite{sonarcloud}: Platforma pro analýzu kvality kódu, která poskytuje nástroje pro kontinuální integraci a hodnocení kódu.

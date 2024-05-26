@@ -5,11 +5,11 @@ Princip virtuálních prací a variační principy mechaniky jsou základem vět
 Publikace \cite[53]{prpe20} uvádí následující definice:
 \begin{definition}[Virtuální posun]
     \label{def:virtual_displacement}
-    Libovolný možný posun elementu mechanické soustavy, který je v souladu s jejími pohybovými možnostmi. Elementem mechanické soustavy rozumíme jakoukoliv její část, jež je s ostatními částmi spojena vazbami.
+    Libovolný možný posun elementu mechanické soustavy, který je v~souladu s~jejími pohybovými možnostmi. Elementem mechanické soustavy rozumíme jakoukoliv její část, jež je s~ostatními částmi spojena vazbami.
 \end{definition}
 
 \begin{definition}[Virtuální deformace]
-    Jsou odvozeny z virtuálních posunů pomocí geometrických rovnic. Virtuální posuny i deformace nenarušují vazby soustavy. Jsou fiktivní, myšlené a uděleme je elementům soustavy bez ohledu na síly a napětí, které na ně působí.
+    Jsou odvozeny z~virtuálních posunů pomocí geometrických rovnic. Virtuální posuny i deformace nenarušují vazby soustavy. Jsou fiktivní, myšlené a uděleme je elementům soustavy bez ohledu na síly a napětí, které na ně působí.
 \end{definition}
 
 \begin{definition}[Virtuální síla]
@@ -17,10 +17,10 @@ Publikace \cite[53]{prpe20} uvádí následující definice:
 \end{definition}
 
 \begin{definition}[Virtuální napětí]
-    Fiktivní, myšlené veličiny. Jsou stanoveny tak, aby v každém bodě tělesa, které je zatíženo virtuálními silami, byla zajištěna rovnováha.
+    Fiktivní, myšlené veličiny. Jsou stanoveny tak, aby v~každém bodě tělesa, které je zatíženo virtuálními silami, byla zajištěna rovnováha.
 \end{definition}
 
-Předpokládejme, že se těleso nachází v jisté rovnovážné konfiguraci, která je jednoznačně popsána vektorovým polem posunutí $$\gls{u} = \begin{Bmatrix}
+Předpokládejme, že se těleso nachází v~jisté rovnovážné konfiguraci, která je jednoznačně popsána vektorovým polem posunutí $$\gls{u} = \begin{Bmatrix}
     \gls{u_i}[ ] & \gls{v_i}[ ] & \gls{w_i}[ ]
 \end{Bmatrix}^\mathrm{T},$$ tenzorovým polem deformace $$\gls{eps} = \begin{Bmatrix}
     \gls{eps_i}[\gls{x}] & \gls{eps_i}[\gls{y}] & \gls{eps_i}[\gls{z}] & \gls{gamma_i}[\gls{y}\gls{z}] & \gls{gamma_i}[\gls{z}\gls{x}] & \gls{gamma_i}[\gls{x}\gls{y}]
@@ -32,17 +32,25 @@ Dále předpokládejme, že každému bodu tělesa je udělen malý virtuální 
 $$\gls{delta}\gls{u} = \begin{Bmatrix}
     \gls{delta}\gls{u_i}[ ] & \gls{delta}\gls{v_i}[ ] & \gls{delta}\gls{w_i}[ ]
 \end{Bmatrix}^\mathrm{T},$$
-který jej vychýlí z původní polohy v rovnovážné konfiguraci. Funkce \gls{delta}\gls{u_i}[ ], \gls{delta}\gls{v_i}[ ] a \gls{delta}\gls{w_i}[ ] jsou ve smyslu definice \ref{def:virtual_displacement} spojité a mají spojité první parciální derivace podle proměnných \gls{x}, \gls{y} a \gls{z}. Výsledné posuny $\left( \gls{u} + \gls{delta}\gls{u} \right)$ a odvozené deformace $\left( \gls{eps} + \gls{delta}\gls{eps} \right)$ se nazývají kinematicky přípustné.
+který jej vychýlí z~původní polohy v~rovnovážné konfiguraci. Funkce \gls{delta}\gls{u_i}[ ], \gls{delta}\gls{v_i}[ ] a \gls{delta}\gls{w_i}[ ] jsou ve smyslu definice \ref{def:virtual_displacement} spojité a mají spojité první parciální derivace podle proměnných \gls{x}, \gls{y} a \gls{z}. Výsledné posuny $\left( \gls{u} + \gls{delta}\gls{u} \right)$ a odvozené deformace $\left( \gls{eps} + \gls{delta}\gls{eps} \right)$ se nazývají kinematicky přípustné.
 
-Připojením virtuálních objemových sil $$\gls{X_bar} = \begin{Bmatrix}
-    \gls{delta}\overline{X} & \gls{delta}\overline{Y} & \gls{delta}\overline{Z}
-\end{Bmatrix}^\mathrm{T}$$ a virtuálních povrchových sil $$\gls{p_bar} = \begin{Bmatrix}
-    \gls{delta} p_{\gls{x}} & \gls{delta} p_{\gls{y}} & \gls{delta} p_{\gls{z}}
-\end{Bmatrix}^\mathrm{T},$$ změníme stav zatížení tělesa a připojením virtuálních napětí $$\gls{delta}\gls{sigma} = \begin{Bmatrix}
+Připojením virtuálních objemových sil 
+\begin{equation*}
+    \gls{delta}\gls{X_bar} = \begin{Bmatrix}
+        \gls{delta} \overline{X} & \gls{delta}\overline{Y} & \gls{delta}\overline{Z}
+    \end{Bmatrix}^\mathrm{T}
+\end{equation*}
+a virtuálních povrchových sil 
+\begin{equation*}
+    \gls{delta}\gls{p_bar} = \begin{Bmatrix}
+        \gls{delta} p_{\gls{x}} & \gls{delta} p_{\gls{y}} & \gls{delta} p_{\gls{z}}
+    \end{Bmatrix}^\mathrm{T},
+\end{equation*} 
+změníme stav zatížení tělesa a připojením virtuálních napětí $$\gls{delta}\gls{sigma} = \begin{Bmatrix}
     \gls{delta}\gls{sigma_i}[\gls{x}] & \gls{delta}\gls{sigma_i}[\gls{y}] & \gls{delta}\gls{sigma_i}[\gls{z}] & \gls{delta}\gls{tau_i}[\gls{y}\gls{z}] & \gls{delta}\gls{tau_i}[\gls{z}\gls{x}] & \gls{delta}\gls{tau_i}[\gls{x}\gls{y}]
 \end{Bmatrix}^\mathrm{T},$$ jeho napjatost.
 
-Nemá-li být narušena rovnováha tělesa, musí v každém bodě platit rovnice \ref{eq:equilibrium_equations}
+Nemá-li být narušena rovnováha tělesa, musí v~každém bodě platit rovnice \ref{eq:equilibrium_equations}
 
 \begin{equation}
     \boldsymbol\partial \gls{delta}\gls{sigma} + \gls{delta}\gls{X_bar} = \matr{0},
@@ -78,7 +86,7 @@ Princip virtuálních prací lze matematicky zapsat následovně
     \dd{\gls{gamma}}.}_{\text{virtuální práce vnějších sil}}
 \end{equation}
 
-Vhodným upravením rovnice \ref{eq:principle_of_virtual_work}, při uvážení vzájemné nezávislosti zavedených virtuálních polí, obdržíme čtyři rovnice, které musí být splněny nezávisle na sobě.
+Vhodným upravením rovnice \ref{eq:principle_of_virtual_work}, při uvážení vzájemné nezávislosti zavedených virtuálních polí, obdržíme čtyři rovnice, které musí být splněny nezávisle na sobě,
 
 \begin{itemize}
     \item Clapeyronův (divergenční) teorém
@@ -91,7 +99,7 @@ Vhodným upravením rovnice \ref{eq:principle_of_virtual_work}, při uvážení 
         +
         \int_{\gls{gamma}} \gls{p_bar}^{\mathrm{T}} \gls{u} \dd{\gls{gamma}},
     \end{equation}
-    \item princip virtuálních posunutí,
+    \item princip virtuálních posunutí
     \begin{equation}
         \label{eq:principle_of_virtual_displacement}
         \int_{\gls{omega}}\gls{sigma}^{\mathrm{T}} \gls{delta}\gls{eps} \dd{\gls{omega}}
@@ -101,7 +109,7 @@ Vhodným upravením rovnice \ref{eq:principle_of_virtual_work}, při uvážení 
         +
         \int_{\gls{gamma}} \gls{p_bar}^{\mathrm{T}} \gls{delta}\gls{u} \dd{\gls{gamma}},
     \end{equation}
-    \item princip virtuálních sil,
+    \item princip virtuálních sil
     \begin{equation}
         \label{eq:principle_of_virtual_forces}
         \int_{\gls{omega}} \gls{delta}\gls{sigma}^{\mathrm{T}} \gls{eps} \dd{\gls{omega}}
@@ -127,22 +135,19 @@ Vhodným upravením rovnice \ref{eq:principle_of_virtual_work}, při uvážení 
 
 Dále se budeme zabývat principem virtuálních posunutí, ze kterého odvodíme algoritmus deformační metody.
 
-Uvažujme takové virtuální posuny \gls{delta}\gls{u}, které nenarušují kinematické okrajové podmínky,
-
+Uvažujme takové virtuální posuny \gls{delta}\gls{u}, které nenarušují kinematické okrajové podmínky
 \begin{equation}
     \label{eq:virtual_displacements_boundary}
     \gls{delta}\gls{u} = \matr{0}, \quad \text{na hranici \gls{gamma_u}},
 \end{equation}
 
-a zároveň splňují geometrické rovnice uvnitř tělesa,
-
+a zároveň splňují geometrické rovnice uvnitř tělesa
 \begin{equation}
     \label{eq:pvd_geometric_eqs}
     \gls{delta}\gls{eps} = \boldsymbol{\partial}\gls{delta}\gls{u}, \quad \text{uvnitř tělesa \gls{omega}}.
 \end{equation}
 
-Rovnici \ref{eq:principle_of_virtual_displacement} zapíšeme s přihlédnutím k \ref{eq:virtual_displacements_boundary},
-
+Rovnici \ref{eq:principle_of_virtual_displacement} zapíšeme s~přihlédnutím k~\ref{eq:virtual_displacements_boundary},
 \begin{equation}
     \label{eq:pvd_start}
     \int_{\gls{omega}}\gls{sigma}^{\mathrm{T}} \gls{delta}\gls{eps} \dd{\gls{omega}}
@@ -153,7 +158,7 @@ Rovnici \ref{eq:principle_of_virtual_displacement} zapíšeme s přihlédnutím 
     \int_{\gls{gamma_p}} \gls{p_bar}^{\mathrm{T}} \gls{delta}\gls{u} \dd{\gls{gamma_p}}.
 \end{equation}
 
-Levou stranu rovnice \ref{eq:pvd_start} upravíme dosazením z rovnice \ref{eq:pvd_geometric_eqs},
+Levou stranu rovnice \ref{eq:pvd_start} upravíme dosazením z~rovnice \ref{eq:pvd_geometric_eqs},
 
 \begin{equation}
     \int_{\gls{omega}}\gls{sigma}^{\mathrm{T}} \gls{delta}\gls{eps} \dd{\gls{omega}}
@@ -161,7 +166,7 @@ Levou stranu rovnice \ref{eq:pvd_start} upravíme dosazením z rovnice \ref{eq:p
     \int_{\gls{omega}}\gls{sigma}^{\mathrm{T}} \boldsymbol\partial \gls{delta}\gls{u} \dd{\gls{omega}},
 \end{equation}
 
-a zintegrujeme per partes, pomocí věty o integraci tenzorového pole \cite[55]{prpe20},
+a zintegrujeme per partes, pomocí věty o~integraci tenzorového pole \cite[55]{prpe20},
 
 \begin{equation}
     \label{eq:pvd_per_partes}
@@ -172,7 +177,7 @@ a zintegrujeme per partes, pomocí věty o integraci tenzorového pole \cite[55]
     \int_{\gls{omega}} \gls{delta}\gls{u}^{\mathrm{T}} \boldsymbol\partial \gls{sigma} \dd{\gls{omega}}.
 \end{equation}
 
-Dosazením z rovnice \ref{eq:pvd_per_partes} do původního vztahu \ref{eq:pvd_start} dostaneme rovnici
+Dosazením z~rovnice \ref{eq:pvd_per_partes} do původního vztahu \ref{eq:pvd_start} dostaneme rovnici
 
 \begin{equation}
     \int_{\gls{gamma}} \gls{delta}\gls{u}^{\mathrm{T}} \gls{normal_matrix} \gls{sigma} \dd{\gls{gamma}}
@@ -185,7 +190,7 @@ Dosazením z rovnice \ref{eq:pvd_per_partes} do původního vztahu \ref{eq:pvd_s
     \int_{\gls{gamma_p}} \gls{p_bar}^{\mathrm{T}} \gls{delta}\gls{u} \dd{\gls{gamma_p}},
 \end{equation}
 
-rozepsáním prvního integrálu na část s předepsaným zatížením \gls{gamma_p} a s předepsanými posuny \gls{gamma_u} dostaneme tvar
+rozepsáním prvního integrálu na část s~předepsaným zatížením \gls{gamma_p} a s~předepsanými posuny \gls{gamma_u} dostaneme tvar
 
 \begin{equation}
     \small

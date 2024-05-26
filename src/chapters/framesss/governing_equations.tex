@@ -1,11 +1,11 @@
 \section{Základní rovnice teorie pružnosti}
 
-V této části budou představeny základní veličiny a rovnice nezbytné pro popis chování pružných těles. Zaměříme se na vektor posunutí, vektor napětí a vektor deformací. Dále popíšeme geometrické, fyzikální a statické rovnice, které jsou klíčové pro pochopení základních principů pružnosti. Na závěr uvedeme okrajové podmínky,
+V~této části budou představeny základní veličiny a rovnice nezbytné pro popis chování pružných těles. Zaměříme se na vektor posunutí, vektor napětí a vektor deformací. Dále popíšeme geometrické, fyzikální a statické rovnice, které jsou klíčové pro pochopení základních principů pružnosti. Na závěr uvedeme okrajové podmínky.
 
 \subsection{Přehled základních veličin}
 
 \subsubsection*{Vektor posunutí}
-Posunutí libovolného bodu pružného tělesa v prostoru můžeme rozložit do tří vzájemně kolmých složek, které je možné zapsat ve formě vektoru posunutí~\cite[2]{teorie_pruznosti}
+Posunutí libovolného bodu pružného tělesa v~prostoru můžeme rozložit do tří vzájemně kolmých složek, které je možné zapsat ve formě vektoru posunutí~\cite[2]{teorie_pruznosti}
 
 \begin{equation}
     \gls{u} 
@@ -16,8 +16,8 @@ Posunutí libovolného bodu pružného tělesa v prostoru můžeme rozložit do 
 \end{equation}
 
 \subsubsection*{Vektor deformací}
-Každé z uvedených napětí pracuje na odpovídající poměrné deformaci, normálovému napětí \gls{sigma_i}[i] odpovídá poměrná deformace \gls{eps_i}[i] a smykovému
-napětí \gls{tau_i}[ij] odpovídá zkosení \gls{gamma_i}[ij]. Poměrné deformace je možné zapsat v podobě vektoru poměrných deformací \cite[3]{teorie_pruznosti}
+Každé z~uvedených napětí pracuje na odpovídající poměrné deformaci, normálovému napětí \gls{sigma_i}[i] odpovídá poměrná deformace \gls{eps_i}[i] a smykovému
+napětí \gls{tau_i}[ij] odpovídá zkosení \gls{gamma_i}[ij]. Poměrné deformace je možné zapsat v~podobě vektoru poměrných deformací \cite[3]{teorie_pruznosti}
 
 \begin{equation}
     \gls{eps}
@@ -33,15 +33,15 @@ napětí \gls{tau_i}[ij] odpovídá zkosení \gls{gamma_i}[ij]. Poměrné deform
 \end{equation}
 
 \subsubsection*{Vektor napětí}
-Na obrázku \ref{fig:point_stress} jsou zobrazena napětí v materiálovém bodě tělesa. Ve směru jednotlivých os systému souřadnic působí tři normálová napětí \gls{sigma_i}[\gls{x}], \gls{sigma_i}[\gls{y}] a \gls{sigma_i}[\gls{z}]. Rovnoběžně s osami systému působí šest smykových napětí v rovinách \gls{x}\gls{y}, \gls{y}\gls{z}, \gls{z}\gls{x} \cite[2]{teorie_pruznosti}.
+Na obrázku \ref{fig:point_stress} jsou zobrazena napětí v~materiálovém bodě tělesa. Ve směru jednotlivých os systému souřadnic působí tři normálová napětí \gls{sigma_i}[\gls{x}], \gls{sigma_i}[\gls{y}] a \gls{sigma_i}[\gls{z}]. Rovnoběžně s~osami systému působí šest smykových napětí v~rovinách \gls{x}\gls{y}, \gls{y}\gls{z}, \gls{z}\gls{x} \cite[2]{teorie_pruznosti}.
 
 \begin{figure}[H]
     \includegraphics[height=5cm]{assets/figures/framesss/point_stress.png}
-    \caption[Napětí v materiálovém bodě]{Napětí v materiálovém bodě, převzato z \cite[3]{teorie_pruznosti}}
+    \caption[Napětí v~materiálovém bodě]{Napětí v~materiálovém bodě, převzato z~\cite[3]{teorie_pruznosti}}
     \label{fig:point_stress}
 \end{figure}
 
-Uplatněním předpokladu o vzájemnosti smykových napětí, je možné považovat jen tři smyková napětí za nezávislá \cite[3]{teorie_pruznosti}.
+Uplatněním předpokladu o~vzájemnosti smykových napětí, je možné považovat jen tři smyková napětí za nezávislá \cite[3]{teorie_pruznosti}.
 
 \begin{equation}
     \begin{aligned}
@@ -51,7 +51,7 @@ Uplatněním předpokladu o vzájemnosti smykových napětí, je možné považo
     \end{aligned}
 \end{equation}
 
-Složky lze zapsat v podobě vektoru napětí
+Složky lze zapsat v~podobě vektoru napětí
 
 \begin{equation}
     \gls{sigma} 
@@ -69,7 +69,7 @@ Složky lze zapsat v podobě vektoru napětí
 \subsection{Přehled základních rovnic}
 
 \subsubsection*{Geometrické rovnice}
-Tělesa mění z nejrůznějších příčin svůj tvar a objem -- deformují se. Pro deformaci elementárního kvádru jsou typické dva základní geometricko-deformační modely. První předpokládá protažení hran kvádru ve směrech souřadnicových os při zachování pravých úhlů mezi stěnami a druhý model se vyznačuje změnami pravých úhlů mezi stěnami kvádru při zachování délek hran \cite[9]{prpe10}. Na obr. \ref{fig:elementary_block} je pro názornost nakreslen pouze průmět kvádru do roviny \gls{x}\gls{y}.
+Tělesa mění z~nejrůznějších příčin svůj tvar a objem -- deformují se. Pro deformaci elementárního kvádru jsou typické dva základní geometricko-deformační modely. První předpokládá protažení hran kvádru ve směrech souřadnicových os při zachování pravých úhlů mezi stěnami a druhý model se vyznačuje změnami pravých úhlů mezi stěnami kvádru při zachování délek hran \cite[9]{prpe10}. Na obr. \ref{fig:elementary_block} je pro názornost nakreslen pouze průmět kvádru do roviny \gls{x}\gls{y}.
 
 \begin{figure}[H]
     \input{assets/figures/framesss/geometrical_eqns.tex}
@@ -89,7 +89,7 @@ Prodloužení kvádru ve směru \gls{x} můžeme vyjářit následovně
     \pdv{\gls{u_i}[ ]}{\gls{x}}.
 \end{equation}
 
-Analogicky lze získat vztahy pro \gls{eps_i}[\gls{y}] a \gls{eps_i}[\gls{z}]. Shrnutí vztahů pro poměrné prodloužení ve směru souřadnicových os je uvedeno v \ref{eq:normal_strain}.
+Analogicky lze získat vztahy pro \gls{eps_i}[\gls{y}] a \gls{eps_i}[\gls{z}]. Shrnutí vztahů pro poměrné prodloužení ve směru souřadnicových os je uvedeno v~\ref{eq:normal_strain}.
 
 \begin{equation}
     \label{eq:normal_strain}
@@ -127,19 +127,19 @@ Analogicky lze zapsat vztahy pro zbývající smyková zkosení
 
 \subsubsection*{Fyzikální rovnice}
 
-Jako fyzikální vztahy se označují vztahy mezi napětími a poměrnými deformacemi. Jak je známo z pružnosti, poměr mezi podélnou a příčnou změnou délky tělesa je konstantní a je popsán Poissonovým součinitelem \gls{nu}. Potom je na místě předpokládat, že velikost poměrného prodloužení \gls{eps_i}[\gls{x}] bude ovlivněna nejen napětím \gls{sigma_i}[\gls{x}], ale v závislosti na hodnotě \gls{nu} také napětími ve směrech \gls{y} a \gls{z} \cite[7]{teorie_pruznosti}
+Jako fyzikální vztahy se označují vztahy mezi napětím a poměrnými deformacemi. Jak je známo z~pružnosti, poměr mezi podélnou a příčnou změnou délky tělesa je konstantní a je popsán Poissonovým součinitelem \gls{nu}. Potom je na místě předpokládat, že velikost poměrného prodloužení \gls{eps_i}[\gls{x}] bude ovlivněna nejen napětím \gls{sigma_i}[\gls{x}], ale v~závislosti na hodnotě \gls{nu} také napětím ve směrech \gls{y} a \gls{z} \cite[7]{teorie_pruznosti}
 
 \begin{equation}
     \gls{eps_i}[\gls{x}] = \frac{1}{\gls{E}} \left[ \gls{sigma_i}[\gls{x}] - \gls{nu} (\gls{sigma_i}[\gls{y}] + \gls{sigma_i}[\gls{z}])  \right].
 \end{equation}
 
-U smyku lze předpokládat, že vztah mezi smykovým napětím \gls{tau_i}[ij] a zkosením \gls{gamma_i}[ij] bude lineární
+U~smyku lze předpokládat, že vztah mezi smykovým napětím \gls{tau_i}[ij] a zkosením \gls{gamma_i}[ij] bude lineární
 
 \begin{equation}
     \gls{gamma_i}[ij] = \frac{\gls{tau_i}[ij]}{2 \gls{G}}.
 \end{equation}
 
-Fyzikální vztahy pro pružné těleso v prostoru můžeme zapsat ve tvaru
+Fyzikální vztahy pro pružné těleso v~prostoru můžeme zapsat ve tvaru
 
 \begin{equation}
     \begin{aligned}
@@ -153,9 +153,9 @@ Fyzikální vztahy pro pružné těleso v prostoru můžeme zapsat ve tvaru
 \end{equation}
 
 \subsubsection*{Statické rovnice}
-V případě pružného tělesa je vhodné napsat silové podmínky rovnováhy na vyjmutém diferenciálním objemu o rozměrech $\dd{\gls{x}}$, $\dd{\gls{y}}$, $\dd{\gls{z}}$, který je zobrazen na obrázku \ref{fig:stresses} \cite[6]{teorie_pruznosti}.
+V~případě pružného tělesa je vhodné napsat silové podmínky rovnováhy na vyjmutém diferenciálním objemu o~rozměrech $\dd{\gls{x}}$, $\dd{\gls{y}}$, $\dd{\gls{z}}$, který je zobrazen na obrázku \ref{fig:stresses} \cite[6]{teorie_pruznosti}.
 
-Pro lepší přehlednost jsou napětí označena jako $\gls{sigma_i}[i]'$ a $\gls{tau_i}[ij]'$ označena napětí změněná o přírůstek na diferenciálním rozměru objemu, tedy například
+Pro lepší přehlednost jsou napětí označená jako $\gls{sigma_i}[i]'$ a $\gls{tau_i}[ij]'$ napětí změněná o~přírůstek na diferenciálním rozměru objemu, tedy například
 
 \begin{equation}
     \label{eq:equilibrium_eq_helpers}
@@ -166,17 +166,17 @@ Pro lepší přehlednost jsou napětí označena jako $\gls{sigma_i}[i]'$ a $\gl
 
 \begin{figure}[H]
     \includegraphics[height=6cm]{assets/figures/framesss/stresses.png}
-    \caption[Napětí na diferenciálním výseku tělesa]{Napětí na diferenciálním výseku tělesa, převzato z \cite[5]{teorie_pruznosti}}
+    \caption[Napětí na diferenciálním výseku tělesa]{Napětí na diferenciálním výseku tělesa, převzato z~\cite[5]{teorie_pruznosti}}
     \label{fig:stresses}
 \end{figure}
 
-Výslednice napětí \gls{sigma_i}[\gls{x}] se získá vynásobením napětí a plochy, na které působí
+Výslednice napětí \gls{sigma_i}[\gls{x}] se získá vynásobením napětí a plochy na které působí,
 
 \begin{equation}
-    F_{\gls{sigma_i}[ ],\gls{x}} = \gls{sigma_i}[\gls{x}] \dd{\gls{y}} \dd{\gls{z}},
+    F_{\gls{sigma_i}[ ],\gls{x}} = \gls{sigma_i}[\gls{x}] \dd{\gls{y}} \dd{\gls{z}}.
 \end{equation}
 
-silovou podmínku rovnováhy ve směru osy \gls{x} je možné zapsat
+Silovou podmínku rovnováhy ve směru osy \gls{x} je možné zapsat jako
 
 \begin{equation}
     \label{eq:equilibrium_eq}
@@ -221,7 +221,7 @@ který lze dále upravit na
     = 0.
 \end{equation}
 
-Obdobně lze napsat podmínky rovnováhy o pro směry \gls{y} a \gls{z}. Takto sestavené rovnice doplníme o objemové síly $X$, $Y$ a $Z$, působící ve směrech jednotlivých souřadnicových os, získáme výsledný tvar podmínek rovnováhy,
+Obdobně lze napsat podmínky rovnováhy o~pro směry \gls{y} a \gls{z}. Takto sestavené rovnice doplníme o~objemové síly $X$, $Y$ a $Z$, působící ve směrech jednotlivých souřadnicových os, získáme výsledný tvar podmínek rovnováhy,
 
 \begin{equation}
     \begin{aligned}
@@ -242,7 +242,7 @@ Obdobně lze napsat podmínky rovnováhy o pro směry \gls{y} a \gls{z}. Takto s
         \pdv{\gls{tau_i}[\gls{z}\gls{y}]}{\gls{y}}
         +
         \pdv{\gls{sigma_i}[\gls{z}]}{\gls{z}}
-        + Z & = 0.
+        + Z~& = 0.
     \end{aligned}
 \end{equation}
 
@@ -251,7 +251,7 @@ Obdobně lze napsat podmínky rovnováhy o pro směry \gls{y} a \gls{z}. Takto s
 Složky napětí \gls{sigma} i složky posunutí \gls{eps} musí vyhovovat okrajovým podmínkám předepsaným na hranici tělesa $\gls{gamma} = \gls{gamma_p} + \gls{gamma_u}$.
 
 \subsubsection*{Statické okrajové podmínky}
-Statické okrajové podmínky tvoří soustavu tří lineárních algebraických rovnic a vyžadují požadavek rovnováhy pole napětí \gls{sigma} s předepsaným zatížením \gls{p_bar} na části hranice \gls{gamma_p} \cite[35]{prpe10}. V maticovém tvaru je lze zapsat
+Statické okrajové podmínky tvoří soustavu tří lineárních algebraických rovnic a vyžadují požadavek rovnováhy pole napětí \gls{sigma} s~předepsaným zatížením \gls{p_bar} na části hranice \gls{gamma_p} \cite[35]{prpe10}. V~maticovém tvaru je lze zapsat
 
 \begin{equation}
     \begin{bmatrix}
@@ -294,9 +294,9 @@ Kinematické (geometrické) okrajové podmínky se vztahují na část hranice \
 
 \subsection{Shrnutí}
 
-Pro úplný popis chování pružného tělesa je v každém jeho bodě potřeba získat hodnoty 15 neznámých veličin, 3 složky posunutí \gls{u}, 6 složek deformací \gls{eps} a 6 složek napětí \gls{sigma}. K jejich vypočtení máme k dispozici 15 rovnic, 6 geometrických rovnic, 6 fyzikálních rovnic a 3 statické rovnice (podmínky rovnováhy) \cite[8]{teorie_pruznosti}.
+Pro úplný popis chování pružného tělesa je v~každém jeho bodě potřeba získat hodnoty 15 neznámých veličin, 3 složky posunutí \gls{u}, 6 složek deformací \gls{eps} a 6 složek napětí \gls{sigma}. K~jejich vypočtení máme k~dispozici 15 rovnic, 6 geometrických rovnic, 6 fyzikálních rovnic a 3 statické rovnice (podmínky rovnováhy) \cite[8]{teorie_pruznosti}.
 
-Zmíněné rovnice lze zapsat v kompaktním tvaru:
+Zmíněné rovnice lze zapsat v~kompaktním tvaru:
 \begin{alignat}{2}
     \text{statické~rovnice} \quad && \boldsymbol\partial \gls{sigma}^\mathrm{T} + \gls{X_bar} &= \matr{0}, \label{eq:equilibrium_equations}\\
     \text{fyzikální~rovnice} \quad && \gls{sigma} &= \gls{D} \gls{eps}, \label{eq:constitutive_equations}\\
@@ -320,7 +320,7 @@ kde
             \gls{gamma_i}[\gls{x}\gls{y}] &
             \gls{gamma_i}[\gls{y}\gls{z}] &
             \gls{gamma_i}[\gls{z}\gls{x}]
-        \end{Bmatrix}^\mathrm{T}
+        \end{Bmatrix}^\mathrm{T},
     \\
     %& \text{\glsdesc{D}}
     %&& \quad \gls{D} =
@@ -386,7 +386,7 @@ Postupný dosazením \ref{eq:kinematic_equations} a \ref{eq:constitutive_equatio
 
 
 \begin{citeQuote}{prpe10}[36]
-    S přesným řešením systému podmínečných rovnic se v inženýrské praxi setkáváme poměrně zřídka. S výjimkou několika speciálních typů konstrukcí, jako jsou prutové soustavy nebo rotačně symetrické a symetricky zatížené prostorové konstrukce (např. válcové, kulové ap.), je zpravidla třeba použít řešení přibližných.
+    S~přesným řešením systému podmínečných rovnic se v~inženýrské praxi setkáváme poměrně zřídka. S~výjimkou několika speciálních typů konstrukcí, jako jsou prutové soustavy nebo rotačně symetrické a symetricky zatížené prostorové konstrukce (např. válcové, kulové ap.), je zpravidla třeba použít řešení přibližných.
 \end{citeQuote}
 
 \begin{citeQuote}{fem_lourenco}[kap. 1.1]

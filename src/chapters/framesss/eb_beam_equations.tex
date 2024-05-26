@@ -6,7 +6,7 @@
     \label{fig:deformed_beam}
 \end{figure}
 
-Dle Euler-Bernoulliho hypotézy o zachování kolmosti příčných řezů k deformované střednici prutu lze posunutí \gls{u_i}[ ] ve směru osy \gls{x}, vyjádřit jako funkci vzdálenosti od osy \gls{z} a úhlu pootočení příčného řezu \gls{phi_i}[ ](\gls{x}) \cite[58]{ymkp}. Vektor posunutí \gls{u} tedy lze zapsat jako
+Dle Euler-Bernoulliho hypotézy o~zachování kolmosti příčných řezů k~deformované střednici prutu lze posunutí \gls{u_i}[ ] ve směru osy \gls{x}, vyjádřit jako funkci vzdálenosti od osy \gls{z} a úhlu pootočení příčného řezu \gls{phi_i}[ ](\gls{x}) \cite[58]{ymkp}. Vektor posunutí \gls{u} tedy lze zapsat jako
 \begin{equation}
     \gls{u} = 
     \begin{Bmatrix}
@@ -87,11 +87,11 @@ Funkci ohybového momentu lze získat integrací po průřezu podle vztahu,
 
 \subsubsection{Bázové funkce} \label{sec:eb_shape_functions}
 
-Ohýbaný prut je v rovině dán pomocí dvou uzlů, $a$ a $b$. V každém koncovém uzlu zavedeme koncové posunutí ve směru lokální osy \gls{z} a pootočení okolo lokální osy \gls{y}, viz obr. \ref{fig:deformed_beam}. Vektor zobecněných posunutí má tvar,
+Ohýbaný prut je v~rovině dán pomocí dvou uzlů, $a$ a $b$. V~každém koncovém uzlu zavedeme koncové posunutí ve směru lokální osy \gls{z} a pootočení okolo lokální osy \gls{y}, viz obr. \ref{fig:deformed_beam}. Vektor zobecněných posunutí má tvar
 \begin{equation}
     \gls{d} = \begin{Bmatrix}
         \gls{w_i}[a] \\ \gls{phi_i}[a] \\ \gls{w_i}[b] \\ \gls{phi_i}[b]
-    \end{Bmatrix}
+    \end{Bmatrix}.
 \end{equation}
 
 Posunutí $\gls{w_i}[ ](\gls{x})$ budeme opět aproximovat pomocí vektoru koncových posunutí \gls{d} a matice bázových funckí \gls{N},
@@ -112,7 +112,7 @@ Posunutí $\gls{w_i}[ ](\gls{x})$ budeme opět aproximovat pomocí vektoru konco
     \end{Bmatrix}.
 \end{equation}
 
-Pootočení průřezu \gls{phi_i}[ ](\gls{x}) lze určit ze vztahu,
+Pootočení průřezu \gls{phi_i}[ ](\gls{x}) lze určit ze vztahu
 \begin{equation}
     \label{eq:rotation_approximation}
     \gls{phi_i}[ ](\gls{x}) = - \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} \approx - \dv{\gls{N}(\gls{x})}{\gls{x}} \gls{d}.
@@ -125,7 +125,7 @@ Bázové funkce \gls{N_i}[i] budeme hledat ve tvaru polynomu třetího stupně,
 \end{equation}
 kde $a_i, b_i, c_i$ a $d_i$ jsou zatím neznámé koeficienty.
 
-Derivace bázové funkce podle \gls{x} je rovna,
+Derivace bázové funkce podle \gls{x} je rovna
 \begin{equation}
     \label{eq:eb_beam_shape_fnc_dx}
     \dv{\gls{N_i}[i](\gls{x})}{\gls{x}} = 3 a_{i} \gls{x}^{2} + 2 b_{i} \gls{x} + c_{i}.
@@ -167,7 +167,7 @@ Funkce \ref{eq:eb_beam_shape_fnc} a \ref{eq:eb_beam_shape_fnc_dx} lze přepsat d
     \end{Bmatrix},
 \end{equation}
 
-Dosazením vztahu \ref{eq:shape_function_coefficients_vector} do \ref{eq:deformation_approximation} získáme,
+Dosazením vztahu \ref{eq:shape_function_coefficients_vector} do \ref{eq:deformation_approximation} získáme
 \begin{equation}
     \label{eq:w_midstep}
     \gls{w_i}[ ] (\gls{x}) = 
@@ -213,7 +213,7 @@ a dosazením \ref{eq:derivation_shape_function_coefficients_vector} do \ref{eq:r
         \gls{phi_i}[b] \\
     \end{Bmatrix}.
 \end{equation}
-Okrajové podmínky, patrné z \autoref{fig:deformed_beam} na prvku jsou,
+Okrajové podmínky, patrné z~\autoref{fig:deformed_beam} na prvku jsou,
 \begin{subequations}
     \begin{equation}
         \gls{w_i}[ ](0) = \gls{w_i}[a],
@@ -289,9 +289,9 @@ přenásobením zleva maticí $\matr{A}^{-1}$ dostaneme,
 \end{equation}
 
 Pro další výpočty použijeme knihovnu SymPy\footnote{
-    SymPy je open source knihovna pro symbolické výpočty v jazyce Python. Umožňuje manipulaci a řešení matematických výrazů v symbolické podobě, což zahrnuje algebraické operace, diferenciální a integrální počty, řešení rovnic, práci s maticemi a další matematické úlohy \cite{sympy}.
-} v prostředí JupyterLab\footnote{
-JupyterLab je interaktivní vývojové prostředí, které umožňuje vytváření a sdílení dokumentů obsahujících živý kód, rovnice, vizualizace a text. Je navrženo jako nástupce klasických Jupyter Notebooků a nabízí rozšířené možnosti pro práci s daty a vývoj aplikací. JupyterLab podporuje různé programovací jazyky, přičemž nejpoužívanější je Python. Uživatelé mohou využívat JupyterLab k analýze dat, strojovému učení, vizualizaci dat a vědeckému výzkumu, díky jeho flexibilitě a širokému spektru dostupných rozšíření a integrací.
+    SymPy je open source knihovna pro symbolické výpočty v~jazyce Python. Umožňuje manipulaci a řešení matematických výrazů v~symbolické podobě, což zahrnuje algebraické operace, diferenciální a integrální počty, řešení rovnic, práci s~maticemi a další matematické úlohy \cite{sympy}.
+} v~prostředí JupyterLab\footnote{
+JupyterLab je interaktivní vývojové prostředí, které umožňuje vytváření a sdílení dokumentů obsahujících živý kód, rovnice, vizualizace a text. Je navrženo jako nástupce klasických Jupyter Notebooků a nabízí rozšířené možnosti pro práci s~daty a vývoj aplikací. JupyterLab podporuje různé programovací jazyky, přičemž nejpoužívanější je Python. Uživatelé mohou využívat JupyterLab k~analýze dat, strojovému učení, vizualizaci dat a vědeckému výzkumu, díky jeho flexibilitě a širokému spektru dostupných rozšíření a integrací.
 }.
 
 Nejprve importujeme knihovnu SymPy do prostředí JupyterLab.
@@ -303,7 +303,7 @@ Nejprve importujeme knihovnu SymPy do prostředí JupyterLab.
     \end{Verbatim}
 \end{tcolorbox}
 
-V dalším kroku definujeme symbolické proměnné, které budeme potřebovat pro další výpočet.
+V~dalším kroku definujeme symbolické proměnné, které budeme potřebovat pro další výpočet.
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{2}{\boxspacing}
@@ -317,7 +317,7 @@ V dalším kroku definujeme symbolické proměnné, které budeme potřebovat pr
     \end{Verbatim}
 \end{tcolorbox}
         
-Do proměnné \texttt{A} uložíme matici $\matr{A}$ z rovnice \ref{eq:eb_beam_A} a vypíšeme ji do výstupní buňky.
+Do proměnné \texttt{A} uložíme matici $\matr{A}$ z~rovnice \ref{eq:eb_beam_A} a vypíšeme ji do výstupní buňky.
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{3}{\boxspacing}
@@ -422,7 +422,7 @@ Matici tuhosti vypočítáme opět podle vztahu \ref{eq:K}, uvažujeme konstantn
     
 \subsubsection{Vektor zatížení}
 
-Stejně, jako v případě taženého-tlačeného prutu, uvažujeme lineární spojité zatížení působící po celé délce prvku,
+Stejně, jako v~případě taženého-tlačeného prutu, uvažujeme lineární spojité zatížení působící po celé délce prvku,
 
 \begin{equation}
     \overline{f_{\gls{z}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a}.

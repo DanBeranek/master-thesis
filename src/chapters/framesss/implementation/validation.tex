@@ -1,37 +1,37 @@
 \subsection{Testování}
 
-Pro zajištění spolehlivosti a přesnosti knihovny \texttt{framesss} byla implementována řada automatizovaných testů. Automatizované testování umožňuje včasné odhalení a opravu chyb, což přispívá k celkové stabilitě a kvalitě knihovny.
+Pro zajištění spolehlivosti a přesnosti knihovny framesss byla implementována řada automatizovaných testů. Automatizované testování umožňuje včasné odhalení a opravu chyb, což přispívá k~celkové stabilitě a kvalitě knihovny.
 
-Testování knihovny \texttt{framesss} probíhá v různých verzích Pythonu (3.9, 3.10, 3.11, 3.12), aby byla odhalena případná kolize v závislostech mezi verzemi. Lokálně jsou testy spouštěny pomocí nástroje \texttt{nox} \cite{nox}, který vytváří virtuální prostředí, instaluje potřebné knihovny a spouští všechny testy, včetně validačních, \texttt{pre-commit} \cite{precommit} a \texttt{mypy} \cite{mypy} testů.
+Testování knihovny framesss probíhá v~různých verzích Pythonu (3.9, 3.10, 3.11, 3.12), aby byla odhalena případná kolize v~závislostech mezi verzemi. Lokálně jsou testy spouštěny pomocí nástroje nox \cite{nox}, který vytváří virtuální prostředí, instaluje potřebné knihovny a spouští všechny testy, včetně verifikačních, pre-commit \cite{precommit} a mypy \cite{mypy} testů.
 
 \subsubsection*{Unit testy}
-Unit test je základní typ testu používaný v softwarovém vývoji, jehož cílem je ověřit správnou funkci jednotlivých částí kódu. Unit testy se zaměřují na testování nejmenších, izolovaných částí aplikace, jako jsou jednotlivé funkce nebo metody tříd. Hlavní charakteristiky unit testů jsou
+Unit test je základní typ testu používaný v~softwarovém vývoji, jehož cílem je ověřit správnou funkci jednotlivých částí kódu. Unit testy se zaměřují na testování nejmenších, izolovaných částí aplikace, jako jsou jednotlivé funkce nebo metody tříd. Hlavní charakteristiky unit testů jsou
 \begin{itemize}
     \item \textbf{Izolace}: Testy jsou navrženy tak, aby byly nezávislé na ostatních částech kódu. Každý test kontroluje pouze jednu konkrétní část funkčnosti.
     \item \textbf{Automatizace}: Testy jsou spouštěny automaticky, což umožňuje rychlou a efektivní kontrolu správnosti
     \item \textbf{Opakovatelnost}: Testy mohou být opakovaně spouštěny při každé změně kódu, což zajišťuje, že nové změny neovlivní existující funkčnost.
 \end{itemize}
 
-\subsubsection*{Validační testy}
+\subsubsection*{Verifikační testy}
 Kromě unit testů se správnost knihovny testuje na jednoduchých konstrukcích (prostý nosník, šikmé nosníky, konzoly, oboustranně vetknutý nosník apd.), kde je známé analytické řešení.
 
-Pro validační testy byly použity následující zdroje:
+Pro verifikační testy byly použity následující zdroje:
 \begin{itemize}
     \item \textit{DESIGN AID No. 6 — BEAM DESIGN FORMULAR WITH SHEAR AND MOMENT DIAGRAMS} od American Wood Council \cite{design_aid},
     \item \textit{Sbírka příkladů stavební mechaniky: princip virtuálních sil, silová metoda, deformační metoda} od Jíra, A. a kol. \cite{sbirka_prikladu}.
 \end{itemize}
 
 \subsubsection*{Kontinuální integrace a spuštění testů na GitHubu}
-Kromě lokálního testování je nezbytné zajistit, aby všechny změny v kódu byly automaticky testovány i při jejich nahrání do centrálního repozitáře. Tento proces, známý jako kontinuální integrace (Continuous Integration, CI), je implementován pomocí GitHub Actions.
+Kromě lokálního testování je nezbytné zajistit, aby všechny změny v~kódu byly automaticky testovány i při jejich nahrání do centrálního repozitáře. Tento proces, známý jako kontinuální integrace (Continuous Integration, CI), je implementován pomocí GitHub Actions.
 
 Při každém pushnutí změn do GitHub repozitáře se automaticky spustí CI pipeline, která zahrnuje následující kroky:
 \begin{itemize}
-    \item \textbf{Instalace závislostí}: Nezbytné knihovny a závislosti jsou nainstalovány podle specifikací v konfiguračním souboru.
+    \item \textbf{Instalace závislostí}: Nezbytné knihovny a závislosti jsou nainstalovány podle specifikací v~konfiguračním souboru.
     \item \textbf{Statická analýza kódu}: Kód je zkontrolován nástrojem mypy \cite{mypy}, který provádí statickou typovou kontrolu, aby se zajistila konzistence typů a odhalily potenciální typové chyby.
-    \item \textbf{Spuštění unit testů}: Pomocí nástroje pytest \cite{pytest} se spustí všechny unit testy a validační testy, aby se ověřila funkčnost všech částí kódu.
+    \item \textbf{Spuštění testů}: Pomocí nástroje pytest \cite{pytest} se spustí všechny unit testy a verifikační testy, aby se ověřila funkčnost všech částí kódu.
 \end{itemize}
 
-Jednou z výhod používání GitHub Actions je možnost testovat kód na různých operačních systémech, knihovna \texttt{framesss} je testován na následujících platformách
+Jednou z~výhod používání GitHub Actions je možnost testovat kód na různých operačních systémech, knihovna framesss je testován na následujících platformách
 \begin{itemize}
     \item \textbf{Windows},
     \item \textbf{Linux},

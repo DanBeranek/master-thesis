@@ -1,3 +1,16 @@
-\chapter*{Závěr}
+\chapter*{Závěr a diskuze}
+\pagestyle{plain}
+V~první kapitole byly představeny základy teorie pružnosti, včetně veličin pro popis chování libovolného pružného tělesa a vztahů mezi nimi. Byl uveden princip virtuálních prací, ze kterého vychází princip virtuálních posunutí. Dále jsme se zabývali přibližným řešením úlohy dle teorie pružnosti, zobecněnými podmínkami rovnováhy a výpočtem matice tuhosti a vektoru zatížení. Poté jsme se zaměřili na 1D napjatost a popis pružného chování prutových prvků. Pomocí knihovny SymPy byly odvozeny matice tuhostí a vektory zatížení pro nejběžnější prutové prvky: tažený-tlačený prut, ohýbaný prut bez vlivu smyku a ohýbaný prut s~vlivem smyku. Následně byl představen princip statické kondenzace a transformace vztahů z~lokální do globální souřadné soustavy.
 
-Znova popis toho, co jsem udělal, vyhodnocení stanovených cílů \dots
+Dále byla představena objektově orientovaná knihovna pro výpočty prutových konstrukcí, vytvořená v~rámci této práce. Byly popsány externí open-source nástroje použité při vývoji, způsob instalace knihovny, včetně tvorby virtuálního prostředí, a jednotlivé funkce programu. Každý modul byl podrobně rozebrán a byly uvedeny obecné předpoklady přijaté při vývoji knihovny. Následně byl popsán algoritmus výpočtu celého modelu, použití řídkých matic a jejich implementace. Bylo také vysvětleno, jakým způsobem je knihovna testována, včetně významu unit testů a verifikačních testů. Jeden z~verifikačních testů byl detailně rozebrán v~prostředí JupyterLab, kde byly hodnoty porovnány s~referenčními hodnotami ze sbírky příkladů stavební mechaniky.
+
+V~další kapitole byla představena knihovna pro navrhování konstrukcí podle Eurokódů, včetně instalace, architektury, detailního rozboru jednotlivých modulů a integrace s~knihovnou pro výpočty prutových konstrukcí. Byl uveden příklad použití pro vygenerování kombinací zatížení podle ČSN EN 1990.
+
+V~poslední části byla představena webová aplikace vyvinutá v~rámci projektu \textit{Vývoj komplexního softwaru pro optimalizaci návrhu a posouzení střešních a stropních konstrukcí}, která prošla výrazným zlepšením funkčnosti. Nejprve byla představena aplikace STŘECHA, určená pro předběžný návrh konstrukčních prvků krovu se střešními krytinami a skladbami Tondach. Do aplikace STŘECHA bylo implementováno nové uživatelské prostředí a výpočetní nástroje představené v~prvních dvou kapitolách této práce. Byl znovu vyřešen příklad ze sbírky \cite{sbirka_prikladu} a porovnány výsledky s~referenčními průběhy vnitřních sil. Dále byla na krátkém případě předvedena funkčnost aplikace STROP.
+
+V~rámci této diplomové práce bylo dosaženo několika významných cílů. Byly vyvinuty a verifikovány výpočetní nástroje (knihovny), které umožňují detailní analýzu prutových konstrukcí. Tyto nástroje lze použít pro analýzu jakýchkoliv prutových střešních a stropních konstrukcí. V~rámci práce bylo popsáno využití těchto knihoven pro zlepšení uživatelského rozhraní aplikace STŘECHA. Tato aplikace nyní představuje intuitivní a efektivní nástroj pro inženýry a projektanty. V~rámci pokračující práce na představené webové aplikaci budou tyto knihovny v~budoucnu integrovány i do aplikace STROP.
+
+Hlavním přínosem jsou nově vytvořené knihovny pro analýzu prutových konstrukcí a vylepšení webové aplikace pro předběžné posouzení střešních a stropních konstrukcí. Neméně přínosný je i ucelený popis problematiky teorie pružnosti a představení knihovny SymPy pro symbolické výpočty.
+
+Budoucí směřování práce zahrnuje dokončení integrace nově vytvořených knihoven do webové aplikace a tvorba nového uživatelského
+rozhraní pro aplikaci STROP. Důležitým krokem bude také implementace dalších verifikačních testů a srovnání s~dalšími referenčními hodnotami.

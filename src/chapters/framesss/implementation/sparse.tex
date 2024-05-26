@@ -1,25 +1,25 @@
 \subsection{Řídké matice}
 
-V rámci knihovny \texttt{framesss} je zásadní efektivní manipulace s řídkými maticemi, které se často vyskytují v důsledku velkého množství nulových prvků v maticích tuhosti. Pro ukládání a zpracování těchto matic využívá \texttt{framesss} knihovnu SciPy \cite{scipy}, specificky její modul pro řídké matice.
+V~rámci knihovny framesss je zásadní efektivní manipulace s~řídkými maticemi, které se často vyskytují v~důsledku velkého množství nulových prvků v~maticích tuhosti. Pro ukládání a zpracování těchto matic využívá framesss knihovnu SciPy \cite{scipy}, specificky její modul pro řídké matice.
 
 \subsubsection{Formáty ukládání řídkých matic}
 
-V rámci knihovny SciPy jsou k dispozici různé formáty pro ukládání řídkých matic, z nichž každý je optimalizován pro specifické typy operací.
+V~rámci knihovny SciPy jsou k~dispozici různé formáty pro ukládání řídkých matic, z~nichž každý je optimalizován pro specifické typy operací.
 
 \begin{itemize}
     \item \textbf{CSR (Compressed Sparse Row)}: Ukládá data kompresí řádkových indexů. Tento formát je efektivní pro řádkové operace.
     \item \textbf{CSC (Compressed Sparse Column)}: Podobné jako CSR, ale komprimuje sloupcové indexy. Je efektivní pro sloupcové operace.
-    \item \textbf{BSR (Block Sparse Row)}: Velmi podobný formátu CSR. Je vhodný pro řídké matice s hustými submaticemi.
+    \item \textbf{BSR (Block Sparse Row)}: Velmi podobný formátu CSR. Je vhodný pro řídké matice s~hustými submaticemi.
     \item \textbf{COO (COOrdinate format)}: Ukládá seznam trojic (řádkový index, sloupcový index a hodnotu), což umožňuje efektivní postupné sestavování řídkých matic.
-    \item \textbf{DIA (DIAgonal storage)}: Ukládá hodnoty na diagonálách v samostatných polích a jejich offset od diagonály, což je užitečné pro matice s dominantními diagonálami.
+    \item \textbf{DIA (DIAgonal storage)}: Ukládá hodnoty na diagonálách v~samostatných polích a jejich offset od diagonály, což je užitečné pro matice s~dominantními diagonálami.
     \item \textbf{DOK (Dictionary Of Keys)}: Ukládá prvky matice ve slovníku, kde klíče jsou dvojice (řádek, sloupec).
     \item \textbf{LIL (LIst of Lists)}: Ukládá matice pomocí dvou seznamů, jeden pro řádky, ve kterých jsou ukládány sloupcové indexy, a druhý pro hodnoty.
 \end{itemize}
 
 
-\subsubsection{Využití ve \texttt{framesss}}
+\subsubsection{Využití ve framesss}
 
-Proces vytváření a manipulace s řídkými maticemi v knihovně \texttt{framesss} zahrnuje několik klíčových kroků, které využívají různé formáty matic pro optimalizaci různých fází výpočtu:
+Proces vytváření a manipulace s~řídkými maticemi v~knihovně framesss zahrnuje několik klíčových kroků, které využívají různé formáty matic pro optimalizaci různých fází výpočtu:
 
 \begin{enumerate}
     \item \textbf{Vytvoření matice jako COO}: Ve fázi lokalizace je globální matice tuhosti vytvářena jako COO, což je formát efektivní pro konstrukci řídkých matic
@@ -29,4 +29,4 @@ Proces vytváření a manipulace s řídkými maticemi v knihovně \texttt{frame
     \item \textbf{Převod do CSR}: Konečný převod matice do formátu CSR je proveden pro rychlé aritmetické operace, které jsou nezbytné pro  řešení systému rovnic. CSR formát je vysoce optimalizovaný pro rychlé maticové operace.
 \end{enumerate}
 
-Každý z těchto formátů má specifické výhody pro různé typy operací a jejich výběr je motivován potřebou maximalizovat výpočetní efektivitu a minimalizovat dobu provádění v různých fázích výpočetního procesu. Použití COO pro počáteční sestavení, LIL pro manipulaci s řádky a sloupci a CSR pro finální výpočty umožňuje dosáhnout optimálního výkonu.
+Každý z~těchto formátů má specifické výhody pro různé typy operací a jejich výběr je motivován potřebou maximalizovat výpočetní efektivitu a minimalizovat dobu provádění v~různých fázích výpočetního procesu. Použití COO pro počáteční sestavení, LIL pro manipulaci s~řádky a sloupci a CSR pro finální výpočty umožňuje dosáhnout optimálního výkonu.

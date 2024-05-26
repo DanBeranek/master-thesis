@@ -1,16 +1,16 @@
-\subsection{Příklad}
+\subsection{Příklad} \label{sec:framesss_example}
 
 Následující příklad je převzat ze \textit{Sbírky příkladů stavební mechaniky} \cite[Příklad 5.2]{sbirka_prikladu}.
 
 \begin{figure}[H]
     \includegraphics[height=7cm]{assets/figures/framesss/example_snk.png}
-    \caption[Statické schéma konstrukce]{Statické schéma konstrukce, převzato z \cite[Příklad 5.2]{sbirka_prikladu}}
+    \caption[Statické schéma konstrukce]{Statické schéma konstrukce, převzato z~\cite[Příklad 5.2]{sbirka_prikladu}}
     \label{fig:framesss_example}
 \end{figure}
 
-Všechny pruty mají Youngův modul pružnosti $\gls{E} = \SI{30}{\GPa}$, moment setrvačnosti k ose, kolem které jsou pruty namáhané ohybem $\gls{I_y} = \SI{1e-3}{\unit{\metre\tothe{4}}}$ a plochu $\gls{A}= \SI{4e-3}{{\metre\tothe{2}}}$.
+Všechny pruty mají Youngův modul pružnosti $\gls{E} = \SI{30}{\GPa}$, moment setrvačnosti k~ose, kolem které jsou pruty namáhané ohybem $\gls{I_y} = \SI{1e-3}{\unit{\metre\tothe{4}}}$ a plochu $\gls{A}= \SI{4e-3}{{\metre\tothe{2}}}$.
 
-Na příkladu bude ilustrováno použití knihovny \texttt{framesss} v prostředí JupyterLab.
+Na příkladu bude ilustrováno použití knihovny framesss v~prostředí JupyterLab.
 
 \input{chapters/framesss/implementation/example_jupyter_nb.tex}
 
@@ -75,11 +75,11 @@ Na příkladu bude ilustrováno použití knihovny \texttt{framesss} v prostřed
     \label{tab:example_values}
 \end{table}
 
-V \autoref{tab:example_values} jsou uvedeny hodnoty vypočítané knihovnou \texttt{framesss} a srovnány s referenčními hodnotami ze \textit{Sbírky příkladů stavební mechaniky} \cite{sbirka_prikladu}. Testování probíhalo ve dvou různých scénářích: zatěžovací stav (LC1) a kombinace zatěžovacích stavů (CO1). LC1 představuje stav, kde je veškeré zatížení aplikováno najednou. CO1 je kombinace jednotlivých zatěžovacích stavů, kde každé zatížení bylo odděleně definováno a hodnota zatížení byla vydělena předem definovaným součinitel. Následně byly tyto zatěžovací stavy zkombinovány do kombinace zatěžovacích stavů s těmito součiniteli.
+V~\autoref{tab:example_values} jsou uvedeny hodnoty vypočítané knihovnou framesss a srovnány s~referenčními hodnotami ze \textit{Sbírky příkladů stavební mechaniky} \cite{sbirka_prikladu}. Testování probíhalo ve dvou různých scénářích: zatěžovací stav (LC1) a kombinace zatěžovacích stavů (CO1). LC1 představuje stav, kde je veškeré zatížení aplikováno najednou. CO1 je kombinace jednotlivých zatěžovacích stavů, kde každé zatížení bylo odděleně definováno a hodnota zatížení byla vydělena předem definovaným součinitel. Následně byly tyto zatěžovací stavy zkombinovány do kombinace zatěžovacích stavů s~těmito součiniteli.
 
-Porovnání výsledků ukazuje, že hodnoty vypočítané knihovnou \texttt{framesss} jsou téměř stejné jako referenční hodnoty, přičemž rozdíly (vyznačené \colorbox{red!8}{červenou barvou}) se nacházejí v rámci zaokrouhlovací chyby.
+Porovnání výsledků ukazuje, že hodnoty vypočítané knihovnou framesss jsou téměř stejné jako referenční hodnoty, přičemž rozdíly (vyznačené \colorbox{red!8}{červenou barvou}) se nacházejí v~rámci zaokrouhlovací chyby.
 
-Hodnoty posunutí a reakcí ve směru osy \gls{Z} a hodnoty pootočení a momentů okolo osy \gls{Y} vykazují opačné znaménko (vyznačeno \colorbox{yellow!15}{žlutou barvou}) ve srovnání s referenčními hodnotami, což je způsobeno rozdílným natočením globálního souřadného systému, viz obr. \ref{fig:example_coordinate_systems}. Systém ze sbírky je vlevo, uvažovaný systém při zadávání konstrukce v této práci vpravo. Při stanovení kladného směru pootočení platí pravidlo pravé ruky.
+Hodnoty posunutí a reakcí ve směru osy \gls{Z} a hodnoty pootočení a momentů okolo osy \gls{Y} vykazují opačné znaménko (vyznačeno \colorbox{yellow!15}{žlutou barvou}) ve srovnání s~referenčními hodnotami, což je způsobeno rozdílným natočením globálního souřadného systému, viz obr. \ref{fig:example_coordinate_systems}. Systém ze sbírky je vlevo, uvažovaný systém při zadávání konstrukce v~této práci vpravo. Při stanovení kladného směru pootočení platí pravidlo pravé ruky.
 
 \begin{figure}[H]
     \input{assets/figures/framesss/example_coordinate_systems}

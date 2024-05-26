@@ -1,19 +1,19 @@
 \section{Prutové prvky}
 
-V této části se zaměříme na řešení prutových konstrukcí. Prut je těleso s výrazně převládající délkou nad rozměry průřezu. Dimenzi z pohledu napjatosti budeme redukovat na jednorozměrný problém. 
+V~této části se zaměříme na řešení prutových konstrukcí. Prut je těleso s~výrazně převládající délkou nad rozměry průřezu. Dimenzi z~pohledu napjatosti budeme redukovat na jednorozměrný problém. 
 
 Přijmeme následující předpoklady,
 \begin{itemize}
-    \item zatížení působí pouze v rovině \gls{X}\gls{Z}, která je i rovinou symetrie, řešení není funkcí souřadnice \gls{y},
+    \item zatížení působí pouze v~rovině \gls{X}\gls{Z}, která je i rovinou symetrie, řešení není funkcí souřadnice \gls{y},
     \item průhyb ve směru osy \gls{z} je po výšce prvku konstantní,
     \item výrazně převládajícím rozměrem je délka prvku \gls{L},
-    \item uvažujeme prizmatický prut (s neměnným průřezem po délce prvku),
+    \item uvažujeme prizmatický prut (s~neměnným průřezem po délce prvku),
     \item uvažujeme teorii malých přetvoření,
     \item materiál prutu se chová pružně a je homogenní.
 \end{itemize}
 
 \subsubsection*{Vektor posunutí}
-Vzhledem k přijatým předpokladům je posun ve směru osy \gls{Y} nulový, zároveň uvažujeme po výšce nestlačitelný prut, to znamená, že posun ve směru osy \gls{z} je závislý pouze na souřadnici \gls{x}. V dalších kapitolách si vystačíme s vektorem posunutí ve tvaru
+Vzhledem k~přijatým předpokladům je posun ve směru osy \gls{Y} nulový, zároveň uvažujeme po výšce nestlačitelný prut, to znamená, že posun ve směru osy \gls{z} je závislý pouze na souřadnici \gls{x}. V~dalších kapitolách si vystačíme s~vektorem posunutí ve tvaru
 
 \begin{equation}
     \gls{u}(\gls{x_}) = \begin{Bmatrix}
@@ -42,7 +42,7 @@ Vektor deformací odpovídající předpokladům má dvě nenulové složky,
 
 \subsubsection*{Vektor napětí}
 
-Při analýze prutových konstrukcí je běžné pracovat s vnitřními silami místo s napětím. Vnitřní síly jsou s napětím svázany podmínkami ekvivalence
+Při analýze prutových konstrukcí je běžné pracovat s~vnitřními silami místo s~napětím. Vnitřní síly jsou s~napětím svázany podmínkami ekvivalence
 \begin{align}
     \gls{axial_force}(\gls{x}) &= \int_{\gls{A}} \gls{sigma_i}[\gls{x}] \dd{\gls{A}}, \label{eq:N}\\
     \gls{shear_force}(\gls{x}) &= \int_{\gls{A}} \gls{tau_i}[\gls{x}\gls{z}] \dd{\gls{A}}, \label{eq:V}\\
@@ -73,7 +73,7 @@ Kinematické podmínky jsou dány typem podpory, např. pro vetknutí platí
     \label{fig:deformed_bar}
 \end{figure}
 
-Tažený-tlačený prut je v rovině dán pomocí dvou uzlů, $a$ a $b$. V každém bodě zavedeme koncové posunutí ve směru lokální osy \gls{x}. Vektor zobecněných posunutí má tvar
+Tažený-tlačený prut je v~rovině dán pomocí dvou uzlů, $a$ a $b$. V~každém bodě zavedeme koncové posunutí ve směru lokální osy \gls{x}. Vektor zobecněných posunutí má tvar
 \begin{equation}
     \gls{d} = \begin{Bmatrix}
         \gls{u_i}[a] \\
@@ -117,7 +117,7 @@ kde $a_i$ a $b_i$ jsou zatím neznámé koeficienty. Rozepsáním vztahu \ref{eq
 \end{equation}
 
 
-Okrajové podmínky, patrné z obrázku \ref{fig:deformed_bar} jsou
+Okrajové podmínky, patrné z~obrázku \ref{fig:deformed_bar} jsou
 \begin{subequations}
     \begin{equation} \label{eq:bar_ua}
         \gls{u_i}[ ](0) = \gls{u_i}[a], \\        
@@ -168,7 +168,7 @@ Přenásobením rovnice zleva maticí $\matr{A}^{-1}$ dostaneme
         \gls{u_i}[b]
     \end{Bmatrix},
 \end{equation}
-ze které je patrné, že matice koeficientů bázových funkcí se rovná inverzní matici k matici $\matr{A}$,
+ze které je patrné, že matice koeficientů bázových funkcí se rovná inverzní matici k~matici $\matr{A}$,
 \begin{equation}
     \begin{bmatrix}
         a_1 & a_2 \\
@@ -201,7 +201,7 @@ Dále vypočítáme matici \gls{B}, která popisuje vztah mezi posuny a poměrn�
 \begin{equation}
     \gls{eps_i}[\gls{x}](\gls{x}) = \dv{\gls{u_i}[ ](\gls{x})}{\gls{x}} \approx \dv{\gls{N}(\gls{x}) \gls{d}}{\gls{x}} = \gls{B}(\gls{x})\gls{d}.
 \end{equation}
-V matici \gls{B} se tedy vyskytují první derivace bázových funkcí \gls{N_i}[i] podle \gls{x},
+V~matici \gls{B} se tedy vyskytují první derivace bázových funkcí \gls{N_i}[i] podle \gls{x},
 \begin{equation} \label{eq:bar_B}
     \gls{B}(\gls{x}) = \dv{\gls{N}(\gls{x})}{\gls{x}}
     =
@@ -237,7 +237,7 @@ výraz $\gls{B}^{\mathrm{T}}\gls{D}\gls{B}$ nezávisí na průřezové ploše, m
 \begin{align*}
     \gls{K}  &= \int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \int_{\gls{A}} \dd{\gls{A}} \dd{\gls{x}},
 \end{align*}
-uvažujeme prizmatický prut (s konstantním průřezem), což znamená, že integrál $\int_{\gls{A}}\dd{\gls{A}} = \gls{A}$,
+uvažujeme prizmatický prut (s~konstantním průřezem), což znamená, že integrál $\int_{\gls{A}}\dd{\gls{A}} = \gls{A}$,
 \begin{align*}
     \gls{K} &=\int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \gls{A} \dd{\gls{x}},
 \end{align*}
@@ -249,7 +249,7 @@ modul pružnosti \gls{E} a průřezová plocha \gls{A} nejsou funkcí proměnné
 \begin{align*}
     \gls{K} &= \gls{E} \gls{A} \int_{0}^{\gls{L}} \gls{B}^{\mathrm{T}}\gls{B} \dd{\gls{x}},
 \end{align*}
-dosazením za \gls{B} z rovnice \ref{eq:bar_B} dostaneme
+dosazením za \gls{B} z~rovnice \ref{eq:bar_B} dostaneme
 \begin{align*}
     \gls{K} &= \gls{E} \gls{A} \int_{0}^{\gls{L}} \frac{1}{\gls{L}^2} 
     \begin{bmatrix} -1 \\ 1 \end{bmatrix}
@@ -285,7 +285,7 @@ a nakonec dosazením horní a spodní meze obdržíme známý výraz pro matici 
 
 \subsubsection*{Vektor zatížení}
 
-Předpokládejme, že tažený-tlačený prvek je zatížený lineárně se měnícím spojitým zatížením působícím v těžišťové ose,
+Předpokládejme, že tažený-tlačený prvek je zatížený lineárně se měnícím spojitým zatížením působícím v~těžišťové ose,
 \begin{equation}
     \overline{f_{\gls{x}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a},
 \end{equation}
@@ -342,5 +342,5 @@ Po dosazení mezí a úpravě se výraz zjednoduší a obdržíme vztah pro vekt
     \begin{bmatrix}
         \dfrac{\gls{L}(2\overline{f}_a+\overline{f}_b)}{6} \\
         \dfrac{\gls{L}(\overline{f}_a+2\overline{f}_b)}{6}
-    \end{bmatrix}
+    \end{bmatrix}.
 \end{equation}

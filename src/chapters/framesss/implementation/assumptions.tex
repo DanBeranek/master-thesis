@@ -1,8 +1,8 @@
 \subsection{Předpoklady}
 
-V této sekci jsou uvedeny základní předpoklady, které byly přijaty při vývoji knihovny \texttt{framesss},
+V~této sekci jsou uvedeny základní předpoklady, které byly přijaty při vývoji knihovny framesss,
 \begin{itemize}
-    \item konstrukce je umístěna v pravotočivé souřadné soustavě,
+    \item konstrukce je umístěna v~pravotočivé souřadné soustavě,
     \item pro kladný směr pootočení platí pravidlo pravé ruky\footnote{Palec natočíme ve směru kladné části osy a zahnuté prsty pravé ruky značí kladný směr otáčení.},
     \item výpočet probíhá podle teorie malých deformací,
     \item materiál je uvažován jako pružný, platí Hookův zákon.
@@ -10,26 +10,26 @@ V této sekci jsou uvedeny základní předpoklady, které byly přijaty při v�
 
 Tyto předpoklady umožňují uplatnění principu superpozice.
 
-\subsubsection*{Předpoklady pro model v rovině XZ}
+\subsubsection*{Předpoklady pro model v~rovině XZ}
 
 \begin{itemize}
-    \item zatížení působí pouze v rovině \gls{X}\gls{Z}, která je zároveň rovinou symetrie,
+    \item zatížení působí pouze v~rovině \gls{X}\gls{Z}, která je zároveň rovinou symetrie,
     \item každý uzel má přiřazené tři stupně volnosti, posun ve směru globální osy \gls{X}, pootočení okolo globální osy \gls{Y} a posun ve směru globální osy \gls{Z}. Kladný směr je naznačený na \autoref{fig:global_dofs},    
     \begin{figure}[H]
         \input{assets/figures/framesss/global_dofs}
-        \caption{Stupně volnosti v globálním systému}
+        \caption{Stupně volnosti v~globálním systému}
         \label{fig:global_dofs}
     \end{figure}
 
-    \item stupně volnosti a jejich kódová čísla\footnote{Indexování v jazyce Python začíná od $0$, což znamená, že první stupeň volnosti má přiřazené kódové číslo $0$, druhý prvek má kódové číslo $1$ atd.} v lokálním systému prutového prvku jsou označena na \autoref{fig:dof_numbering},
+    \item stupně volnosti a jejich kódová čísla\footnote{Indexování v~jazyce Python začíná od $0$, což znamená, že první stupeň volnosti má přiřazené kódové číslo $0$, druhý prvek má kódové číslo $1$ atd.} v~lokálním systému prutového prvku jsou označena na \autoref{fig:dof_numbering},
     
     \begin{figure}[H]
         \input{assets/figures/framesss/element_fef_dofs}
-        \caption{Stupně volnosti v lokálním systému prvku}
+        \caption{Stupně volnosti v~lokálním systému prvku}
         \label{fig:dof_numbering}
     \end{figure}
 
-    \item vnitřní síly v jakémkoliv průřezu prvku jsou: normálová síla \gls{axial_force}, posouvající síla \gls{shear_force} a ohybový moment \gls{bending_moment}. Kladná orientace vnitřních sil je naznačená na \autoref{fig:positive_internal_forces}.
+    \item vnitřní síly v~jakémkoliv průřezu prvku jsou: normálová síla \gls{axial_force}, posouvající síla \gls{shear_force} a ohybový moment \gls{bending_moment}. Kladná orientace vnitřních sil je naznačená na \autoref{fig:positive_internal_forces}.
     \begin{figure}[H]
         \input{assets/figures/framesss/positive_internal_forces}
         \caption{Kladná orientace vnitřních sil}

@@ -1,4 +1,4 @@
-\subsection{Ohýbaný prvek s vlivem smyku} \label{sec:TIM_beam}
+\subsection{Ohýbaný prvek s~vlivem smyku} \label{sec:TIM_beam}
 
 \begin{figure}[H]
     \input{assets/figures/framesss/elements/tim_beam.tex}
@@ -57,19 +57,19 @@ kde \gls{kappa} je označována jako pseudokřivost.
 Pro nenulové složky napětí platí,
 \begin{align}
     \gls{sigma_i}[\gls{x}](\gls{x}, \gls{z}) = \gls{E} \gls{eps_i}[\gls{x}](\gls{x}, \gls{z}) = \gls{E}\gls{kappa}(\gls{x}) \gls{z},\\
-    \gls{tau_i}[\gls{x}\gls{z}](\gls{x}) = k \gls{G} \gls{gamma_i}[\gls{x}\gls{z}] = k \gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})\right),
+    \gls{tau_i}[\gls{x}\gls{z}](\gls{x}) = k~\gls{G} \gls{gamma_i}[\gls{x}\gls{z}] = k~\gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x})\right),
 \end{align}
 kde $k$ je korekční součinitel rozložení smykového napětí.
 
-Místo v napětích, budeme pracovat s integrálními veličinami $\gls{bending_moment}, \gls{shear_force}$,
+Místo v~napětích, budeme pracovat s~integrálními veličinami $\gls{bending_moment}, \gls{shear_force}$,
 \begin{equation}
     \begin{split} \label{eq:tim_shear_force}
         \gls{shear_force}(\gls{x}) 
         & = 
         \int_{\gls{A}} \gls{tau_i}[\gls{x}\gls{z}] \dd{\gls{A}}
-        = k \gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \int_{\gls{A}} \dd{\gls{A}} = \\
+        = k~\gls{G} \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \int_{\gls{A}} \dd{\gls{A}} = \\
         & =
-        k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right),
+        k~\gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right),
     \end{split}
 \end{equation}
 
@@ -85,17 +85,17 @@ Místo v napětích, budeme pracovat s integrálními veličinami $\gls{bending_
 
 Dosazením do podmínek rovnováhy \ref{eq:V} a \ref{eq:M} obdržíme dvě diferenciální rovnice,
 \begin{align}
-    \dv{\gls{x}} \left( k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \right) + \overline{f_{\gls{z}}} = 0, \\
-    \dv{\gls{x}} \left( \gls{E} \gls{I_y} \dv{\gls{phi_i}[ ]}{\gls{x}} \right) - k \gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) = 0,
+    \dv{\gls{x}} \left( k~\gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) \right) + \overline{f_{\gls{z}}} = 0, \\
+    \dv{\gls{x}} \left( \gls{E} \gls{I_y} \dv{\gls{phi_i}[ ]}{\gls{x}} \right) - k~\gls{G} \gls{A}  \left(\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) \right) = 0,
 \end{align}
 ze kterých lze odvodit slabé řešení podle kap. \ref{sec:approximate_solution}. 
 
 \subsubsection*{Bázové funkce}
-Výběru bázových funkcí musí být věnována velká pozornost. Při použití polynomu stejného stupně pro aproximaci průhybu $\gls{w_i}[ ](\gls{x})$ i pootočení $\gls{phi_i}[ ](\gls{x})$ a plné integraci dochází v prvku k tzv. smykovému zamknutí (prvek se chová příliš tuze).
+Výběru bázových funkcí musí být věnována velká pozornost. Při použití polynomu stejného stupně pro aproximaci průhybu $\gls{w_i}[ ](\gls{x})$ i pootočení $\gls{phi_i}[ ](\gls{x})$ a plné integraci dochází v~prvku k~tzv. smykovému zamknutí (prvek se chová příliš tuze).
 
 Například při použití polynomu prvního stupně pro aproximaci průhybu i pootočení je posouvající síla lineární funkcí,
 \begin{equation*}
-    \gls{shear_force}(\gls{x}) = k \gls{G} \gls{A}  \Biggl(
+    \gls{shear_force}(\gls{x}) = k~\gls{G} \gls{A}  \Biggl(
         \underbrace{\dv{\gls{w_i}[ ](\gls{x})}{\gls{x}}}_{\text{konstantní}} 
         + \underbrace{\gls{phi_i}[ ](\gls{x})}_{\text{lineární}} \Biggr),
 \end{equation*}
@@ -103,18 +103,18 @@ a ohybový moment konstantní,
 \begin{equation*}
     \gls{bending_moment}(\gls{x}) = \gls{E} \gls{I_y} \underbrace{\dv{\gls{phi_i}[ ](\gls{x})}{\gls{x}}}_{\text{konstantní}},
 \end{equation*}
-což je v přímém rozporu se Schwedlerovou větou,
+což je v~přímém rozporu se Schwedlerovou větou,
 \begin{equation*}
     \dv{\gls{bending_moment}(\gls{x})}{\gls{x}} = \gls{shear_force}(\gls{x}).
 \end{equation*}
 
 Řešením může být použítí redukované integrace nebo zvolení polynomu vyššího stupně pro aproximaci průhybu.
 
-Pro určení bázových funkcí použijeme postup, který byl použit v \cite[kap. 5.6]{przemieniecki1985theory}, v české odborné literatuře například v \cite[kap. 2.2.2]{nmm1}.
+Pro určení bázových funkcí použijeme postup, který byl použit v~\cite[kap. 5.6]{przemieniecki1985theory}, v~české odborné literatuře například v~\cite[kap. 2.2.2]{nmm1}.
 
-Vyjdeme z přetvoření nezatíženého nosníku, způsobeného pouze přemístěním a pootočením koncových průřezu, což odpovídá bázovým funkcím, které byli odvozeny v kap. \ref{sec:eb_shape_functions}.
+Vyjdeme z~přetvoření nezatíženého nosníku, způsobeného pouze přemístěním a pootočením koncových průřezu, což odpovídá bázovým funkcím, které byli odvozeny v~kap. \ref{sec:eb_shape_functions}.
 
-Stejně jako v případě Hermitovského prvku, založeného na Euler-Bernoulliho teorii, použijeme knihovnu SymPy v prostředí JupyterLab.
+Stejně jako v~případě Hermitovského prvku, založeného na Euler-Bernoulliho teorii, použijeme knihovnu SymPy v~prostředí JupyterLab.
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{1}{\boxspacing}
@@ -124,7 +124,7 @@ Stejně jako v případě Hermitovského prvku, založeného na Euler-Bernoullih
 \end{tcolorbox}
 
 Definujeme proměnné, které jsou potřeba pro výpočet, jedná se proměnnou \gls{x}, délku nosníku \gls{L}, posunutí koncových průřezů \gls{w_i}[a, b], 
-pootočení tečny k ose prutu $\theta_{a,b}$ a pootočení průřezu $\gls{phi_i}[a,b]$, znázorněných na obr. \ref{fig:tim_deformed_beam}, dále budeme potřebovat modul pružnosti \gls{E}, moment setrvačnosti k těžišťové ose \gls{I_y}, korekční součinitel rozložení smykového napětí $k$, modul pružnosti ve smyku \gls{G}, plochu průřezu \gls{A} a smykovou štíhlost \gls{Phi}.
+pootočení tečny k~ose prutu $\theta_{a,b}$ a pootočení průřezu $\gls{phi_i}[a,b]$, znázorněných na obr. \ref{fig:tim_deformed_beam}, dále budeme potřebovat modul pružnosti \gls{E}, moment setrvačnosti k~těžišťové ose \gls{I_y}, korekční součinitel rozložení smykového napětí $k$, modul pružnosti ve smyku \gls{G}, plochu průřezu \gls{A} a smykovou štíhlost \gls{Phi}.
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{2}{\boxspacing}
@@ -135,7 +135,7 @@ pootočení tečny k ose prutu $\theta_{a,b}$ a pootočení průřezu $\gls{phi_
         \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{w\PYZus{}a varphi\PYZus{}a w\PYZus{}b varphi\PYZus{}b theta\PYZus{}a theta\PYZus{}b}\PY{l+s+s1}{\PYZsq{}}
     \PY{p}{)}
     
-    \PY{n}{E}\PY{p}{,} \PY{n}{I}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{G}\PY{p}{,} \PY{n}{A} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{E I k G A}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{E}\PY{p}{,} \PY{n}{I}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{G}\PY{p}{,} \PY{n}{A} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{E I~k~G A}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
     
     \PY{n}{omega} \PY{o}{=} \PY{n}{smp}\PY{o}{.}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Omega}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
     \PY{n}{omega\PYZus{}val} \PY{o}{=} \PY{l+m+mi}{12} \PY{o}{*} \PY{n}{E} \PY{o}{*} \PY{n}{I} \PY{o}{/} \PY{p}{(}\PY{n}{k} \PY{o}{*} \PY{n}{G} \PY{o}{*} \PY{n}{A} \PY{o}{*} \PY{n}{L}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
@@ -188,11 +188,11 @@ Ze vztahu \ref{eq:tim_shear_force} vyplývá, že pro prizmatický pružný prut
     \label{eq:tim_dwdx_phi}
     -\theta(\gls{x}) + \gls{phi_i}[ ](\gls{x}) = \dv{\gls{w_i}[ ](\gls{x})}{\gls{x}} + \gls{phi_i}[ ](\gls{x}) = \gls{gamma_i}[ ]=\text{konstantní},
 \end{equation}
-Parametr \gls{gamma_i}[ ] vyloučíme z požadavku, aby aproximace \gls{w_i}[ ] a \gls{phi_i}[ ] splnily momentovou podmínku rovnováhy \ref{eq:M_equilibrium},
+Parametr \gls{gamma_i}[ ] vyloučíme z~požadavku, aby aproximace \gls{w_i}[ ] a \gls{phi_i}[ ] splnily momentovou podmínku rovnováhy \ref{eq:M_equilibrium},
 \begin{equation}
     \begin{split}
     \dv{\gls{bending_moment}(\gls{x})}{\gls{x}}  &= \gls{shear_force},\\
-    \gls{E}\gls{I_y}\dv[2]{\gls{phi_i}[ ](\gls{x})}{\gls{x}} &= k \gls{G} \gls{A} \gls{gamma_i}[ ],\\
+    \gls{E}\gls{I_y}\dv[2]{\gls{phi_i}[ ](\gls{x})}{\gls{x}} &= k~\gls{G} \gls{A} \gls{gamma_i}[ ],\\
     \gls{gamma_i}[ ] &= - \frac{\gls{E}\gls{I_y}}{k \gls{G} \gls{A}} \dv[3]{\gls{w_i}[ ](\gls{x})}{\gls{x}}.
     \end{split}
 \end{equation}
@@ -206,7 +206,7 @@ Parametr \gls{gamma_i}[ ] vyloučíme z požadavku, aby aproximace \gls{w_i}[ ] 
             
 \prompt{Out}{outcolor}{5}{}
         
-    $\displaystyle - \frac{6 E I \left(- \theta_{a} - \theta_{b} + \frac{2 w_{a}}{L} - \frac{2 w_{b}}{L}\right)}{A G L^{2} k}$
+    $\displaystyle - \frac{6 E I~\left(- \theta_{a} - \theta_{b} + \frac{2 w_{a}}{L} - \frac{2 w_{b}}{L}\right)}{A G L^{2} k}$
 
 \vspace{0.3cm}
 Vztah upravíme tak, aby obsahoval smykovou štíhlost \gls{Phi},
@@ -285,7 +285,7 @@ Podle vztahu \ref{eq:tim_dwdx_phi} vypočítáme pootočení obecného průřezu
     $\displaystyle \Omega \left(\frac{\theta_{a}}{2} + \frac{\theta_{b}}{2} - \frac{w_{a}}{L} + \frac{w_{b}}{L}\right) + \theta_{a} \left(-1 + \frac{x}{L}\right)^{2} - w_{a} \left(- \frac{6 x}{L^{2}} + \frac{6 x^{2}}{L^{3}}\right) - w_{b} \left(\frac{6 x}{L^{2}} - \frac{6 x^{2}}{L^{3}}\right) + \frac{2 \theta_{a} x \left(-1 + \frac{x}{L}\right)}{L} - \frac{2 \theta_{b} x \left(1 - \frac{x}{L}\right)}{L} + \frac{\theta_{b} x^{2}}{L^{2}}$
     
 \vspace{0.3cm}
-Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do funkce pro průhyb, $\gls{w_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.
+Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do funkce pro průhyb, $\gls{w_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v~závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{11}{\boxspacing}
@@ -306,7 +306,7 @@ Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do funkce pro průhyb,
     $\displaystyle w_{a} \left(1 - \frac{3 x^{2}}{L^{2}} + \frac{2 x^{3}}{L^{3}}\right) + w_{b} \left(\frac{3 x^{2}}{L^{2}} - \frac{2 x^{3}}{L^{3}}\right) - \frac{x \left(-1 + \frac{x}{L}\right)^{2} \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{2 L \Omega + 2 L} + \frac{x^{2} \cdot \left(1 - \frac{x}{L}\right) \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)}$
     
 \vspace{0.3cm}
-Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do odvozené funkce pro pootočení, $\gls{phi_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.       
+Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do odvozené funkce pro pootočení, $\gls{phi_i}[ ](\gls{x})$, obdržíme aproximaci vyjádřenou v~závislosti na posunutí $\gls{w_i}[a], \gls{w_i}[b]$ a pootočení $\gls{phi_i}[a], \gls{phi_i}[b]$ koncových průřezu prutu.       
 
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{12}{\boxspacing}
@@ -327,7 +327,7 @@ Dosazením vypočítaných úhlů $\theta_a$ a $\theta_b$ do odvozené funkce pr
     $\displaystyle \Omega \left(\frac{- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}}{2 \cdot \left(2 L \Omega + 2 L\right)} + \frac{L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}}{2 \cdot \left(2 L \Omega + 2 L\right)} - \frac{w_{a}}{L} + \frac{w_{b}}{L}\right) - w_{a} \left(- \frac{6 x}{L^{2}} + \frac{6 x^{2}}{L^{3}}\right) - w_{b} \left(\frac{6 x}{L^{2}} - \frac{6 x^{2}}{L^{3}}\right) + \frac{\left(-1 + \frac{x}{L}\right)^{2} \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{2 L \Omega + 2 L} + \frac{2 x \left(-1 + \frac{x}{L}\right) \left(L \Omega \varphi_{a} - L \Omega \varphi_{b} + 2 L \varphi_{a} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)} - \frac{2 x \left(1 - \frac{x}{L}\right) \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L \left(2 L \Omega + 2 L\right)} + \frac{x^{2} \left(- L \Omega \varphi_{a} + L \Omega \varphi_{b} + 2 L \varphi_{b} + 2 \Omega w_{a} - 2 \Omega w_{b}\right)}{L^{2} \cdot \left(2 L \Omega + 2 L\right)}$
     
 \vspace{0.3cm}
-Bázové funkce, aproximující průběh pootočení průřezu, získáme jako koeficienty jednotlivých zobecnělých posunů z rovnice pro pootočení průřezu.
+Bázové funkce, aproximující průběh pootočení průřezu, získáme jako koeficienty jednotlivých zobecnělých posunů z~rovnice pro pootočení průřezu.
     
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{13}{\boxspacing}
@@ -351,7 +351,7 @@ Bázové funkce, aproximující průběh pootočení průřezu, získáme jako k
     $\displaystyle \left[\begin{matrix}- \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)}\\\frac{\left(- L + x\right) \left(- L \Omega - L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\\\frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)}\\\frac{x \left(L \Omega - 2 L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\end{matrix}\right]$
 
 \vspace{0.3cm}
-Bázové funkce, aproximující průběh posunutí, získáme jako koeficienty jednotlivých zobecnělých posunů z rovnice pro průhyb.
+Bázové funkce, aproximující průběh posunutí, získáme jako koeficienty jednotlivých zobecnělých posunů z~rovnice pro průhyb.
         
     
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -396,7 +396,7 @@ Dále bázové funkce uložíme do matice bázových funkcí \gls{N}.
     $\displaystyle \left[\begin{matrix}- \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{\left(- L + x\right) \left(- L \Omega - L + 3 x\right)}{L^{2} \left(\Omega + 1\right)} & \frac{6 x \left(- L + x\right)}{L^{3} \left(\Omega + 1\right)} & \frac{x \left(L \Omega - 2 L + 3 x\right)}{L^{2} \left(\Omega + 1\right)}\\\frac{\left(- L + x\right) \left(- L^{2} \Omega - L^{2} - L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)} & - \frac{x \left(- L + x\right) \left(- L \Omega - 2 L + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)} & - \frac{x \left(- L^{2} \Omega - 3 L x + 2 x^{2}\right)}{L^{3} \left(\Omega + 1\right)} & - \frac{x \left(- L + x\right) \left(L \Omega + 2 x\right)}{2 L^{2} \left(\Omega + 1\right)}\end{matrix}\right]$
     
 \vspace{0.3cm}
-Po určení bázových funkcí můžeme přistoupit k výpočtu matice \gls{B}, která popisuje vztah mezi zobecnělými posuny a deformací. Ze vztahu pro pole deformace,
+Po určení bázových funkcí můžeme přistoupit k~výpočtu matice \gls{B}, která popisuje vztah mezi zobecnělými posuny a deformací. Ze vztahu pro pole deformace,
 \begin{equation}
     \gls{eps}
     =
@@ -460,10 +460,10 @@ kde výraz $k\gls{G}\gls{A}$ nahradíme podle vztahu \ref{eq:tim_omega} ekvivale
                 
 \prompt{Out}{outcolor}{17}{}
     
-    $\displaystyle \left[\begin{matrix}E I & 0\\0 & \frac{12 E I}{L^{2} \Omega}\end{matrix}\right]$
+    $\displaystyle \left[\begin{matrix}E I~& 0\\0 & \frac{12 E I}{L^{2} \Omega}\end{matrix}\right]$
 
 \vspace{0.3cm}
-Konečně můžeme přejít k výpočtu matice tuhosti podle známého vztahu,
+Konečně můžeme přejít k~výpočtu matice tuhosti podle známého vztahu,
 \begin{equation*}
     \gls{K} = \int_{\gls{omega}} \gls{B}^{\mathrm{T}}\gls{D}\gls{B} \dd{\gls{omega}}.
 \end{equation*}
@@ -482,15 +482,15 @@ Konečně můžeme přejít k výpočtu matice tuhosti podle známého vztahu,
                 
 \prompt{Out}{outcolor}{18}{}
     
-    $\displaystyle \left[\begin{matrix}\frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I \left(\Omega + 4\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I \left(\Omega - 2\right)}{L \left(\Omega + 1\right)}\\- \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I \left(\Omega - 2\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I \left(\Omega + 4\right)}{L \left(\Omega + 1\right)}\end{matrix}\right]$
+    $\displaystyle \left[\begin{matrix}\frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & - \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I~\left(\Omega + 4\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I~\left(\Omega - 2\right)}{L \left(\Omega + 1\right)}\\- \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{12 E I}{L^{3} \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)}\\- \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & - \frac{E I~\left(\Omega - 2\right)}{L \left(\Omega + 1\right)} & \frac{6 E I}{L^{2} \left(\Omega + 1\right)} & \frac{E I~\left(\Omega + 4\right)}{L \left(\Omega + 1\right)}\end{matrix}\right]$
 
 \vspace{0.3cm}
-Lze si všimnout, že pro $\gls{Phi} = 0$ obdržíme matici tuhosti Hermitovského nosníku s kubickou aproximací pro Euler-Bernoulliho model, odvozeného v kap. \ref{sec:K_eb_beam}.
+Lze si všimnout, že pro $\gls{Phi} = 0$ obdržíme matici tuhosti Hermitovského nosníku s~kubickou aproximací pro Euler-Bernoulliho model, odvozeného v~kap. \ref{sec:K_eb_beam}.
         
 
 \subsubsection*{Vektor zatížení}
 
-Pro na prvku platí stejné předpoklady jako u taženého-tlačeného prvku i Euler-Bernoulliho nosníku,
+Pro na prvku platí stejné předpoklady jako u~taženého-tlačeného prvku i Euler-Bernoulliho nosníku,
 uvažujeme lineární spojité zatížení působící na celé délce prvku,
 \begin{equation}
     \overline{f_{\gls{z}}}(\gls{x}) = \frac{\overline{f}_b - \overline{f}_a}{\gls{L}} \gls{x} + \overline{f_a}.

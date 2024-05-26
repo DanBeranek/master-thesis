@@ -1,47 +1,47 @@
 \chapter{Knihovna pro navrhování konstrukcí podle Eurokódů}
 
-Knihovna \texttt{desssign} byla vyvinuta s cílem usnadnit klasifikaci, třídění a generování zatěžovacích stavů podle požadavků Eurokódu. Eurokódy představují soubor evropských norem pro navrhování konstrukcí, které obsahují specifické požadavky na kombinace zatížení a jejich součinitele. Tato knihovna umožňuje automatizaci tohoto procesu.
+Knihovna desssign byla vyvinuta s~cílem usnadnit klasifikaci, třídění a generování zatěžovacích stavů podle požadavků Eurokódu. Eurokódy představují soubor evropských norem pro navrhování konstrukcí, které obsahují specifické požadavky na kombinace zatížení a jejich součinitele. Tato knihovna umožňuje automatizaci tohoto procesu.
 
-Hlavním důvodem vzniku knihovny bylo zajistit, aby bylo možné automaticky generovat kombinace zatěžovacích stavů podle jejich charakteru a přiřazovat jednotlivým zatěžovacím stavům odpovídající součinitele, jak to vyžadují Eurokódy. Tento přístup umožňuje snadno a rychle vytvářet správné kombinace zatížení, které mohou být následně použity v knihovně \texttt{framesss} pro statické výpočty prutových konstrukcí.
+Hlavním důvodem vzniku knihovny bylo zajistit, aby bylo možné automaticky generovat kombinace zatěžovacích stavů podle jejich charakteru a přiřazovat jednotlivým zatěžovacím stavům odpovídající součinitele, jak to vyžadují Eurokódy. Tento přístup umožňuje snadno a rychle vytvářet správné kombinace zatížení, které mohou být následně použity v~knihovně framesss pro statické výpočty prutových konstrukcí.
 
-Při návrhu knihovny pro analýzu konstrukcí \texttt{framesss} jsem chtěl zachovat její obecnost a flexibilitu, aniž by byla zatížena specifickými normami nebo jinými specifickými závislostmi. Cílem bylo vytvořit obecný program pro analýzu prutových konstrukcí, který by nebyl příliš komplikovaný a nebyl závislý na konkrétní normě. Knihovna \texttt{desssign} tedy vznikla jako doplněk k \texttt{framesss}, aby umožnila specifickou implementaci podle Eurokódů, aniž by zatěžovala základní knihovnu zbytečnými závislostmi.
+Při návrhu knihovny pro analýzu konstrukcí framesss jsem chtěl zachovat její obecnost a flexibilitu, aniž by byla zatížena specifickými normami nebo jinými specifickými závislostmi. Cílem bylo vytvořit obecný program pro analýzu prutových konstrukcí, který by nebyl příliš komplikovaný a nebyl závislý na konkrétní normě. Knihovna desssign tedy vznikla jako doplněk k~framesss, aby umožnila specifickou implementaci podle Eurokódů, aniž by zatěžovala základní knihovnu zbytečnými závislostmi.
 
-Knihovna \texttt{desssign} se skládá z několika modulů, z nichž nejvýznamnější je modul \texttt{loads}. Tento modul obsahuje třídy a funkce potřebné pro definici a správu zatěžovacích stavů a jejich kombinací. Mezi hlavní třídy patří \texttt{DesignLoadCase}, \texttt{DesignLoadCaseCombination} a \texttt{DesignLoadCaseGroup}, které umožňují definici vztahů mezi jednotlivými zatěžovacími stavy. Dále je zde třída \texttt{CombinationsGenerator}, která generuje kombinace zatížení na základě zadaného mezního stavu, typu kombinace a klasifikaci zatěžovacích stavů.
+Knihovna desssign se skládá z~několika modulů, z~nichž nejvýznamnější je modul \texttt{loads}. Tento modul obsahuje třídy a funkce potřebné pro definici a správu zatěžovacích stavů a jejich kombinací. Mezi hlavní třídy patří \texttt{DesignLoadCase}, \texttt{DesignLoadCaseCombination} a \texttt{DesignLoadCaseGroup}, které umožňují definici vztahů mezi jednotlivými zatěžovacími stavy. Dále je zde třída \texttt{CombinationsGenerator}, která generuje kombinace zatížení na základě zadaného mezního stavu, typu kombinace a klasifikaci zatěžovacích stavů.
 
 Knihovna také obsahuje submodul pro generování zatížení sněhem a větrem pro jednoduché tvary střech.
 
-V následujících částech této kapitoly se podrobněji podíváme na architekturu knihovny \texttt{desssign}, jednotlivé moduly a jejich funkce, a také na praktické použití této knihovny v kontextu navrhování konstrukcí podle Eurokódů.
+V~následujících částech této kapitoly se podrobněji podíváme na architekturu knihovny desssign, jednotlivé moduly a jejich funkce, a také na praktické použití této knihovny v~kontextu navrhování konstrukcí podle Eurokódů.
 
-Zdrojový kód \texttt{desssign} je veřejně dostupný na platformě GitHub na adrese \url{https://github.com/DanBeranek/desssign}. Dokumentace knihovny, která je k dispozici na adrese \url{https://danberanek.github.io/desssign/index.html}, poskytuje podrobné informace o funkcionalitě, implementaci a použití knihovny.
+Zdrojový kód desssign je veřejně dostupný na platformě GitHub na adrese \url{https://github.com/DanBeranek/desssign}. Dokumentace knihovny, která je k~dispozici na adrese \url{https://danberanek.github.io/desssign/index.html}, poskytuje podrobné informace o~funkcionalitě, implementaci a použití knihovny.
 
 \section{Instalace}
-Knihovna \texttt{desssign} je snadno instalovatelná pomocí \texttt{pip}. Pro instalaci knihovny \texttt{framesss} stačí spustit následující příkaz v terminálu:
+Knihovna desssign je snadno instalovatelná pomocí pip. Pro instalaci knihovny desssign stačí spustit následující příkaz v~terminálu:
 
 \begin{verbatim}
 pip install desssign
 \end{verbatim}
 
-Podrobný návod na instalaci knihovny v Python virtuálním prostředí lze nalézt v \autoref{sec:framesss_instalation}.
+Podrobný návod na instalaci knihovny v~Python virtuálním prostředí lze nalézt v~\autoref{sec:framesss_instalation}.
 
 \section{Architektura knihovny}
-Knihovna \texttt{desssign} je navržena jako modulární a rozšiřitelný systém, který umožňuje snadnou integraci nových funkcionalit. Hlavní moduly knihovny zahrnují modul \texttt{loads} a modul \texttt{wood}. Tato část kapitoly se zaměří na popis struktury knihovny a jednotlivých modulů.
+Knihovna desssign je navržena jako modulární a rozšiřitelný systém, který umožňuje snadnou integraci nových funkcionalit. Hlavní moduly knihovny zahrnují modul \texttt{loads} a modul \texttt{wood}. Tato část kapitoly se zaměří na popis struktury knihovny a jednotlivých modulů.
 
 \subsection{Struktura knihovny}
-Knihovna \texttt{desssign} je organizována do následujících hlavních modulů
+Knihovna desssign je organizována do následujících hlavních modulů
 \begin{itemize}
     \item \textbf{loads}: Tento modul obsahuje třídy a funkce pro definici, správu a generování kombinací zatěžovacích stavů. Hlavní třídy zahrnují \texttt{DesignLoadCase}, \texttt{DesignLoadCaseCombination}, \texttt{DesignLoadCaseGroup} a \texttt{CombinationsGenerator}. Tento modul také obsahuje submodul pro generování zatížení sněhem a větrem pro jednoduché tvary střech.
-    \item \textbf{wood}: Tento modul obsahuje funkce pro posouzení dřevěných konstrukcí podle \textit{ČSN EN 1995-1-1}. Přestože se jedná o důležitou součást knihovny, v této diplomové práci se zaměříme především na modul \texttt{loads}.
+    \item \textbf{wood}: Tento modul obsahuje funkce pro posouzení dřevěných konstrukcí podle \textit{ČSN EN 1995-1-1}. Přestože se jedná o~důležitou součást knihovny, v~této diplomové práci se zaměříme především na modul \texttt{loads}.
 \end{itemize}
 
 \subsubsection*{Modul \texttt{loads}}
-Modul \texttt{loads} je klíčovou součástí knihovny \texttt{desssign} a je zodpovědný za
+Modul \texttt{loads} je klíčovou součástí knihovny desssign a je zodpovědný za
 \begin{itemize}
-    \item \textbf{Definic zatěžovacích stavů}:  Pomocí tříd \texttt{DesignLoadCase} a \texttt{DesignLoadCaseCombination}, které dědí vlastnosti tříd z knihovny \texttt{framesss}, lze definovat jednotlivé zatěžovací stavy a jejich kombinace.
+    \item \textbf{Definic zatěžovacích stavů}:  Pomocí tříd \texttt{DesignLoadCase} a \texttt{DesignLoadCaseCombination}, které dědí vlastnosti tříd z~knihovny framesss, lze definovat jednotlivé zatěžovací stavy a jejich kombinace.
     \item \textbf{Kategorizaci zatěžovacích stavů}: Třída \texttt{DesignLoadCaseGroup} umožňuje definovat vztahy mezi jednotlivými zatěžovacími stavy.
     \item \textbf{Generování kombinací zatížení}: Třída \texttt{CombinationsGenerator} umožňuje automatické generování kombinací zatížení na základě zadaných parametrů a kategorizaci zatěžovacích stavů.
 \end{itemize}
 
-Tento modul také zahrnuje submodul pro klimatická zatížení, který umožňuje generování hodnot zatížení sněhem na střeše podle kapitoly 5 v ČSN EN 1991-1-3 \cite{EN1991_1_3} a zatížení větrem pro obdélníkový tvar střech podle kapitoly 5 v ČSN EN 1991-1-4 \cite{EN1991_1_4}.
+Tento modul také zahrnuje submodul pro klimatická zatížení, který umožňuje generování hodnot zatížení sněhem na střeše podle kapitoly 5 v~ČSN EN 1991-1-3 \cite{EN1991_1_3} a zatížení větrem pro obdélníkový tvar střech podle kapitoly 5 v~ČSN EN 1991-1-4 \cite{EN1991_1_4}.
 
 \begin{figure}[H]
     \includegraphics{assets/figures/desssign/loads_uml.png}
@@ -49,11 +49,11 @@ Tento modul také zahrnuje submodul pro klimatická zatížení, který umožňu
     \label{fig:modul_loads}
 \end{figure}
 
-\subsection{Integrace s knihovnou pro výpočty prutových konstrukcí}
-Jednou z klíčových vlastností knihovny \texttt{desssign} je její schopnost generovat kombinace zatěžovacích stavů, které lze následně použít v knihovně \texttt{framesss} pro statické výpočty. Tímto způsobem knihovna \texttt{desssign} výrazně usnadňuje a automatizuje proces návrhu konstrukcí podle Eurokódů.
+\subsection{Integrace s~knihovnou pro výpočty prutových konstrukcí}
+Jednou z~klíčových vlastností knihovny desssign je její schopnost generovat kombinace zatěžovacích stavů, které lze následně použít v~knihovně framesss pro statické výpočty. Tímto způsobem knihovna desssign výrazně usnadňuje a automatizuje proces návrhu konstrukcí podle Eurokódů.
 
 \subsubsection*{Třída \texttt{DesignLoadCase}}
-Tato třída rozšiřuje třídu \texttt{LoadCase} z knihovny \texttt{framesss} a přidává specifické atributy, 
+Tato třída rozšiřuje třídu \texttt{LoadCase} z~knihovny framesss a přidává specifické atributy, 
 \begin{itemize}
     \item \texttt{load\_type}: typ zatížení, lze volit mezi stálým a užitným zatížením,
     \item \texttt{category}: kategorie zatížení podle ČSN EN 1991-1-1, kapitola 6.3.1.1 \cite{EN1991_1_1}, specifikuje se pouze pro užitné zatížení,
@@ -67,7 +67,7 @@ Tato třída rozšiřuje třídu \texttt{LoadCase} z knihovny \texttt{framesss} 
 \end{figure}
 
 \subsubsection*{Třída \texttt{DesignLoadCaseCombination}}
-Tato třída rozšiřuje třídu \texttt{LoadCaseCombination} z knihovny \texttt{framesss} a zahrnuje atributy
+Tato třída rozšiřuje třídu \texttt{LoadCaseCombination} z~knihovny framesss a zahrnuje atributy
 \begin{itemize}
     \item \texttt{permanent\_cases}: zatěžovací stavy pro stálé zatížení,
     \item \texttt{leading\_variable\_case}: zatěžovací stav pro hlavní proměnné zatížení,
@@ -78,7 +78,7 @@ Tato třída rozšiřuje třídu \texttt{LoadCaseCombination} z knihovny \texttt
     \item \texttt{combination\_key}: automaticky vygenerovaný kombinační klíč.
 \end{itemize}
 
-Podle zadaného mezního stavu a kombinace se jednotlivým zatěžovacím automaticky přiřadí kombinační součinitelé podle pravidel v ČSN EN 1990 \cite{EN1990}.
+Podle zadaného mezního stavu a kombinace se jednotlivým zatěžovacím automaticky přiřadí kombinační součinitelé podle pravidel v~ČSN EN 1990 \cite{EN1990}.
 
 \begin{figure}[H]
     \includegraphics[height=8cm]{assets/figures/desssign/load_combinations.png}
@@ -120,7 +120,7 @@ Metody:
     \item \texttt{generate\_combinations(load\_case\_groups)}: generuje kombinace zatížení na základě listu instancí \texttt{DesignLoadCaseGroup}.
 \end{itemize}
 
-Kombinace zatížení se generují podle vztahů uvedených v kapitole 6 ČSN EN 1990 \cite{EN1990},
+Kombinace zatížení se generují podle vztahů uvedených v~kapitole 6 ČSN EN 1990 \cite{EN1990},
 \begin{itemize}
     \item mezní stavy únosnosti, kombinace pro trvalé a dočasné návrhové situace:
         \begin{itemize}
@@ -154,11 +154,11 @@ Kombinace zatížení se generují podle vztahů uvedených v kapitole 6 ČSN EN
             \end{equation}
     \end{itemize}
 \end{itemize}
-kde $G$ označuje stálé zatížení, $Q$ proměnné zatížení, $Q_{1}$ označuje hlavní proměnné zatížení, $\gamma$ jsou dílčí součinitelé zatížení podle ČSN EN 1990, příloha A \cite{EN1990}, $\psi$ jsou součinitele pro proměnná zatížení podle ČSN EN 1990, příloha A \cite{EN1990} a $\xi$ je redukční součinitel pro stálé zatížení.
+kde $G$ označuje stálé zatížení, $Q$ proměnné zatížení, $Q_{1}$ označuje hlavní proměnné zatížení, $\gamma$ jsou dílčí součinitelé zatížení podle ČSN EN 1990, příloha A~\cite{EN1990}, $\psi$ jsou součinitele pro proměnná zatížení podle ČSN EN 1990, příloha A~\cite{EN1990} a $\xi$ je redukční součinitel pro stálé zatížení.
 
 \section{Příklad použití}
 
-Pro klasifikaci zatěžovacích jsou v knihovně vytvořeny \texttt{Enum}\footnote{\texttt{Enum} je speciální datový typ, který umožňuje definovat sadu pojmenovaných konstant.} třídy, které jasně stanovují způsob, jakým způsobem se mají zadávat parametry při vytváření nových instancí. Tyto \texttt{Enum} třídy zajišťují, že parametry jsou zadávány konzistentně a správně, což minimalizuje riziko chyb při definování zatěžovacích stavů.
+Pro klasifikaci zatěžovacích jsou v~knihovně vytvořeny \texttt{Enum}\footnote{\texttt{Enum} je speciální datový typ, který umožňuje definovat sadu pojmenovaných konstant.} třídy, které jasně stanovují způsob, jakým způsobem se mají zadávat parametry při vytváření nových instancí. Tyto \texttt{Enum} třídy zajišťují, že parametry jsou zadávány konzistentně a správně, což minimalizuje riziko chyb při definování zatěžovacích stavů.
 
 Nejprve musíme do prostředí JupyterLab importovat všechny potřebné třídy a balíčky.
 \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
@@ -178,7 +178,7 @@ Nejprve musíme do prostředí JupyterLab importovat všechny potřebné třídy
     \end{Verbatim}
     \end{tcolorbox}
 
-Vytvoříme 5 instancí typu \texttt{DesignLoadCase}, dva zatěžovací stavy pro stálé zatížení (\texttt{G1, G2}), jeden zatěžovací stav pro užitné zatížení kategorie A (\texttt{Q3}) a dva zatěžovací stavy pro zatížení sněhem (\texttt{S4, S5}).
+Vytvoříme 5 instancí typu \texttt{DesignLoadCase}, dva zatěžovací stavy pro stálé zatížení (\texttt{G1, G2}), jeden zatěžovací stav pro užitné zatížení kategorie A~(\texttt{Q3}) a dva zatěžovací stavy pro zatížení sněhem (\texttt{S4, S5}).
         \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{2}{\boxspacing}
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -213,7 +213,7 @@ Vytvoříme 5 instancí typu \texttt{DesignLoadCase}, dva zatěžovací stavy pr
     \end{Verbatim}
     \end{tcolorbox}
 
-    Vytvoříme skupiny zatížení, zatěžovací stavy ve skupině pro stálé zatížení, \texttt{LG\_permanent}, působí v každé kombinaci dohromady. Skupina zatížení pro užitné zatížení, \texttt{LG\_imposed}, je typu \texttt{STANDARD}. Zatěžovací stavy ve skupině pro zatížení sněhem, \texttt{LG\_snow}, nepůsobí v žádné kombinaci společně.
+    Vytvoříme skupiny zatížení, zatěžovací stavy ve skupině pro stálé zatížení, \texttt{LG\_permanent}, působí v~každé kombinaci dohromady. Skupina zatížení pro užitné zatížení, \texttt{LG\_imposed}, je typu \texttt{STANDARD}. Zatěžovací stavy ve skupině pro zatížení sněhem, \texttt{LG\_snow}, nepůsobí v~žádné kombinaci společně.
         \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
     \prompt{In}{incolor}{3}{\boxspacing}
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -428,4 +428,4 @@ Vypíšeme automaticky vygenerovaný název a klíč kombinace, který obsahuje 
     
         \end{Verbatim}
 
-Takto vygenerované kombinace je možné použít v kombinaci s knihovnou \texttt{framesss}.
+Takto vygenerované kombinace je možné použít v~kombinaci s~knihovnou framesss.
